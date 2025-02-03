@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phonebook</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .tree {
+            list-style: none;
+            padding-left: 20px;
+        }
+        .tree li {
+            cursor: pointer;
+            margin-bottom: 5px;
+        }
+        .category, .section {
+            font-weight: bold;
+        }
+        .contact {
+            padding-left: 15px;
+            cursor: default;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Phonebook</h2>
+    <ul id="phonebook" class="tree"></ul>
+
+    <script src="script.js"></script>
+
+</body>
+</html>

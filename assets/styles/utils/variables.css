@@ -1,0 +1,13 @@
+:root {
+    --primary-color: #1a5f7a;
+    --secondary-color: #f0f7fa;
+    --accent-color: #2c88b0;
+    --text-color: #333;
+    --card-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    --card-hover-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    --spacing-sm: 0.5rem;
+    --spacing-md: 1rem;
+    --spacing-lg: 2rem;
+    --border-radius: 8px;
+    --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}

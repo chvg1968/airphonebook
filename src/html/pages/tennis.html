@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tennis Information</title>
+    <style>
+        :root {
+            --primary-black: #2C2C2C;
+            --primary-white: #F5F5F5;
+            --primary-orange: #FFB17A;
+            --background-color: #FFF6F0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--background-color);
+            color: var(--primary-black);
+            line-height: 1.6;
+            padding: 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .container {
+            background-color: var(--primary-white);
+            padding: 3rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        h1 {
+            color: var(--primary-black);
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            border-bottom: 3px solid var(--primary-orange);
+            padding-bottom: 1rem;
+        }
+
+        .section {
+            margin-bottom: 2rem;
+        }
+
+        .section-title {
+            color: var(--primary-black);
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        ul {
+            list-style: none;
+            margin-left: 1rem;
+        }
+
+        li {
+            margin-bottom: 0.8rem;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        li::before {
+            content: "•";
+            color: var(--primary-orange);
+            font-size: 1.2rem;
+            position: absolute;
+            left: 0;
+        }
+
+        .rates {
+            background-color: #FFF;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--primary-orange);
+        }
+
+        .note {
+            font-size: 0.9rem;
+            color: #666;
+            margin-top: 1.5rem;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Tennis Services</h1>
+        
+        <div class="section">
+            <p>The tennis court reservations are complementary with your resort fee.</p>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Tennis Schedule</div>
+            <ul>
+                <li>Tennis courts reservations - Guest chooses day and time, Bahia Beach checks availability in their system. There are four courts, two clay courts (#1 and #3); and two hard courts (#2 and #4)</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Tennis Lessons</div>
+            <div class="rates">
+                <ul>
+                    <li>Non-Members: $150. Guest chooses day and time, and Bahia Beach verifies availability with instructor</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Tennis Clinics</div>
+            <div class="rates">
+                <ul>
+                    <li>Non-Members: $40</li>
+                </ul>
+            </div>
+        </div>
+
+        <p class="note">*Tennis lessons and clinics rates are subject to change and do not include Puerto Rico Tax (11.5%)</p>
+    </div>
+</body>
+</html>

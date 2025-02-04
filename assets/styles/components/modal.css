@@ -1,0 +1,381 @@
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 999;
+}
+
+.modal-overlay.show {
+    display: block;
+    opacity: 1;
+}
+
+.modal-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    max-width: 90%;
+    max-height: 90%;
+    width: auto;
+    padding: 20px;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    overflow-y: auto;
+}
+
+.modal-container.show {
+    transform: translate(-50%, -50%);
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 15px;
+    background-color: transparent
+}
+
+.modal-close {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #030303;
+    transition: color 0.2s;
+}
+
+.modal-close:hover {
+    color: #fd098b;
+}
+
+.modal-title {
+    text-align: center;
+    margin-bottom: 15px;
+    font-size: 1.5rem;
+    color: #333;
+    font-weight: bold;
+}
+
+.modal-content {
+    max-height: 70vh;
+    overflow-y: auto;
+}
+
+.modal-body {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #333;
+    text-align: center;
+    padding: 20px;
+}
+
+.modal-body .property-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.modal-body .info-section {
+    margin-bottom: 20px;
+}
+
+.modal-body .info-section:last-child {
+    margin-bottom: 0;
+}
+
+.modal-body .info-section h3 {
+    color: #fd098b;
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+}
+
+.modal-body p, 
+.modal-body ul {
+    color: #333;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+.modal-body .info-list {
+    padding-left: 20px;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+.modal-body .info-list li {
+    list-style-type: none;
+    padding: 8px 16px;
+    border-bottom: 1px solid #edf2f7;
+    margin: 0;
+    position: relative;
+}
+
+.modal-body .info-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background-color: #718096;
+    margin-right: 8px;
+}
+
+.modal-body .warning .info-list li::before {
+    background-color: #856404;
+}
+
+.modal-body .info-list li:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.modal-body .warning {
+    background-color: #fff3cd;
+    border-left: 4px solid #ffc107;
+    padding: 25px;
+    margin-top: 15px;
+}
+
+.modal-body .warning-text {
+    color: #856404;
+    font-weight: bold;
+}
+
+/* Estilos para el scrollbar */
+.modal-content::-webkit-scrollbar {
+    width: 8px;
+}
+
+.modal-content::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+
+.modal-content::-webkit-scrollbar-thumb {
+    background: #cbd5e0;
+    border-radius: 4px;
+}
+
+.modal-content::-webkit-scrollbar-thumb:hover {
+    background: #a0aec0;
+}
+
+/* Estilos para enlaces dentro del modal */
+.modal-body a {
+    color: #4299e1;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.modal-body a:hover {
+    color: #2b6cb0;
+    text-decoration: underline;
+}
+
+/* Estilos para el contenido del Kids Club */
+.modal-body .info-section h3 {
+    color: #2d3748;
+    font-size: 1.1rem;
+    margin: 0 0 12px 0;
+    font-weight: 600;
+}
+
+.modal-body .info-section p {
+    margin: 0 0 16px 0;
+}
+
+/* Estilos para el modal del mapa */
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.modal-content {
+    position: relative;
+    background-color: #fefefe;
+    margin: 5% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 800px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.close {
+    position: absolute;
+    right: 20px;
+    top: 10px;
+    color: #aaa;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.map-container {
+    position: relative;
+    width: 100%;
+    margin-top: 15px;
+    overflow: hidden;
+    touch-action: none; /* Permite gestos personalizados */
+}
+
+.map-wrapper {
+    width: 100%;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch; /* Scroll suave en iOS */
+    position: relative;
+    max-height: 70vh;
+}
+
+.map-image {
+    width: 100%;
+    height: auto;
+    transform-origin: center;
+    transition: transform 0.3s ease;
+    cursor: move;
+    touch-action: pinch-zoom; /* Habilita zoom con gestos */
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+.map-controls {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    display: flex;
+    gap: 10px;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 8px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.zoom-btn {
+    width: 40px;
+    height: 40px;
+    border: none;
+    border-radius: 50%;
+    background: white;
+    color: #4a90e2;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: all 0.2s ease;
+}
+
+.zoom-btn:hover {
+    background: #4a90e2;
+    color: white;
+}
+
+.property-actions {
+    display: flex;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.view-map-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    background-color: #4a90e2;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.view-map-btn:hover {
+    background-color: #357abd;
+}
+
+.modal h2 {
+    margin-top: 0;
+    color: #333;
+    font-size: 24px;
+}
+
+/* Estilos responsive */
+@media (max-width: 768px) {
+    .modal-container {
+        width: 95%;
+        margin: 0 auto;
+    }
+
+    .modal-header {
+        padding: 16px 20px;
+    }
+
+    .modal-content {
+        padding: 20px;
+    }
+
+    .modal-body {
+        font-size: 13px;
+        padding: 0 16px;
+    }
+
+    .modal-body .info-section h3 {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .modal-content {
+        width: 95%;
+        margin: 2% auto;
+        padding: 15px;
+    }
+
+    .map-wrapper {
+        max-height: 80vh;
+    }
+
+    .map-controls {
+        bottom: 10px;
+        right: 10px;
+    }
+
+    .zoom-btn {
+        width: 36px;
+        height: 36px;
+        font-size: 16px;
+    }
+}

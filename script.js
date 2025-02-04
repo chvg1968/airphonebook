@@ -383,15 +383,11 @@ async function buildTree() {
         const currentCategoryTitle = document.getElementById("current-category-title");
         const globalSearch = document.getElementById("global-search");
 
-        phonebook.innerHTML = ''; // Limpiar contenido previo
+        // Variables para seguimiento de navegación
+        let currentSection = null;
+        let currentCategory = null;
 
-        if (contacts.length === 0) {
-            const noContactsLi = document.createElement("div");
-            noContactsLi.className = "error";
-            noContactsLi.textContent = "No se encontraron contactos. Verifica tu conexión o configuración de Airtable.";
-            phonebook.appendChild(noContactsLi);
-            return;
-        }
+        phonebook.innerHTML = ''; // Limpiar contenido previo
 
         // Renderizado de secciones
         contactManager.getSections().forEach((sectionName, index) => {
@@ -409,6 +405,8 @@ async function buildTree() {
 
                 contactsList.innerHTML = ''; // Limpiar lista previa
                 currentCategoryTitle.textContent = sectionName;
+                currentSection = sectionName;
+                currentCategory = null;
 
                 const sectionCategories = contactManager.getCategoriesInSection(sectionName);
 
@@ -428,6 +426,8 @@ async function buildTree() {
                         // Limpiar categorías previas
                         document.querySelectorAll('.category').forEach(cat => cat.classList.remove('expanded'));
                         categoryDiv.classList.add('expanded');
+
+                        currentCategory = categoryName;
 
                         const categoryContacts = contactManager.getContactsInCategory(sectionName, categoryName);
                         const subcategories = contactManager.getSubcategoriesInCategory(sectionName, categoryName);
@@ -482,10 +482,79 @@ async function buildTree() {
             phonebook.appendChild(sectionDiv);
         });
 
-        // Botón de retorno al menú
+        // Botón de retorno dinámico
         backToMenuBtn.addEventListener("click", () => {
-            document.getElementById('contacts-display').classList.add('hidden');
-            document.getElementById('sections-menu').classList.remove('hidden');
+            if (currentCategory) {
+                // Si estamos en una categoría, volver a la lista de categorías de la sección
+                contactsList.innerHTML = ''; // Limpiar lista previa
+                currentCategoryTitle.textContent = currentSection;
+                currentCategory = null;
+
+                const sectionCategories = contactManager.getCategoriesInSection(currentSection);
+
+                sectionCategories.forEach(categoryName => {
+                    const categoryDiv = document.createElement("div");
+                    categoryDiv.className = "category";
+                    
+                    const categoryIcon = contactManager.structuredData[currentSection].categories
+                        .find(cat => cat.name === categoryName).icon;
+                    
+                    categoryDiv.textContent = `${categoryIcon} ${categoryName}`;
+
+                    // Evento para expandir categoría (mismo que en renderizado original)
+                    categoryDiv.addEventListener("click", (e) => {
+                        e.stopPropagation();
+                        
+                        document.querySelectorAll('.category').forEach(cat => cat.classList.remove('expanded'));
+                        categoryDiv.classList.add('expanded');
+
+                        currentCategory = categoryName;
+
+                        const categoryContacts = contactManager.getContactsInCategory(currentSection, categoryName);
+                        const subcategories = contactManager.getSubcategoriesInCategory(currentSection, categoryName);
+                        
+                        const contactsContainer = document.createElement("div");
+                        contactsContainer.className = "category-contacts";
+
+                        // Renderizar subcategorías (código similar al anterior)
+                        if (subcategories.length > 0) {
+                            subcategories.forEach(subcategory => {
+                                const subcategoryContacts = contactManager.getContactsInSubcategory(currentSection, categoryName, subcategory);
+                                
+                                const subcategoryHeader = document.createElement("h4");
+                                const subcategoryIcon = getIcon('subcategories', subcategory);
+                                subcategoryHeader.textContent = `${subcategoryIcon} ${subcategory} (${subcategoryContacts.length})`;
+                                contactsContainer.appendChild(subcategoryHeader);
+
+                                subcategoryContacts.sort((a, b) => a.name.localeCompare(b.name)).forEach(contact => {
+                                    const contactDiv = document.createElement("div");
+                                    contactDiv.className = "contact";
+                                    contactDiv.innerHTML = contactManager.renderContactDetails(contact);
+                                    contactsContainer.appendChild(contactDiv);
+                                });
+                            });
+                        } else {
+                            // Sin subcategorías
+                            categoryContacts.sort((a, b) => a.name.localeCompare(b.name)).forEach(contact => {
+                                const contactDiv = document.createElement("div");
+                                contactDiv.className = "contact";
+                                contactDiv.innerHTML = contactManager.renderContactDetails(contact);
+                                contactsContainer.appendChild(contactDiv);
+                            });
+                        }
+
+                        contactsList.innerHTML = '';
+                        contactsList.appendChild(contactsContainer);
+                    });
+
+                    contactsList.appendChild(categoryDiv);
+                });
+            } else {
+                // Si estamos en una sección, volver al menú de secciones
+                document.getElementById('contacts-display').classList.add('hidden');
+                document.getElementById('sections-menu').classList.remove('hidden');
+                currentSection = null;
+            }
         });
 
         // Búsqueda global
@@ -495,6 +564,8 @@ async function buildTree() {
 
             contactsList.innerHTML = ''; // Limpiar lista previa
             currentCategoryTitle.textContent = `Resultados de búsqueda: ${results.length}`;
+            currentSection = null;
+            currentCategory = null;
 
             if (results.length === 0) {
                 const noResultsDiv = document.createElement("div");

@@ -13,6 +13,13 @@ const ICONS = {
         "Off Property Transportation and Airport Transfers":"🚗",
         "Catering/Delivery/Special Services":"🛒",
         "Off Property Restaurants and Shopping": "🛍️",
+        "On Property Restaurants": "🍽️",
+        "Beach and Pool": "🏖️",
+        "Services": "🛠️",
+        "Transportation": "🚗",
+        "Fitness and Wellness": "💪",
+        "Activities": "🎉",
+        "Personal Chefs": "👨‍🍳"
     },
     categories: {
         // Off Property Restaurants and Shopping

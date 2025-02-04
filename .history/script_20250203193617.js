@@ -7,12 +7,14 @@ const AIRTABLE_API_KEY = "patnq47h2PKTUVAnf.b0e53236836e40b87e9a648482933bc27216
 const ICONS = {
     sections: {
         "Medical and Security Emergencies":"🚑",
-        "Resort Restaurants and Venues":"⛱️",
-        "Unit's Golf Cart":"🛺",
-        "Resort Activities and Adventures":"🏃",
-        "Off Property Transportation and Airport Transfers":"🚗",
-        "Catering/Delivery/Special Services":"🛒",
-        "Off Property Restaurants and Shopping": "🛍️",
+        "Off Property Restaurants and Shopping": "🌍",
+        "On Property Restaurants": "🍽️",
+        "Beach and Pool": "🏖️",
+        "Services": "🛠️",
+        "Transportation": "🚗",
+        "Fitness and Wellness": "💪",
+        "Activities": "🎉",
+        "Personal Chefs": "👨‍🍳"
     },
     categories: {
         // Off Property Restaurants and Shopping

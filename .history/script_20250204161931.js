@@ -1,10 +1,17 @@
-import { fetchAllContacts } from "./src/js/api.js";
-import { buildTree } from "./src/js/tree.js";
-import { SECTION_ORDER } from "./src/js/constants.js";
-import { getIcon } from "./src/js/utils.js"; 
+// Configuración de Airtable
+const AIRTABLE_BASE_ID = "appz6a0uRGlALNl2B";
+const AIRTABLE_TABLE_NAME = "Contacts";
+const AIRTABLE_API_KEY = "patnq47h2PKTUVAnf.b0e53236836e40b87e9a648482933bc27216f7e0e4eac414d1a30526dc1cce61";
+import { fetchAllContacts } from "./src/js/Api.js";
+import { ICONS, SECTION_ORDER } from "./src/js/Constants.js";
+import { buildTree } from "./src/js/Tree.js";
+// Mapeo de emojis e iconos
+
 
 // Función para obtener emoji o ícono
-
+function getIcon(type, key, defaultIcon = ' ') {
+    return ICONS[type]?.[key] || defaultIcon;
+}
 
 // Clase para manejo de datos de contactos
 class ContactManager {

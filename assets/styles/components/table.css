@@ -1,0 +1,39 @@
+table {
+    border-collapse: collapse;
+    width: 100%;
+    font-family: sans-serif;
+    margin-bottom: 20px;
+  }
+  
+  caption {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #333;
+  }
+  
+  thead tr {
+    background-color: #ffcc80; /* Light orange for header background */
+    color: #000; /* Black for header text */
+  }
+  
+  th, td {
+    padding: 10px 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd; /* Light grey bottom border for rows */
+  }
+  
+  th {
+    font-weight: bold;
+  }
+  
+  tbody tr:nth-child(even) {
+    background-color: #f9f9f9; /* Very light grey for even rows for subtle contrast */
+  }
+  
+  tfoot td {
+    padding: 10px 15px;
+    text-align: left;
+    font-style: italic;
+    border-top: 1px solid #ddd; /* Light grey top border for footer */
+  }

@@ -1,7 +1,7 @@
-import { fetchAllContacts } from "./src/js/api.js";
-import { buildTree } from "./src/js/tree.js";
-import { SECTION_ORDER } from "./src/js/constants.js";
-import { getIcon } from "./src/js/utils.js"; 
+
+import { fetchAllContacts } from "./src/js/Api.js";
+import { buildTree } from "./src/js/Tree.js";
+import { getIcon } from "./scr/js/utils.js"; 
 
 // Función para obtener emoji o ícono
 

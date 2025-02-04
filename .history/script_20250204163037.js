@@ -1,10 +1,13 @@
-import { fetchAllContacts } from "./src/js/api.js";
-import { buildTree } from "./src/js/tree.js";
-import { SECTION_ORDER } from "./src/js/constants.js";
-import { getIcon } from "./src/js/utils.js"; 
+
+import { ICONS, SECTION_ORDER } from "./src/js/Constants.js";
+import { buildTree } from "./src/js/Tree.js";
+// Mapeo de emojis e iconos
+
 
 // Función para obtener emoji o ícono
-
+function getIcon(type, key, defaultIcon = ' ') {
+    return ICONS[type]?.[key] || defaultIcon;
+}
 
 // Clase para manejo de datos de contactos
 class ContactManager {

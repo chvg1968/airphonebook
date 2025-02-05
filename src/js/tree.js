@@ -32,13 +32,33 @@ const renderContacts = (contacts) => {
     return container;
 };
 
+// Función para limpiar contactos
+const clearContacts = () => {
+    contactsList.innerHTML = '';
+    document.getElementById('current-category-title').textContent = '';
+    document.getElementById('contacts-display').classList.add('hidden');
+};
+
 // Función para manejar el click en una categoría
 const handleCategoryClick = (category, sectionName) => (e) => {
     e.stopPropagation();
 
     // Limpiar selecciones previas
-    document.querySelectorAll('.category').forEach(cat => cat.classList.remove('expanded'));
-    e.currentTarget.classList.add('expanded');
+    document.querySelectorAll('.category').forEach(cat => {
+        if (cat !== e.currentTarget) {
+            cat.classList.remove('expanded');
+        }
+    });
+
+    // Toggle la categoría actual
+    const isExpanding = !e.currentTarget.classList.contains('expanded');
+    e.currentTarget.classList.toggle('expanded');
+
+    // Si estamos colapsando la categoría, limpiar los contactos
+    if (!isExpanding) {
+        clearContacts();
+        return;
+    }
 
     // Actualizar estado
     currentCategory = category.name;
@@ -179,6 +199,8 @@ export async function buildTree() {
             const treeChildren = document.createElement('div');
             treeChildren.className = 'tree-children';
 
+
+
             treeContent.addEventListener('click', () => {
                 // Colapsar todas las demás secciones
                 document.querySelectorAll('.tree-content').forEach(el => {
@@ -192,11 +214,20 @@ export async function buildTree() {
                 // Actualizar estado
                 currentSection = sectionName;
                 currentCategory = null;
+                currentSubcategory = null;
+                
+                // Limpiar lista de contactos
+                clearContacts();
                 
                 // Toggle expansión de esta sección
                 toggleIcon.classList.toggle('expanded');
                 treeChildren.classList.toggle('expanded');
                 treeContent.classList.toggle('expanded');
+
+                // Si se está colapsando la sección, limpiar los contactos
+                if (!treeContent.classList.contains('expanded')) {
+                    clearContacts();
+                }
 
                 // Si es la primera vez que se expande
                 if (treeChildren.children.length === 0) {

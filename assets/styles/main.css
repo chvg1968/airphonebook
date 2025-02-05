@@ -34,7 +34,7 @@ body {
 
 .two-column-layout {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 2fr 1fr;
     gap: var(--spacing-lg);
     margin-top: var(--spacing-lg);
 }
@@ -44,7 +44,13 @@ body {
     border-radius: var(--border-radius);
     padding: var(--spacing-lg);
     box-shadow: var(--shadow-sm);
-    order: 1;
+}
+
+.menu-column {
+    background-color: var(--card-background);
+    border-radius: var(--border-radius);
+    padding: var(--spacing-lg);
+    box-shadow: var(--shadow-sm);
 }
 
 .search-column {

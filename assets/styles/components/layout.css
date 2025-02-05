@@ -1,0 +1,66 @@
+.two-column-layout {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 2rem;
+    padding: 1rem;
+    margin-top: 2rem;
+}
+
+.property-column {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.menu-column {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.search-container {
+    margin-bottom: 1rem;
+    position: relative;
+}
+
+#global-search {
+    width: 100%;
+    padding: 0.75rem;
+    padding-right: 2.5rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+.search-icon {
+    position: absolute;
+    right: 0.75rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #666;
+}
+
+#sections-menu {
+    margin-top: 1rem;
+}
+
+.sections-grid {
+    display: grid;
+    gap: 1rem;
+}
+
+#contacts-display {
+    margin-top: 1rem;
+}
+
+.contacts-header {
+    margin-bottom: 1rem;
+}
+
+.scrollable-list {
+    max-height: 500px;
+    overflow-y: auto;
+    padding-right: 0.5rem;
+}

@@ -97,22 +97,34 @@ const handleCategoryClick = (category, sectionName) => (e) => {
 
 // Función para manejar la visibilidad del botón flotante
 const handleFloatingButton = () => {
-    const floatingBtn = document.getElementById('back-to-menu-float');
-    const contactsDisplay = document.getElementById('contacts-display');
-    
-    if (!floatingBtn || !contactsDisplay) return;
+    const backButton = document.getElementById('back-to-menu-float');
+    const menuSection = document.getElementById('sections-menu');
 
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (!entry.isIntersecting) {
-                floatingBtn.classList.add('visible');
-            } else {
-                floatingBtn.classList.remove('visible');
-            }
-        });
-    }, { threshold: 0.1 });
+    if (!backButton || !menuSection) return;
 
-    observer.observe(contactsDisplay);
+    // Función para verificar la posición del scroll
+    const checkScrollVisibility = () => {
+        const menuTop = menuSection.getBoundingClientRect().top;
+        const scrolled = window.scrollY > 100; // Mostrar después de 100px de scroll
+
+        if (scrolled && menuTop < 0) {
+            backButton.classList.add('visible');
+        } else {
+            backButton.classList.remove('visible');
+        }
+    };
+
+    // Escuchar el evento de scroll
+    window.addEventListener('scroll', checkScrollVisibility);
+
+    // Click en el botón flotante
+    backButton.addEventListener('click', () => {
+        menuSection.scrollIntoView({ behavior: 'smooth' });
+    });
+
+    // Verificar inicialmente
+    checkScrollVisibility();
+
 };
 
 export async function buildTree() {
@@ -355,24 +367,33 @@ const handleBack = () => {
     if (location === 'subcategory') {
         // Volver a la vista de categoría
         currentSubcategory = null;
-        if (currentSection && currentCategory) {
-            const contacts = contactManager.getContactsInCategory(currentSection, currentCategory);
-            displayContacts(contacts);
-        }
-
+        
         // Colapsar la subcategoría seleccionada
         document.querySelector('.subcategory.selected')?.classList.remove('selected');
+        
+        // Solo mostrar contactos si la categoría no tiene subcategorías
+        if (currentSection && currentCategory) {
+            const categoryData = contactManager.structuredData[currentSection]?.categories?.find(c => c.name === currentCategory);
+            if (categoryData && (!categoryData.subcategories || categoryData.subcategories.length === 0)) {
+                const contacts = contactManager.getContactsInCategory(currentSection, currentCategory);
+                displayContacts(contacts);
+            }
+        }
     } 
     else if (location === 'category') {
         // Volver a la vista de sección
         currentCategory = null;
-        if (currentSection && contactManager.structuredData[currentSection]) {
-            const sectionData = contactManager.structuredData[currentSection];
-            displayContacts(sectionData.contacts || []);
-        }
-
+        
         // Colapsar la categoría expandida
         document.querySelector('.category.expanded')?.classList.remove('expanded');
+        
+        // Solo mostrar contactos si la sección no tiene categorías
+        if (currentSection && contactManager.structuredData[currentSection]) {
+            const sectionData = contactManager.structuredData[currentSection];
+            if (!sectionData.categories || sectionData.categories.length === 0) {
+                displayContacts(sectionData.contacts || []);
+            }
+        }
     } 
     else if (location === 'section') {
         // Volver al menú principal
@@ -394,56 +415,75 @@ const handleBack = () => {
     document.getElementById('back-to-menu-float')?.classList.remove('visible');
 };
 
-// Asignar el manejador a ambos botones
-const backToMenuFloat = document.getElementById('back-to-menu-float');
-backToMenuBtn.addEventListener('click', handleBack);
-backToMenuFloat.addEventListener('click', handleBack);
+// Asignar el manejador al botón de retorno
+        backToMenuBtn.addEventListener('click', handleBack);
 
         // Búsqueda global
+        const performSearch = () => {
+            const query = globalSearch.value.trim();
+            
+            if (query.length === 0) {
+                // Si la búsqueda está vacía, volver al menú principal
+                document.getElementById('contacts-display').classList.add('hidden');
+                document.getElementById('sections-menu').classList.remove('hidden');
+                currentSection = null;
+                currentCategory = null;
+                currentSubcategory = null;
+                return;
+            }
+
+            const results = contactManager.search(query);
+            
+            // Limpiar y mostrar resultados
+            contactsList.innerHTML = '';
+            if (results.length === 0) {
+                const noResultsDiv = document.createElement('div');
+                noResultsDiv.className = 'no-results';
+                noResultsDiv.textContent = 'No se encontraron contactos.';
+                contactsList.appendChild(noResultsDiv);
+            } else {
+                contactsList.appendChild(renderContacts(results));
+            }
+
+            // Mostrar vista de contactos
+            document.getElementById('contacts-display').classList.remove('hidden');
+            
+            // Scroll a los resultados
+            const contactsDisplay = document.getElementById('contacts-display');
+            if (contactsDisplay) {
+                contactsDisplay.scrollIntoView({ behavior: 'smooth' });
+            }
+        };
+
+        // Manejar el click en la lupa
+        const searchIcon = document.querySelector('.search-icon');
+        if (searchIcon) {
+            searchIcon.addEventListener('click', performSearch);
+        }
+
+        // Manejar el evento keyup
         globalSearch.addEventListener('keyup', (e) => {
             const query = e.target.value.trim();
             
-            // Solo procesar si es Enter o si el campo está vacío
-            if (e.key === 'Enter' || query.length === 0) {
-                if (query.length === 0) {
-                    // Si la búsqueda está vacía, volver al menú principal
-                    document.getElementById('contacts-display').classList.add('hidden');
-                    document.getElementById('sections-menu').classList.remove('hidden');
-                    currentSection = null;
-                    currentCategory = null;
-                    currentSubcategory = null;
-                    // Scroll al tope del menú
-                    const sectionsMenu = document.getElementById('sections-menu');
-                    if (sectionsMenu) {
-                        sectionsMenu.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    }
-                    return;
-                }
-
-                const results = contactManager.search(query);
-                
-                // Limpiar y mostrar resultados
-                contactsList.innerHTML = '';
-                if (results.length === 0) {
-                    const noResultsDiv = document.createElement('div');
-                    noResultsDiv.className = 'no-results';
-                    noResultsDiv.textContent = 'No se encontraron contactos.';
-                    contactsList.appendChild(noResultsDiv);
-                } else {
-                    contactsList.appendChild(renderContacts(results));
-                }
-
-                // Mostrar vista de contactos y ocultar menú de secciones
-                document.getElementById('sections-menu').classList.add('hidden');
-                document.getElementById('contacts-display').classList.remove('hidden');
-                
-                // Scroll a los resultados
-                const contactsDisplay = document.getElementById('contacts-display');
-                if (contactsDisplay) {
-                    contactsDisplay.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
+            if (query.length === 0) {
+                // Si la búsqueda está vacía, volver al menú principal
+                document.getElementById('contacts-display').classList.add('hidden');
+                document.getElementById('sections-menu').classList.remove('hidden');
+                currentSection = null;
+                currentCategory = null;
+                currentSubcategory = null;
+                return;
             }
+
+            // Procesar la búsqueda cuando se presiona Enter
+            if (e.key === 'Enter') {
+                performSearch();
+            }
+
         });
+
+        // Inicializar el botón flotante
+        handleFloatingButton();
 
     } catch (error) {
         console.error('Error al construir el árbol:', error);

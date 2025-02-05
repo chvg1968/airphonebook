@@ -337,6 +337,20 @@ handleFloatingButton();
 // Función para manejar el retorno
 const handleBack = () => {
     const location = getCurrentLocation();
+    const globalSearch = document.getElementById('global-search');
+
+    // Si hay una búsqueda activa, limpiarla primero
+    if (globalSearch && globalSearch.value.trim().length > 0) {
+        globalSearch.value = '';
+        document.getElementById('contacts-display').classList.add('hidden');
+        document.getElementById('sections-menu').classList.remove('hidden');
+        // Scroll al tope del menú
+        const sectionsMenu = document.getElementById('sections-menu');
+        if (sectionsMenu) {
+            sectionsMenu.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+        return;
+    }
 
     if (location === 'subcategory') {
         // Volver a la vista de categoría
@@ -366,6 +380,12 @@ const handleBack = () => {
         document.getElementById('contacts-display').classList.add('hidden');
         document.getElementById('sections-menu').classList.remove('hidden');
 
+        // Scroll al tope del menú
+        const sectionsMenu = document.getElementById('sections-menu');
+        if (sectionsMenu) {
+            sectionsMenu.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
         // Colapsar todos los elementos expandidos
         document.querySelectorAll('.expanded').forEach(el => el.classList.remove('expanded'));
     }
@@ -381,35 +401,48 @@ backToMenuFloat.addEventListener('click', handleBack);
 
         // Búsqueda global
         globalSearch.addEventListener('keyup', (e) => {
-            // Solo procesar si es Enter o si el campo está vacío
-            if (e.key !== 'Enter' && e.target.value.trim().length !== 0) return;
             const query = e.target.value.trim();
-            if (query.length === 0) {
-                // Si la búsqueda está vacía, volver al menú principal
-                document.getElementById('contacts-display').classList.add('hidden');
-                document.getElementById('sections-menu').classList.remove('hidden');
-                currentSection = null;
-                currentCategory = null;
-                currentSubcategory = null;
-                return;
-            }
-
-            const results = contactManager.search(query);
             
-            // Limpiar y mostrar resultados
-            contactsList.innerHTML = '';
-            if (results.length === 0) {
-                const noResultsDiv = document.createElement('div');
-                noResultsDiv.className = 'no-results';
-                noResultsDiv.textContent = 'No se encontraron contactos.';
-                contactsList.appendChild(noResultsDiv);
-            } else {
-                contactsList.appendChild(renderContacts(results));
-            }
+            // Solo procesar si es Enter o si el campo está vacío
+            if (e.key === 'Enter' || query.length === 0) {
+                if (query.length === 0) {
+                    // Si la búsqueda está vacía, volver al menú principal
+                    document.getElementById('contacts-display').classList.add('hidden');
+                    document.getElementById('sections-menu').classList.remove('hidden');
+                    currentSection = null;
+                    currentCategory = null;
+                    currentSubcategory = null;
+                    // Scroll al tope del menú
+                    const sectionsMenu = document.getElementById('sections-menu');
+                    if (sectionsMenu) {
+                        sectionsMenu.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                    return;
+                }
 
-            // Mostrar vista de contactos
-            document.getElementById('sections-menu').classList.remove('hidden');
-            document.getElementById('contacts-display').classList.remove('hidden');
+                const results = contactManager.search(query);
+                
+                // Limpiar y mostrar resultados
+                contactsList.innerHTML = '';
+                if (results.length === 0) {
+                    const noResultsDiv = document.createElement('div');
+                    noResultsDiv.className = 'no-results';
+                    noResultsDiv.textContent = 'No se encontraron contactos.';
+                    contactsList.appendChild(noResultsDiv);
+                } else {
+                    contactsList.appendChild(renderContacts(results));
+                }
+
+                // Mostrar vista de contactos y ocultar menú de secciones
+                document.getElementById('sections-menu').classList.add('hidden');
+                document.getElementById('contacts-display').classList.remove('hidden');
+                
+                // Scroll a los resultados
+                const contactsDisplay = document.getElementById('contacts-display');
+                if (contactsDisplay) {
+                    contactsDisplay.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            }
         });
 
     } catch (error) {

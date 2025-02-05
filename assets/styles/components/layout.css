@@ -6,6 +6,26 @@
     margin-top: 2rem;
 }
 
+@media (max-width: 768px) {
+    .two-column-layout {
+        grid-template-columns: 1fr;
+    }
+    
+    .property-column {
+        order: 1;
+    }
+    
+    .menu-column {
+        order: 2;
+        margin-top: 2rem;
+    }
+
+    .contacts-section {
+        height: auto;
+        max-height: calc(100vh - 200px);
+    }
+}
+
 .property-column {
     background-color: #fff;
     border-radius: 8px;

@@ -8,7 +8,7 @@ export async function fetchAllContacts() {
     const fetchPage = async (offset = null) => {
         return new Promise((resolve, reject) => {
             const xhr = new XMLHttpRequest();
-            let url = `https://api.airtable.com/v0/${AIRTABLE_BASE_ID}/${AIRTABLE_TABLE_NAME}?pageSize=100`;
+            let url = `https://api.airtable.com/v0/${AIRTABLE_BASE_ID}/${AIRTABLE_TABLE_NAME}?pageSize=100&sort%5B0%5D%5Bfield%5D=id&sort%5B0%5D%5Bdirection%5D=asc`;
             
             if (offset) {
                 url += `&offset=${offset}`;
@@ -21,6 +21,11 @@ export async function fetchAllContacts() {
                 if (xhr.status >= 200 && xhr.status < 300) {
                     try {
                         const data = JSON.parse(xhr.responseText);
+                        // Log de la estructura del primer registro para ver los campos
+                        if (data.records && data.records.length > 0) {
+                            console.log('📋 Estructura del primer registro:', JSON.stringify(data.records[0], null, 2));
+                            console.log('📋 Campos disponibles:', Object.keys(data.records[0].fields));
+                        }
                         resolve(data);
                     } catch (error) {
                         console.error('❌ Error parsing JSON:', error);

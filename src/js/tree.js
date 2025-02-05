@@ -19,17 +19,12 @@ const getCurrentLocation = () => {
 
 // Función para renderizar contactos
 const renderContacts = (contacts) => {
-    const container = document.createElement('div');
-    container.className = 'contacts-container';
-
-    contacts.sort((a, b) => a.name.localeCompare(b.name)).forEach(contact => {
+    return contacts.map(contact => {
         const contactDiv = document.createElement('div');
         contactDiv.className = 'contact';
         contactDiv.innerHTML = contactManager.renderContactDetails(contact);
-        container.appendChild(contactDiv);
+        return contactDiv;
     });
-
-    return container;
 };
 
 // Función para limpiar contactos
@@ -93,7 +88,8 @@ const handleCategoryClick = (category, sectionName) => (e) => {
                 // Actualizar contenido
                 contactsContainer.innerHTML = '';
                 const contacts = contactManager.getContactsInSubcategory(sectionName, category.name, subcategoryName);
-                contactsContainer.appendChild(renderContacts(contacts));
+                const contactElements = renderContacts(contacts);
+                contactElements.forEach(element => contactsContainer.appendChild(element));
             });
 
             contactsContainer.appendChild(subcategoryDiv);
@@ -341,7 +337,8 @@ const displayContacts = (contacts, shouldScroll = true) => {
     if (contacts && contacts.length > 0) {
         const contactsContainer = document.createElement('div');
         contactsContainer.className = 'contacts-container';
-        contactsContainer.appendChild(renderContacts(contacts));
+        const contactElements = renderContacts(contacts);
+        contactElements.forEach(element => contactsContainer.appendChild(element));
         contactsList.appendChild(contactsContainer);
 
         if (shouldScroll) {
@@ -473,7 +470,11 @@ const handleBack = () => {
                 noResultsDiv.textContent = 'No se encontraron contactos.';
                 contactsList.appendChild(noResultsDiv);
             } else {
-                contactsList.appendChild(renderContacts(results));
+                const contactsContainer = document.createElement('div');
+                contactsContainer.className = 'contacts-container';
+                const contactElements = renderContacts(results);
+                contactElements.forEach(element => contactsContainer.appendChild(element));
+                contactsList.appendChild(contactsContainer);
             }
 
             // Mostrar vista de contactos

@@ -19,7 +19,10 @@
     box-sizing: border-box;
 }
 
-body {
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
     font-family: 'Helvetica Neue', Arial, sans-serif;
     line-height: 1.6;
     color: var(--text-color);
@@ -30,6 +33,7 @@ body {
     max-width: 1200px;
     margin: 0 auto;
     padding: var(--spacing-lg);
+    width: 100%;
 }
 
 .two-column-layout {

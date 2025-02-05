@@ -82,15 +82,11 @@
 }
 
 .category-list {
-    max-height: none;
-    overflow: visible;
-    transition: max-height 0.3s ease-out;
     padding-left: 15px;
 }
 
 .category-list.collapsed {
-    max-height: 0;
-    overflow: hidden;
+    display: none;
     padding-left: 15px;
 }
 

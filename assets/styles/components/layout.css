@@ -4,8 +4,8 @@
     gap: 1rem;
     padding: 0.5rem;
     margin-top: 1rem;
-    min-height: 0;
-    flex: 1;
+    width: 100%;
+    margin-bottom: 4rem;
 }
 
 @media (max-width: 768px) {
@@ -75,12 +75,14 @@
 
 #contacts-display {
     margin-top: 1rem;
+    height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
+    position: static;
 }
 
 .contacts-header {
     margin-bottom: 1rem;
 }
 
-.scrollable-list {
-    padding-right: 0.5rem;
-}
+

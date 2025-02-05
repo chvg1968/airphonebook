@@ -63,6 +63,11 @@ export const ICONS = {
         "Near Bahia Beach": "🏖️",
         "Specialty Food, Wine and Liquors Stores": "🍷",
         "Shopping Malls": "🏢",
+
+        // Personal Chefs
+        "In-Villa Dining": "🏡",
+        "Customized Menus": "📋",
+        "Cooking Classes": "🥘"
     },
     contactTypes: {
         "restaurant": "🍽️",

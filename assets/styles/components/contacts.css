@@ -15,6 +15,26 @@ body {
     max-width: 1200px;
     margin: 0 auto;
     padding: 1rem;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+@media (max-width: 768px) {
+    .app-container {
+        padding: 0.5rem;
+    }
+
+    .menu-section,
+    .contacts-section {
+        margin: 0.5rem 0;
+        border-radius: 4px;
+    }
+
+    .section,
+    .category {
+        padding: 0.5rem;
+    }
 }
 
 /* Barra de búsqueda */
@@ -48,8 +68,6 @@ body {
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     margin-bottom: 1rem;
-    max-height: 70vh;
-    overflow-y: auto;
 }
 
 /* Estilos para el árbol de navegación */
@@ -162,9 +180,7 @@ body {
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     margin-top: 1rem;
-    height: calc(100vh - 200px);
-    overflow-y: auto;
-    scroll-behavior: smooth;
+    min-height: 200px;
     position: relative;
 }
 
@@ -175,30 +191,48 @@ body {
 /* Botón flotante de retorno */
 .back-to-menu-float {
     position: fixed;
-    bottom: 2rem;
-    right: 2rem;
+    bottom: 20px;
+    right: 20px;
+    width: auto;
+    min-width: 160px;
+    height: 40px;
     background-color: #007bff;
     color: white;
     border: none;
-    border-radius: 50%;
-    width: 3.5rem;
-    height: 3.5rem;
+    border-radius: 20px;
+    cursor: pointer;
     display: none;
     align-items: center;
     justify-content: center;
-    cursor: pointer;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-    transition: all 0.3s ease;
     z-index: 1000;
+    transition: all 0.3s ease;
+    font-size: 14px;
+    padding: 8px 16px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.back-to-menu-float i {
+    margin-right: 8px;
 }
 
 .back-to-menu-float:hover {
     background-color: #0056b3;
-    transform: scale(1.1);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
 
 .back-to-menu-float.visible {
     display: flex;
+    animation: fadeIn 0.3s ease;
+}
+
+.back-button {
+    display: none;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
     animation: fadeIn 0.3s ease;
 }
 

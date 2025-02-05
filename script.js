@@ -30,6 +30,15 @@ class ContactManager {
                 };
             }
 
+            // Si el contacto no tiene categoría, agregarlo directamente a la sección
+            if (!category || category === 'Sin Categoria') {
+                if (!structuredSections[section].contacts) {
+                    structuredSections[section].contacts = [];
+                }
+                structuredSections[section].contacts.push(contact);
+                return;
+            }
+
             // Buscar o crear categoría
             let categoryObj = structuredSections[section].categories.find(cat => cat.name === category);
             if (!categoryObj) {

@@ -11,10 +11,8 @@
     <link rel="stylesheet" href="/assets/styles/components/modal.css">
     <link rel="stylesheet" href="/assets/styles/components/search.css">
     <link rel="stylesheet" href="/assets/styles/components/sidebar.css">
-    <link rel="stylesheet" href="/assets/styles/components/layout.css">
     <link rel="stylesheet" href="/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
 <body>
     <div class="container">
@@ -125,26 +123,20 @@
                     </div>
                 </div>
 
-                <!-- Columna del menú -->
-                <div class="menu-column">
-                    <div class="search-container">
-                        <input type="text" id="global-search" placeholder="Buscar contactos...">
-                        <i class="material-icons search-icon">search</i>
+                <section id="sections-menu">
+                    <div id="phonebook" class="sections-grid"></div>
+                </section>
+    
+                <section id="contacts-display" class="hidden">
+                    <div class="contacts-header">
+                        <h2 id="current-category-title">Contactos</h2>
                     </div>
-                    <section id="sections-menu">
-                        <div id="phonebook" class="sections-grid"></div>
-                    </section>
-                    <section id="contacts-display" class="hidden">
-                        <div class="contacts-header">
-                            <h2 id="current-category-title">Contactos</h2>
-                        </div>
-                        <div id="contacts-list" class="scrollable-list"></div>
-                        <button id="back-to-menu" class="back-button">
-                            <i class="material-icons">arrow_back</i>
-                            Back to Categories
-                        </button>
-                    </section>
-                </div>
+                    <div id="contacts-list" class="scrollable-list"></div>
+                    <button id="back-to-menu" class="back-button">
+                        <i class="material-icons">⏪</i>
+                        Back to Categories
+                    </button>
+                </section>
                 
             </div>
         </main>

@@ -17,37 +17,45 @@ class ContactManager {
     // Método para procesar datos estructurados
     processStructuredData() {
         const structuredSections = {};
-        const SPECIAL_SECTIONS = ['Medical and Security Emergencies'];
         
         this.contacts.forEach(contact => {
             const { section, category, subcategory } = contact;
             
-            // Inicializar la sección si no existe
             if (!structuredSections[section]) {
                 structuredSections[section] = {
-                    isSpecial: SPECIAL_SECTIONS.includes(section),
+                    isSpecial: false,
                     icon: getIcon('sections', section),
                     order: SECTION_ORDER.indexOf(section),
-                    categories: [],
-                    contacts: []
+                    categories: []
                 };
             }
 
-            // Si es una sección especial, agregar contactos directamente
-            if (SPECIAL_SECTIONS.includes(section)) {
+            // Si el contacto no tiene categoría, agregarlo directamente a la sección
+            if (!structuredSections[section]) {
+                structuredSections[section] = { contacts: [] };
+            }
+            
+            // Si la categoría es "Sin Categoria" pero hay contactos, evita mostrar "Sin Categoria"
+            if (!category || category === 'Sin Categoria') {
                 structuredSections[section].contacts.push(contact);
-                return;
+            } else {
+                // Lógica adicional si la categoría es válida
+            }
+            
+            // Evita mostrar "Sin Categoria" si hay contactos en la sección
+            if (
+                structuredSections[section].contacts.length > 0 &&
+                (!category || category === 'Sin Categoria')
+            ) {
+                delete structuredSections[section].category;
             }
 
-            // Para secciones normales, procesar categorías
-            const processedCategory = (!category || category === 'Sin Categoria') ? 'General' : category;
-            
             // Buscar o crear categoría
-            let categoryObj = structuredSections[section].categories.find(cat => cat.name === processedCategory);
+            let categoryObj = structuredSections[section].categories.find(cat => cat.name === category);
             if (!categoryObj) {
                 categoryObj = { 
-                    name: processedCategory,
-                    icon: getIcon('categories', processedCategory),
+                    name: category, 
+                    icon: getIcon('categories', category),
                     subcategories: [], 
                     contacts: [] 
                 };

@@ -231,9 +231,9 @@ export async function buildTree() {
 
                 // Si es la primera vez que se expande
                 if (treeChildren.children.length === 0) {
-                    // Si no hay categorías, mostrar los contactos directamente
-                    if (sectionData.categories.length === 0) {
-                        const contacts = contactManager.contacts.filter(contact => contact.section === sectionName);
+                    // Si es una sección especial o no tiene categorías, mostrar los contactos directamente
+                    if (sectionData.isSpecial || sectionData.categories.length === 0) {
+                        const contacts = sectionData.contacts || contactManager.contacts.filter(contact => contact.section === sectionName);
                         displayContacts(contacts);
                         return;
                     }

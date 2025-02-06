@@ -1,22 +1,35 @@
 // Funciones para manejar los modales
-export function openMapModal() {
-    const modal = document.getElementById('mapModal');
+function showModal(modalId) {
+    const modal = document.getElementById(modalId);
     if (modal) {
-        modal.style.display = 'block';
-        
-        // Inicializar el zoom
-        const mapImage = document.getElementById('mapImage');
-        if (mapImage) {
-            mapImage.style.transform = 'scale(1)';
-        }
+        // Forzar un reflow antes de cambiar el display
+        modal.offsetHeight;
+        modal.style.setProperty('display', 'block', 'important');
+        console.log(`Modal ${modalId} abierto`);
+    } else {
+        console.error(`Modal ${modalId} no encontrado`);
+    }
+}
+
+function hideModal(modalId) {
+    const modal = document.getElementById(modalId);
+    if (modal) {
+        modal.style.setProperty('display', 'none', 'important');
+        console.log(`Modal ${modalId} cerrado`);
+    }
+}
+
+export function openMapModal() {
+    showModal('mapModal');
+    // Inicializar el zoom
+    const mapImage = document.getElementById('mapImage');
+    if (mapImage) {
+        mapImage.style.transform = 'scale(1)';
     }
 }
 
 export function closeMapModal() {
-    const modal = document.getElementById('mapModal');
-    if (modal) {
-        modal.style.display = 'none';
-    }
+    hideModal('mapModal');
 }
 
 // Funciones para el zoom del mapa
@@ -43,63 +56,39 @@ export function resetMap() {
 
 // Golf Cart Modal
 export function openGolfCartModal() {
-    const modal = document.getElementById('golfCartModal');
-    if (modal) {
-        modal.style.display = 'block';
-    }
+    showModal('golfCartModal');
 }
 
 export function closeGolfCartModal() {
-    const modal = document.getElementById('golfCartModal');
-    if (modal) {
-        modal.style.display = 'none';
-    }
+    hideModal('golfCartModal');
 }
 
 // Golf Rates Modal
 export function openGolfRatesModal() {
-    const modal = document.getElementById('golfRatesModal');
-    if (modal) {
-        modal.style.display = 'block';
-    }
+    showModal('golfRatesModal');
 }
 
 export function closeGolfRatesModal() {
-    const modal = document.getElementById('golfRatesModal');
-    if (modal) {
-        modal.style.display = 'none';
-    }
+    hideModal('golfRatesModal');
 }
 
 // Tennis Modal
 export function openTennisModal() {
-    const modal = document.getElementById('tennisModal');
-    if (modal) {
-        modal.style.display = 'block';
-    }
+    showModal('tennisModal');
 }
 
 export function closeTennisModal() {
-    const modal = document.getElementById('tennisModal');
-    if (modal) {
-        modal.style.display = 'none';
-    }
+    hideModal('tennisModal');
 }
 
 // Cerrar los modales cuando se hace clic fuera de ellos
 // Kids Club Modal
 export function openKidsClubModal() {
-    const modal = document.getElementById('kidsClubModal');
-    if (modal) {
-        modal.style.display = 'block';
-    }
+    showModal('kidsClubModal');
 }
 
 export function closeKidsClubModal() {
-    const modal = document.getElementById('kidsClubModal');
-    if (modal) {
-        modal.style.display = 'none';
-    }
+    hideModal('kidsClubModal');
 }
 
 window.addEventListener('click', (event) => {

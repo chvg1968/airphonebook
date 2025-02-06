@@ -1,4 +1,4 @@
-import { fetchAllContacts } from "./src/js/api.js";
+import { fetchAllContacts } from "./src/js/Api.js";
 import { buildTree } from "./src/js/Tree.js";
 import { SECTION_ORDER } from "./src/js/constants.js";
 import { getIcon } from "./src/js/utils.js"; 

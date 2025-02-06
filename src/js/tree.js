@@ -1,4 +1,4 @@
-import { fetchAllContacts } from "./api.js";
+import { fetchAllContacts } from "./Api.js";
 import { getIcon } from "./utils.js";
 
 // Variables globales para el estado de navegación

@@ -196,7 +196,7 @@ class ContactManager {
 
         return `
             <strong>${contact.icon || ''} ${contact.name}</strong>
-            ${contact.phone && contact.phone !== 'null' ? `<div>${phoneIcon} ${contact.phone}</div>` : '<div>Phone contact is not available</div>'}
+            ${contact.phone && contact.phone !== 'null' ? `<div>${phoneIcon} ${contact.phone}</div>` : '<div>Phone contact isn't available</div>'}
             ${contact.description ? `<small>${descriptionIcon} ${contact.description}</small>` : ''}
         `;
     }

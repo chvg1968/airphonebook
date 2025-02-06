@@ -81,6 +81,9 @@ export async function fetchAllContacts() {
                         : '',
                     description: fields.description 
                         ? (Array.isArray(fields.description) ? fields.description[0] : fields.description)
+                        : '',
+                    icon: fields.icon 
+                        ? (Array.isArray(fields.icon) ? fields.icon[0] : fields.icon)
                         : ''
                 };
             });

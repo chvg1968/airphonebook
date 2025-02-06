@@ -197,7 +197,10 @@ class ContactManager {
         const isGolfRates = contact.name.includes('Golf Schedule and Rates');
         const isTennis = contact.name.includes('Tennis Reservations');
         const isKidsClub = contact.name.includes('St Regis Kid\'s Club');
-        const isVillaClaraPage = window.location.pathname.includes('villaclara.html');
+        // Detectar la página de Villa Clara en cualquier ambiente
+        const isVillaClaraPage = window.location.pathname.includes('villaclara') || 
+                                window.location.href.includes('villaclara');
+        console.log('Is Villa Clara page:', isVillaClaraPage, 'Path:', window.location.pathname, 'URL:', window.location.href);
 
         let html = `
             <strong>${contact.icon || ''} ${contact.name}</strong>
@@ -205,16 +208,33 @@ class ContactManager {
             ${contact.description ? `<small>${descriptionIcon} ${contact.description}</small>` : ''}
         `;
 
+        console.log('Rendering contact:', {
+            name: contact.name,
+            section: contact.section,
+            isGolfCartSection,
+            isGolfRates,
+            isTennis,
+            isKidsClub,
+            isVillaClaraPage
+        });
+
         if (isVillaClaraPage) {
+            console.log('Adding modal button for:', contact.name);
             if (isGolfCartSection) {
                 html += `<button class="view-more-btn" onclick="openGolfCartModal()"><i class="fas fa-info-circle"></i> View more information</button>`;
+                console.log('Added Golf Cart button');
             } else if (isGolfRates) {
                 html += `<button class="view-more-btn" onclick="openGolfRatesModal()"><i class="fas fa-info-circle"></i> View rates and schedule</button>`;
+                console.log('Added Golf Rates button');
             } else if (isTennis) {
                 html += `<button class="view-more-btn" onclick="openTennisModal()"><i class="fas fa-info-circle"></i> View tennis information</button>`;
+                console.log('Added Tennis button');
             } else if (isKidsClub) {
                 html += `<button class="view-more-btn" onclick="openKidsClubModal()"><i class="fas fa-info-circle"></i> View Kids Club information</button>`;
+                console.log('Added Kids Club button');
             }
+        } else {
+            console.log('Not Villa Clara page, skipping modal buttons');
         }
 
         return html;

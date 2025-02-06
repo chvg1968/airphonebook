@@ -19,10 +19,14 @@ const getCurrentLocation = () => {
 
 // Función para renderizar contactos
 const renderContacts = (contacts) => {
+    console.log('Rendering contacts:', contacts.length);
     return contacts.map(contact => {
+        console.log('Processing contact:', contact.name, contact.section);
         const contactDiv = document.createElement('div');
         contactDiv.className = 'contact';
-        contactDiv.innerHTML = contactManager.renderContactDetails(contact);
+        const html = contactManager.renderContactDetails(contact);
+        console.log('Generated HTML for contact:', contact.name, html.length);
+        contactDiv.innerHTML = html;
         return contactDiv;
     });
 };

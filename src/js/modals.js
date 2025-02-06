@@ -1,13 +1,19 @@
 // Funciones para manejar los modales
 function showModal(modalId) {
+    console.log('Attempting to show modal:', modalId);
     const modal = document.getElementById(modalId);
     if (modal) {
         // Forzar un reflow antes de cambiar el display
         modal.offsetHeight;
         modal.style.setProperty('display', 'block', 'important');
-        console.log(`Modal ${modalId} abierto`);
+        console.log(`Modal ${modalId} abierto. Current style:`, {
+            display: modal.style.display,
+            visibility: modal.style.visibility,
+            opacity: modal.style.opacity
+        });
     } else {
-        console.error(`Modal ${modalId} no encontrado`);
+        console.error(`Modal ${modalId} no encontrado. Available modals:`, 
+            Array.from(document.querySelectorAll('.modal')).map(m => m.id));
     }
 }
 
@@ -65,6 +71,7 @@ export function closeGolfCartModal() {
 
 // Golf Rates Modal
 export function openGolfRatesModal() {
+    console.log('openGolfRatesModal called');
     showModal('golfRatesModal');
 }
 

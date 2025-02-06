@@ -192,10 +192,19 @@
             </div>
 
             <!-- Modal para Golf Rates -->
-            <div id="golfRatesModal" class="modal">
+            <!-- Modal para Golf Shop -->
+            <div id="golfRatesModal" class="modal" data-modal-type="golf-shop">
                 <div class="modal-content">
                     <span class="close" onclick="closeGolfRatesModal()">&times;</span>
-                    <h2>Golf Rates</h2>
+                    <h2>Golf Shop - Rates and Information</h2>
+                    <!-- Verificación de carga del modal -->
+                    <script>
+                        console.log('Golf Shop modal loaded:', {
+                            id: 'golfRatesModal',
+                            exists: !!document.getElementById('golfRatesModal'),
+                            classes: document.getElementById('golfRatesModal')?.className
+                        });
+                    </script>
                     
                     <div class="table-responsive">
                         <table>

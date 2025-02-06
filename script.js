@@ -194,7 +194,14 @@ class ContactManager {
         const phoneIcon = getIcon('contactTypes', 'phone');
         const descriptionIcon = '';
         const isGolfCartSection = contact.section === 'Unit\'s Golf Cart';
-        const isGolfRates = contact.name.includes('Golf Schedule and Rates');
+        // Depurar la detección de Golf Shop
+        const contactNameLower = contact.name.toLowerCase();
+        const isGolfShop = contactNameLower.includes('golf shop');
+        console.log('Golf Shop detection:', {
+            originalName: contact.name,
+            lowerName: contactNameLower,
+            isGolfShop: isGolfShop
+        });
         const isTennis = contact.name.includes('Tennis Reservations');
         const isKidsClub = contact.name.includes('St Regis Kid\'s Club');
         // Detectar la página de Villa Clara en cualquier ambiente
@@ -212,7 +219,7 @@ class ContactManager {
             name: contact.name,
             section: contact.section,
             isGolfCartSection,
-            isGolfRates,
+            isGolfShop,
             isTennis,
             isKidsClub,
             isVillaClaraPage
@@ -223,9 +230,12 @@ class ContactManager {
             if (isGolfCartSection) {
                 html += `<button class="view-more-btn" onclick="openGolfCartModal()"><i class="fas fa-info-circle"></i> View more information</button>`;
                 console.log('Added Golf Cart button');
-            } else if (isGolfRates) {
-                html += `<button class="view-more-btn" onclick="openGolfRatesModal()"><i class="fas fa-info-circle"></i> View rates and schedule</button>`;
-                console.log('Added Golf Rates button');
+            } else if (isGolfShop) {
+                console.log('Adding Golf Shop modal button');
+                // Verificar que la función existe
+                console.log('openGolfRatesModal exists:', typeof window.openGolfRatesModal === 'function');
+                html += `<button class="view-more-btn" onclick="openGolfRatesModal()"><i class="fas fa-info-circle"></i> View rates and information</button>`;
+                console.log('Added Golf Shop button');
             } else if (isTennis) {
                 html += `<button class="view-more-btn" onclick="openTennisModal()"><i class="fas fa-info-circle"></i> View tennis information</button>`;
                 console.log('Added Tennis button');

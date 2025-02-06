@@ -19,15 +19,118 @@
 /* Contenido del modal */
 .modal-content {
     background-color: #fefefe !important;
-    margin: 5% auto !important;
-    padding: 20px !important;
+    margin: 2% auto !important;
+    padding: 15px !important;
     border: 1px solid #888 !important;
     border-radius: 8px !important;
-    width: 80% !important;
-    max-width: 800px !important;
+    width: 90% !important;
+    max-width: 900px !important;
+    max-height: 90vh !important;
+    overflow-y: auto !important;
     position: relative !important;
     animation: modalFadeIn 0.3s !important;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Estilos responsive para el modal */
+@media screen and (max-width: 768px) {
+    .modal-content {
+        margin: 0 auto !important;
+        padding: 12px !important;
+        width: 95% !important;
+        max-height: 95vh !important;
+        border-radius: 0 !important;
+    }
+
+    #golfRatesModal .modal-content {
+        padding: 8px !important;
+    }
+
+    #golfRatesModal h2 {
+        font-size: 1.3em !important;
+        margin: 8px 0 !important;
+    }
+
+    #golfRatesModal p,
+    #golfRatesModal li {
+        font-size: 0.95em !important;
+        line-height: 1.3 !important;
+    }
+
+    .modal-content table {
+        font-size: 0.9em !important;
+    }
+
+    .modal-content th,
+    .modal-content td {
+        padding: 4px 6px !important;
+    }
+}
+
+/* Ajustes adicionales para pantallas muy pequeñas */
+@media screen and (max-width: 480px) {
+    .modal-content {
+        margin: 0 !important;
+        width: 100% !important;
+        height: 100vh !important;
+        max-height: 100vh !important;
+    }
+
+    #golfRatesModal h2 {
+        font-size: 1.2em !important;
+    }
+
+    #golfRatesModal p,
+    #golfRatesModal li {
+        font-size: 0.9em !important;
+    }
+
+    .modal-content table {
+        font-size: 0.85em !important;
+    }
+
+    .modal-content th,
+    .modal-content td {
+        padding: 3px 4px !important;
+    }
+}
+
+/* Estilos específicos para el modal de Golf Rates */
+#golfRatesModal .modal-content {
+    padding: 10px !important;
+}
+
+#golfRatesModal h2 {
+    margin: 10px 0 !important;
+    font-size: 1.5em !important;
+}
+
+#golfRatesModal p {
+    margin: 5px 0 !important;
+    line-height: 1.4 !important;
+}
+
+#golfRatesModal ul {
+    margin: 5px 0 !important;
+    padding-left: 20px !important;
+}
+
+#golfRatesModal li {
+    margin: 3px 0 !important;
+}
+
+/* Estilo para tablas en modales */
+.modal-content table {
+    width: 100% !important;
+    margin: 10px 0 !important;
+    border-collapse: collapse !important;
+}
+
+.modal-content th,
+.modal-content td {
+    padding: 5px 8px !important;
+    border: 1px solid #ddd !important;
+    font-size: 0.95em !important;
 }
 
 @keyframes modalFadeIn {

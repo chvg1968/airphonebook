@@ -408,16 +408,28 @@
     </div>
 
     <script type="module">
+        // Primero importamos y exponemos las funciones modales
         import * as modalFunctions from '../../js/modals.js';
         
         // Exponer las funciones globalmente para los onclick
         Object.assign(window, modalFunctions);
 
-        // Importar el script principal después de que las funciones modales estén disponibles
-        import('../../../script.js').then(() => {
-            console.log('Script principal cargado correctamente');
-        }).catch(error => {
-            console.error('Error al cargar el script principal:', error);
+        // Verificar que las funciones modales estén disponibles
+        console.log('Funciones modales disponibles:', Object.keys(modalFunctions));
+
+        // Esperar a que el DOM esté completamente cargado
+        document.addEventListener('DOMContentLoaded', () => {
+            // Importar el script principal después de que las funciones modales estén disponibles
+            import('../../../script.js')
+                .then(() => {
+                    console.log('Script principal cargado correctamente');
+                    // Verificar que los modales estén presentes en el DOM
+                    const modals = document.querySelectorAll('.modal');
+                    console.log('Modales encontrados:', modals.length);
+                })
+                .catch(error => {
+                    console.error('Error al cargar el script principal:', error);
+                });
         });
     </script>
 </body>

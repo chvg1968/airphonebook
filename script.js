@@ -193,12 +193,31 @@ class ContactManager {
     renderContactDetails(contact) {
         const phoneIcon = getIcon('contactTypes', 'phone');
         const descriptionIcon = '';
+        const isGolfCartSection = contact.section === 'Unit\'s Golf Cart';
+        const isGolfRates = contact.name.includes('Golf Schedule and Rates');
+        const isTennis = contact.name.includes('Tennis Reservations');
+        const isKidsClub = contact.name.includes('St Regis Kid\'s Club');
+        const isVillaClaraPage = window.location.pathname.includes('villaclara.html');
 
-        return `
+        let html = `
             <strong>${contact.icon || ''} ${contact.name}</strong>
             ${contact.phone && contact.phone !== 'null' ? `<div>${phoneIcon} ${contact.phone}</div>` : '<div>Phone contact is not available</div>'}
             ${contact.description ? `<small>${descriptionIcon} ${contact.description}</small>` : ''}
         `;
+
+        if (isVillaClaraPage) {
+            if (isGolfCartSection) {
+                html += `<button class="view-more-btn" onclick="openGolfCartModal()"><i class="fas fa-info-circle"></i> View more information</button>`;
+            } else if (isGolfRates) {
+                html += `<button class="view-more-btn" onclick="openGolfRatesModal()"><i class="fas fa-info-circle"></i> View rates and schedule</button>`;
+            } else if (isTennis) {
+                html += `<button class="view-more-btn" onclick="openTennisModal()"><i class="fas fa-info-circle"></i> View tennis information</button>`;
+            } else if (isKidsClub) {
+                html += `<button class="view-more-btn" onclick="openKidsClubModal()"><i class="fas fa-info-circle"></i> View Kids Club information</button>`;
+            }
+        }
+
+        return html;
     }
 }
 

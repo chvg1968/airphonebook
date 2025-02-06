@@ -1,5 +1,5 @@
 import { fetchAllContacts } from "./src/js/api.js";
-import { buildTree } from "./src/js/tree.js";
+import { buildTree } from "./src/js/Tree.js";
 import { SECTION_ORDER } from "./src/js/constants.js";
 import { getIcon } from "./src/js/utils.js"; 
 

@@ -190,27 +190,6 @@ class ContactManager {
     }
 
     // Método de renderizado actualizado
-    renderPhoneNumbers(phone, phoneIcon) {
-        if (!phone || phone === 'null') {
-            return '<div class="phone-number">Phone contact is not available</div>';
-        }
-
-        // Primero limpiamos el string de teléfono de cualquier <br> y lo reemplazamos por comas
-        const cleanPhone = phone.replace(/<br\s*\/?>/gi, ',');
-        
-        // Luego procesamos las comas
-        const phones = cleanPhone.includes(',') ? 
-            cleanPhone.split(',').map(p => p.trim()).filter(p => p) :
-            [cleanPhone.trim()];
-
-        // Generamos el HTML para cada número
-        const phoneNumbersHtml = phones
-            .map(p => `<div class="phone-number">${phoneIcon}${p}</div>`)
-            .join('');
-
-        return `<div class="phone-numbers-container">${phoneNumbersHtml}</div>`;
-    }
-
     renderContactDetails(contact) {
         const phoneIcon = getIcon('contactTypes', 'phone');
         const descriptionIcon = '';
@@ -232,7 +211,7 @@ class ContactManager {
 
         let html = `
             <strong>${contact.icon || ''} ${contact.name}</strong>
-            ${this.renderPhoneNumbers(contact.phone, phoneIcon)}
+            ${contact.phone && contact.phone !== 'null' ? `<div>${phoneIcon} ${contact.phone}</div>` : '<div>Phone contact is not available</div>'}
             ${contact.description ? `<small>${descriptionIcon} ${contact.description}</small>` : ''}
         `;
 

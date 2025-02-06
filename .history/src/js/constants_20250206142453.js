@@ -25,7 +25,7 @@ export const ICONS = {
         "Tennis": "🎾",
         "Water Park and Water Sports":"🏄‍♂️",
         "Tours":"🧭",
-        "St. Regis Tortuga Kid's Club": "👶",
+        "St. Regis Tortuga Kid's Club": "🐢 👶",
 
         // Off Property Transportation and Airport Transfers
         "Aqua Tours":"🛥️", 

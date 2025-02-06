@@ -61,10 +61,10 @@ export const ICONS = {
     },
     subcategories: {
         // Restaurants
-        "Near and Casual": "👕",
-        "Carolina - 30 min West": "🧭",
-        "Fajardo - 30 min East": "🧭",
-        "San Juan - 45 min West": "🧭",
+        "Near and Casual": "🍲",
+        "Carolina - 30 min West": "🚗",
+        "Fajardo - 30 min East": "🌅",
+        "San Juan - 45 min West": "🏙️",
 
         // Shopping
         "Shopping": "🛍️",

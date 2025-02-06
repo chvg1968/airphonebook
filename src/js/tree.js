@@ -23,9 +23,9 @@ const renderContacts = (contacts) => {
         const contactDiv = document.createElement('div');
         contactDiv.className = 'contact';
         const isGolfCartSection = contact.section === 'Unit\'s Golf Cart';
-        const isGolfRates = contact.name === 'Golf Schedule and Rates';
-        const isTennis = contact.name === 'Tennis Reservations';
-        const isKidsClub = contact.name === 'St Regis Kid\'s Club';
+        const isGolfRates = contact.name.includes('Golf Schedule and Rates');
+        const isTennis = contact.name.includes('Tennis Reservations');
+        const isKidsClub = contact.name.includes('St Regis Kid\'s Club');
         const isVillaClaraPage = window.location.pathname.includes('villaclara.html');
         let html = contactManager.renderContactDetails(contact);
         

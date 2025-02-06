@@ -71,7 +71,7 @@ export async function fetchAllContacts() {
             .map(record => {
                 const fields = record.fields;
 
-                return {
+                const contact = {
                     name: Array.isArray(fields.name) ? fields.name[0] : fields.name,
                     phone: fields.phone ? (Array.isArray(fields.phone) ? fields.phone[0] : fields.phone) : '',
                     section: Array.isArray(fields.section) ? fields.section[0] : (fields.section || 'Sin Sección'),
@@ -86,6 +86,13 @@ export async function fetchAllContacts() {
                         ? (Array.isArray(fields.icon) ? fields.icon[0] : fields.icon)
                         : ''
                 };
+
+                // Log para Tennis Reservations
+                if (contact.name.includes('Tennis')) {
+                    console.log('🎾 Tennis contact found:', contact);
+                }
+
+                return contact;
             });
 
         console.log('Registros procesados:', validRecords.length);

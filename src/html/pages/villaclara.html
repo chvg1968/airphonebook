@@ -4,15 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Luxe Properties - Villa Clara</title>
-    <link rel="stylesheet" href="/assets/styles/main.css">
-    <link rel="stylesheet" href="/assets/styles/components/accordion.css">
-    <link rel="stylesheet" href="/assets/styles/components/category-tree.css">
-    <link rel="stylesheet" href="/assets/styles/components/card.css">
-    <link rel="stylesheet" href="/assets/styles/components/modal.css">
-    <link rel="stylesheet" href="/assets/styles/components/search.css">
-    <link rel="stylesheet" href="/assets/styles/components/contacts.css">
-    <link rel="stylesheet" href="/assets/styles/components/layout.css">
-    <link rel="stylesheet" href="/styles.css">
+    <link rel="stylesheet" href="../../../assets/styles/main.css">
+    <link rel="stylesheet" href="../../../assets/styles/components/accordion.css">
+    <link rel="stylesheet" href="../../../assets/styles/components/category-tree.css">
+    <link rel="stylesheet" href="../../../assets/styles/components/card.css">
+    <link rel="stylesheet" href="../../../assets/styles/components/modal.css">
+    <link rel="stylesheet" href="../../../assets/styles/components/search.css">
+    <link rel="stylesheet" href="../../../assets/styles/components/contacts.css">
+    <link rel="stylesheet" href="../../../assets/styles/components/layout.css">
+    <link rel="stylesheet" href="../../../styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
@@ -408,24 +408,17 @@
     </div>
 
     <script type="module">
-        import { openMapModal, closeMapModal, zoomMap, resetMap, openGolfCartModal, closeGolfCartModal, openGolfRatesModal, closeGolfRatesModal, openTennisModal, closeTennisModal, openKidsClubModal, closeKidsClubModal } from '../../js/modals.js';
+        import * as modalFunctions from '../../js/modals.js';
         
         // Exponer las funciones globalmente para los onclick
-        window.openMapModal = openMapModal;
-        window.closeMapModal = closeMapModal;
-        window.zoomMap = zoomMap;
-        window.resetMap = resetMap;
-        window.openGolfCartModal = openGolfCartModal;
-        window.closeGolfCartModal = closeGolfCartModal;
-        window.openGolfRatesModal = openGolfRatesModal;
-        window.closeGolfRatesModal = closeGolfRatesModal;
-        window.openTennisModal = openTennisModal;
-        window.closeTennisModal = closeTennisModal;
-        window.openKidsClubModal = openKidsClubModal;
-        window.closeKidsClubModal = closeKidsClubModal;
+        Object.assign(window, modalFunctions);
 
         // Importar el script principal después de que las funciones modales estén disponibles
-        import('../../../script.js');
+        import('../../../script.js').then(() => {
+            console.log('Script principal cargado correctamente');
+        }).catch(error => {
+            console.error('Error al cargar el script principal:', error);
+        });
     </script>
 </body>
 </html>

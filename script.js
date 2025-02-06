@@ -17,7 +17,7 @@ class ContactManager {
     // Método para procesar datos estructurados
     processStructuredData() {
         const structuredSections = {};
-        const SPECIAL_SECTIONS = ['Medical and Security Emergencies'];
+        const SPECIAL_SECTIONS = ['Medical and Security Emergencies', 'Unit\'s Golf Cart'];
         
         this.contacts.forEach(contact => {
             const { section, category, subcategory } = contact;

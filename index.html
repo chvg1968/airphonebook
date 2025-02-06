@@ -122,9 +122,18 @@
                     </div>
                 </a>
             </div>
+
         </main>
     </div>
 
-    <script type="module" src=""></script>
+    <script type="module">
+        import { openMapModal, closeMapModal } from '/src/js/modals.js';
+        
+        // Exponer las funciones globalmente para los onclick
+        window.openMapModal = openMapModal;
+        window.closeMapModal = closeMapModal;
+
+    </script>
+    <script type="module" src="/script.js"></script>
 </body>
 </html>

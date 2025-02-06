@@ -31,7 +31,7 @@ export const ICONS = {
         "Aqua Tours":"🛥️", 
         "Scuba Diving Tours":"🏊",
         "Transportation":"🚗",
-        "Off-Property Transportation":"🚙",
+        "Off Property Transportation":"✈️",
 
         // Services
         "Concierge Services": "🤵",

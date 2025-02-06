@@ -9,29 +9,24 @@ export const ICONS = {
         "Off Property Restaurants and Shopping": "🛍️",
     },
     categories: {
-        // Resort Restaurants and Venues
+        // Off Property Restaurants and Shopping
         "Restaurants": "🍴",
         "Bar": "🍸",
         "Pool": "🏊",
+        "Shopping": "🛍️",
         "Beach": "⛱️",
         "Wellness Center":"🧘🏻‍♀️",
         "Hotel":"🏨", 
         "Places to Visit": "🏰",
 
-        // Resort Activities and Adventures
-        "Golf": "⛳",
-        "Nature and Wildlife":"⛰️",
-        "Water Sports": "🏄‍♂️",
-        "Tennis": "🎾",
-        "Water Park and Water Sports":"🏄‍♂️⛰️",
-        "Tours":"🧭",
-        "Kid's Club": "🐢 👶",
+        // On Property Restaurants
+        "Signature Restaurant": "🌟",
+        "Casual Dining": "🥗",
+       
 
-        // Off Property Transportation and Airport Transfers
-        "Aqua Tours":"🛥️", 
-        "Scuba Diving Tours":"🏊",
-        "Transportation":"🚗",
-        "Off-Property Transportation":"🚙",
+        // Beach and Pool
+        
+       
 
         // Services
         "Concierge Services": "🤵",
@@ -57,7 +52,9 @@ export const ICONS = {
         "Personal Training": "💪",
 
         // Activities
-       
+        "Water Sports": "🏄‍♂️",
+        "Tennis": "🎾",
+        "Golf": "⛳"
     },
     subcategories: {
         // Restaurants
@@ -67,7 +64,6 @@ export const ICONS = {
         "San Juan - 45 min West": "🏙️",
 
         // Shopping
-        "Shopping": "🛍️",
         "On the way from the airport (more variety)": "🛒",
         "Near Bahia Beach": "🏖️",
         "Specialty Food, Wine and Liquors Stores": "🍷",

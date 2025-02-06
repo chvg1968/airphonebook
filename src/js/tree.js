@@ -22,7 +22,26 @@ const renderContacts = (contacts) => {
     return contacts.map(contact => {
         const contactDiv = document.createElement('div');
         contactDiv.className = 'contact';
-        contactDiv.innerHTML = contactManager.renderContactDetails(contact);
+        const isGolfCartSection = contact.section === 'Unit\'s Golf Cart';
+        const isGolfRates = contact.name === '🏌🏻‍♀️ Golf Schedule and Rates';
+        const isTennis = contact.name === '🎾 Tennis Reservations';
+        const isKidsClub = contact.name === '👦 St Regis Kid\'s Club';
+        const isVillaClaraPage = window.location.pathname.includes('villaclara.html');
+        let html = contactManager.renderContactDetails(contact);
+        
+        if (isVillaClaraPage) {
+            if (isGolfCartSection) {
+                html += `<button class="view-more-btn" onclick="openGolfCartModal()"><i class="fas fa-info-circle"></i> View more information</button>`;
+            } else if (isGolfRates) {
+                html += `<button class="view-more-btn" onclick="openGolfRatesModal()"><i class="fas fa-info-circle"></i> View rates and schedule</button>`;
+            } else if (isTennis) {
+                html += `<button class="view-more-btn" onclick="openTennisModal()"><i class="fas fa-info-circle"></i> View tennis information</button>`;
+            } else if (isKidsClub) {
+                html += `<button class="view-more-btn" onclick="openKidsClubModal()"><i class="fas fa-info-circle"></i> View Kids Club information</button>`;
+            }
+        }
+        
+        contactDiv.innerHTML = html;
         return contactDiv;
     });
 };

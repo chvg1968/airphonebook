@@ -18,20 +18,14 @@ export const ICONS = {
         "Hotel":"🏨", 
         "Places to Visit": "🏰",
 
-        // Resort Activities and Adventures
-        "Golf": "⛳",
-        "Nature and Wildlife":"⛰️",
-        "Water Sports": "🏄‍♂️",
-        "Tennis": "🎾",
-        "Water Park and Water Sports":"🏄‍♂️⛰️",
-        "Tours":"🧭",
-        "Kid's Club": "🐢 👶",
+        // On Property Restaurants
+        "Signature Restaurant": "🌟",
+        "Casual Dining": "🥗",
+       
 
-        // Off Property Transportation and Airport Transfers
-        "Aqua Tours":"🛥️", 
-        "Scuba Diving Tours":"🏊",
-        "Transportation":"🚗",
-        "Off-Property Transportation":"🚙",
+        // Beach and Pool
+        
+       
 
         // Services
         "Concierge Services": "🤵",
@@ -57,7 +51,9 @@ export const ICONS = {
         "Personal Training": "💪",
 
         // Activities
-       
+        "Water Sports": "🏄‍♂️",
+        "Tennis": "🎾",
+        "Golf": "⛳"
     },
     subcategories: {
         // Restaurants

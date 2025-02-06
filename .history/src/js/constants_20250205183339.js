@@ -27,12 +27,6 @@ export const ICONS = {
         "Tours":"🧭",
         "Kid's Club": "🐢 👶",
 
-        // Off Property Transportation and Airport Transfers
-        "Aqua Tours":"🛥️", 
-        "Scuba Diving Tours":"🏊",
-        "Transportation":"🚗",
-        "Off-Property Transportation":"🚙",
-
         // Services
         "Concierge Services": "🤵",
         "Spa": "💆‍♀️",

@@ -45,7 +45,159 @@
     display: flex;
     justify-content: flex-end;
     margin-bottom: 15px;
-    background-color: transparent
+    background-color: transparent;
+}
+
+/* Estilos para la tabla de tarifas de golf */
+.table-responsive {
+    overflow-x: auto;
+    margin: 20px 0;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.table-responsive table {
+    width: 100%;
+    min-width: 800px;
+    border-collapse: collapse;
+    background-color: white;
+}
+
+.table-responsive caption {
+    font-size: 1.2em;
+    font-weight: bold;
+    padding: 15px;
+    background-color: #007bff;
+    color: white;
+    text-transform: uppercase;
+}
+
+.table-responsive th {
+    background-color: #f8f9fa;
+    color: #333;
+    font-weight: 600;
+    text-align: center;
+    padding: 12px;
+    border: 1px solid #dee2e6;
+}
+
+.table-responsive td {
+    padding: 12px;
+    border: 1px solid #dee2e6;
+    text-align: center;
+}
+
+.table-responsive tbody tr:nth-child(even) {
+    background-color: #f8f9fa;
+}
+
+.table-responsive tbody tr:hover {
+    background-color: #f2f2f2;
+}
+
+.table-responsive tfoot td {
+    background-color: #e9ecef;
+    font-weight: bold;
+}
+
+.rates-note {
+    font-style: italic;
+    color: #666;
+    margin-top: 15px;
+    text-align: center;
+}
+
+.modal-content {
+    padding: 30px;
+}
+
+.modal-content h2 {
+    color: #333;
+    margin-bottom: 25px;
+    font-size: 24px;
+    border-bottom: 2px solid #007bff;
+    padding-bottom: 10px;
+}
+
+.modal-content .info-section {
+    margin-bottom: 25px;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.modal-content .info-section h3 {
+    color: #007bff;
+    margin-bottom: 15px;
+    font-size: 18px;
+}
+
+.modal-content .info-section p {
+    line-height: 1.6;
+    color: #555;
+    margin-bottom: 15px;
+}
+
+.modal-content .info-section ul {
+    list-style-type: none;
+    padding-left: 20px;
+}
+
+.modal-content .info-section ul li {
+    margin-bottom: 10px;
+    position: relative;
+    padding-left: 20px;
+    line-height: 1.4;
+}
+
+.modal-content .info-section ul li:before {
+    content: '•';
+    color: #007bff;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.modal-content .info-section.warning {
+    background-color: #fff3cd;
+    border: 1px solid #ffeeba;
+}
+
+.modal-content .info-section.warning h3 {
+    color: #856404;
+}
+
+.modal-content .warning-text {
+    color: #dc3545;
+    font-weight: 500;
+    margin-top: 15px;
+    padding: 10px;
+    background-color: rgba(220, 53, 69, 0.1);
+    border-radius: 4px;
+}
+
+.view-more-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    margin-top: 8px;
+    transition: background-color 0.3s ease;
+}
+
+.view-more-btn:hover {
+    background-color: #0056b3;
+}
+
+.view-more-btn i {
+    font-size: 16px;
 }
 
 .modal-close {

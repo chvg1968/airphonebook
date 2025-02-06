@@ -25,13 +25,15 @@ export const ICONS = {
         "Tennis": "🎾",
         "Water Park and Water Sports":"🏄‍♂️⛰️",
         "Tours":"🧭",
-        "Kid's Club": "🐢 👶",
+        "Kid´s Club": "🐢 👶",
+        
+        "Signature Restaurant": "🌟",
+        "Casual Dining": "🥗",
+       
 
-        // Off Property Transportation and Airport Transfers
-        "Aqua Tours":"🛥️", 
-        "Scuba Diving Tours":"🏊",
-        "Transportation":"🚗",
-        "Off-Property Transportation":"🚙",
+        // Beach and Pool
+        
+       
 
         // Services
         "Concierge Services": "🤵",

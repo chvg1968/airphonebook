@@ -72,9 +72,9 @@ export const ICONS = {
         "San Juan - 45 min West": "🧭",
 
         // Shopping
-        "Groceries and Shopping": "🛍️",
-        "Grocery Shopping on the Way from the Airport": "🛒",
-        "Grocery Shopping Near Bahia Beach": "🏖️",
+        "Shopping": "🛍️",
+        "On the way from the airport (more variety)": "🛒",
+        "Near Bahia Beach": "🏖️",
         "Specialty Food, Wine and Liquors Stores": "🍷",
         "Shopping Malls": "🏢",
     },

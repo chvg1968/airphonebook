@@ -25,6 +25,7 @@ export const ICONS = {
         "Water Sports": "🏄‍♂️",
         "Tennis": "🎾",
         "Water Park and Water Sports":"🏄‍♂️",
+        "General Tours, Old San Juan and Adventures":"🧭",
         "St. Regis Tortuga Kid's Club": "👶",
 
         // Off Property Tours and Places to Visit
@@ -32,7 +33,6 @@ export const ICONS = {
         "Scuba Diving Tours":"🏊",
         "Excursions":"🚗",
         "Off-Property Transportation":"🚙",
-        "General Tours, Old San Juan and Adventures":"🧭",
 
         // Services
         "Concierge Services": "🤵",

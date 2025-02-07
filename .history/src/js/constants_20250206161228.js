@@ -4,7 +4,6 @@ export const ICONS = {
         "Resort Restaurants and Venues":"⛱️",
         "Unit's Golf Cart":"🛺",
         "Resort Activities and Adventures":"🏃",
-        "Off Property Tours and Places to Visit":"🧭",
         "Off Property Transportation and Airport Transfers":"🚗",
         "Catering/Delivery/Special Services":"🛒",
         "Off Property Restaurants and Shopping": "🛍️",
@@ -25,14 +24,14 @@ export const ICONS = {
         "Water Sports": "🏄‍♂️",
         "Tennis": "🎾",
         "Water Park and Water Sports":"🏄‍♂️",
+        "Tours":"🧭",
         "St. Regis Tortuga Kid's Club": "👶",
 
-        // Off Property Tours and Places to Visit
-        "Aqua Tours and Boat Charters":"🛥️", 
+        // Off Property Transportation and Airport Transfers
+        "Aqua Tours":"🛥️", 
         "Scuba Diving Tours":"🏊",
-        "Excursions":"🚗",
+        "Transportation":"🚗",
         "Off-Property Transportation":"🚙",
-        "General Tours, Old San Juan and Adventures":"🧭",
 
         // Services
         "Concierge Services": "🤵",

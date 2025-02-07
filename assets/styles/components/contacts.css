@@ -280,25 +280,45 @@ html, body {
 
 .phone-numbers-container {
     display: flex;
-    flex-direction: column;
-    gap: 2px;
     margin: 5px 0;
+    align-items: flex-start;
+    width: 100%;
+}
+
+.phone-numbers-container > i {
+    color: #666;
+    font-size: 1em;
+    flex-shrink: 0;
+    margin-top: 2px;
+    width: 20px;
+}
+
+.phone-numbers-container > div {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    flex-grow: 1;
+    padding-left: 4px;
 }
 
 .phone-number {
-    display: flex;
-    align-items: center;
+    display: block;
     padding: 2px 0;
     color: #333;
     font-size: 0.95em;
-    line-height: 1.2;
+    line-height: 1.4;
+}
+
+.phone-number:not(:last-child) {
+    margin-bottom: 2px;
 }
 
 .phone-number i {
     color: #666;
     margin-right: 8px;
     font-size: 1em;
-    flex-shrink: 0;
+    width: 16px;
+    display: inline-block;
 }
     transition: all 0.3s ease;
 }

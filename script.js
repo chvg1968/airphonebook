@@ -203,12 +203,21 @@ class ContactManager {
             cleanPhone.split(',').map(p => p.trim()).filter(p => p) :
             [cleanPhone.trim()];
 
-        // Generamos el HTML para cada número
-        const phoneNumbersHtml = phones
-            .map(p => `<div class="phone-number">${phoneIcon}${p}</div>`)
-            .join('');
+        // Si hay múltiples números, ponemos el ícono solo en el contenedor
+        if (phones.length > 1) {
+            const phoneNumbersHtml = phones
+                .map(p => `<div class="phone-number">${p}</div>`)
+                .join('');
+            return `<div class="phone-numbers-container">
+                ${phoneIcon}
+                <div>${phoneNumbersHtml}</div>
+            </div>`;
+        }
 
-        return `<div class="phone-numbers-container">${phoneNumbersHtml}</div>`;
+        // Si es solo un número, lo mostramos como antes
+        return `<div class="phone-numbers-container">
+            <div class="phone-number">${phoneIcon}${phones[0]}</div>
+        </div>`;
     }
 
     renderContactDetails(contact) {

@@ -1,8 +1,12 @@
 export async function fetchAllContacts() {
     try {
-        const response = await fetch("/.netlify/functions/fetchContacts");
+        console.log('🔄 Iniciando solicitud a la función de Netlify...');
+        const response = await fetch('/api/fetchContacts');
+        
         if (!response.ok) {
-            throw new Error(`HTTP error! Status: ${response.status}`);
+            const errorText = await response.text();
+            console.error('📄 Respuesta del servidor:', errorText);
+            throw new Error(`HTTP error! Status: ${response.status}. Response: ${errorText}`);
         }
 
         const data = await response.json();

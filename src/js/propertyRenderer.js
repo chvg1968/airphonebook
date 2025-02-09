@@ -127,17 +127,19 @@ export async function initializeProperty() {
         updateSection('Parking Information', propertyData['Parking Information']);
 
         // Actualizar Important Villa Information
-        const villaInfoSection = document.querySelector('.info-group h3');
-        if (villaInfoSection?.textContent.trim() === 'Important Villa Information' && propertyData['Important Villa Information']?.content) {
-            const infoGroup = villaInfoSection.closest('.info-group');
-            if (infoGroup) {
-                // Mantener el h3 original y reemplazar el contenido después de él
-                const h3Clone = villaInfoSection.cloneNode(true);
-                infoGroup.innerHTML = ''; // Limpiar el contenido actual
-                infoGroup.appendChild(h3Clone); // Agregar el h3 original
-                infoGroup.insertAdjacentHTML('beforeend', propertyData['Important Villa Information'].content);
-                console.log('Important Villa Information actualizada');
-            }
+        const infoGroups = document.querySelectorAll('.info-group');
+        const villaInfoSection = Array.from(infoGroups).find(group => 
+            group.querySelector('h3')?.textContent.trim() === 'Important Villa Information'
+        );
+
+        if (villaInfoSection && propertyData['Important Villa Information']?.content) {
+            const h3 = villaInfoSection.querySelector('h3');
+            villaInfoSection.innerHTML = ''; // Limpiar el contenido actual
+            villaInfoSection.appendChild(h3); // Mantener el h3 original
+            villaInfoSection.insertAdjacentHTML('beforeend', propertyData['Important Villa Information'].content);
+            console.log('Important Villa Information actualizada');
+        } else {
+            console.log('No se encontró la sección de Important Villa Information o no hay contenido para mostrar');
         }
 
         console.log('Propiedad actualizada completamente');

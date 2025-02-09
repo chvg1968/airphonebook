@@ -1,6 +1,7 @@
 import { villas } from '../../properties.js';
 
 function createPropertyCard(propertyKey, propertyData) {
+    console.log('Creating card for property:', propertyKey, propertyData);
     return `
         <a href="/src/html/pages/model.html?property=${encodeURIComponent(propertyKey)}" class="property-card">
             <img src="${propertyData.image}" alt="${propertyData.property_title}" class="property-image">
@@ -23,8 +24,10 @@ function renderProperties() {
     }
 
     propertiesGrid.innerHTML = '';
+    console.log('Available properties:', Object.keys(villas));
     
     Object.entries(villas).forEach(([key, property]) => {
+        console.log(`Rendering property: ${key}`);
         propertiesGrid.innerHTML += createPropertyCard(key, property);
     });
 }

@@ -65,14 +65,9 @@ export async function initializeProperty() {
             const [bedrooms, type] = propertyData['Property Information'].Accomodation.split('<br>');
             accommodationInfo.textContent = bedrooms.trim();
             
-            // Crear o actualizar el segundo h3
-            let secondH3 = welcomeSection.querySelectorAll('h3')[1];
-            if (!secondH3) {
-                secondH3 = document.createElement('h3');
-                welcomeSection.insertBefore(secondH3, welcomeSection.querySelector('.property-actions'));
-            }
-            
-            if (type) {
+            // Si hay un segundo h3, actualizarlo con el tipo
+            const secondH3 = welcomeSection.querySelectorAll('h3')[1];
+            if (secondH3 && type) {
                 // Extraer solo la parte de los huéspedes si existe
                 const guestMatch = type.match(/(.+?)(?:\s*-\s*(\d+)\s*Guests)?$/i);
                 if (guestMatch) {

@@ -1,7 +1,11 @@
 import { fetchAllContacts } from "./src/js/Api.js";
 import { buildTree } from "./src/js/Tree.js";
 import { SECTION_ORDER } from "./src/js/constants.js";
-import { getIcon } from "./src/js/utils.js"; 
+import { getIcon } from "./src/js/utils.js";
+
+// Exponer funciones globalmente
+window.buildTree = buildTree;
+window.fetchAllContacts = fetchAllContacts;
 
 // Clase para manejo de datos de contactos
 class ContactManager {
@@ -234,10 +238,9 @@ class ContactManager {
         });
         const isTennis = contact.name.includes('Tennis Reservations');
         const isKidsClub = contact.name.includes('St. Regis Tortuga Kid\'s Club');
-        // Detectar la página de Villa Clara en cualquier ambiente
-        const isVillaClaraPage = window.location.pathname.includes('villaclara') || 
-                                window.location.href.includes('villaclara');
-        console.log('Is Villa Clara page:', isVillaClaraPage, 'Path:', window.location.pathname, 'URL:', window.location.href);
+        // Detectar si estamos en una página de propiedad
+        const isPropertyPage = window.location.pathname.includes('/pages/model.html');
+        console.log('Is Property page:', isPropertyPage, 'Path:', window.location.pathname, 'URL:', window.location.href);
 
         let html = `
             <strong>${contact.icon || ''} ${contact.name}</strong>
@@ -252,10 +255,10 @@ class ContactManager {
             isGolfShop,
             isTennis,
             isKidsClub,
-            isVillaClaraPage
+            isPropertyPage
         });
 
-        if (isVillaClaraPage) {
+        if (isPropertyPage) {
             console.log('Adding modal button for:', contact.name);
             if (isGolfCartSection) {
                 html += `<button class="view-more-btn" onclick="openGolfCartModal()"><i class="fas fa-info-circle"></i> View more information</button>`;

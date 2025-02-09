@@ -39,7 +39,7 @@
                         <i class="fas fa-home"></i>
                         <span>Back to home</span>
                     </a>
-                    <button class="view-map-btn" onclick="openMapModal()">
+                    <button class="view-map-btn" id="openMapButton">
                         <i class="fas fa-map-marker-alt"></i>
                         <span>View Location</span>
                     </button>
@@ -49,27 +49,14 @@
             <!-- Modal para el mapa -->
             <div id="mapModal" class="modal">
                 <div class="modal-content">
-                    <span class="close" onclick="closeMapModal()">&times;</span>
-                    <h2>Villa Clara Location</h2>
+                    <span class="close" id="closeMapButton">&times;</span>
+                    <h2>Property Location</h2>
                     <p>On your mobile, rotate your screen to landscape mode for a better view.</p>
                     <div class="map-container">
-                        <div class="map-wrapper">
-                            <img src="/assets/images/map.jpg" 
-                                 alt="Villa Clara Location Map" 
-                                 class="map-image"
-                                 id="mapImage">
-                        </div>
-                        <div class="map-controls">
-                            <button title="Zoom in" onclick="zoomMap(1.2)" class="zoom-btn">
-                                <i class="fas fa-search-plus"></i>
-                            </button>
-                            <button title="Zoom out" onclick="zoomMap(0.8)" class="zoom-btn">
-                                <i class="fas fa-search-minus"></i>
-                            </button>
-                            <button title="Reset zoom" onclick="resetMap()" class="zoom-btn">
-                                <i class="fas fa-undo"></i>
-                            </button>
-                        </div>
+                        <img id="propertyMapImage" src="" alt="Property Map" style="width: 100%; max-width: 100%; height: auto;">
+                    </div>
+                </div>
+            </div>
                     </div>
                 </div>
             </div>
@@ -399,14 +386,19 @@
 
     <script type="module">
         // Importar las dependencias necesarias
-        import * as modalFunctions from '../../js/modals.js';
-        import { initializeProperty } from '../../js/propertyRenderer.js';
-        
-        // Exponer las funciones modales globalmente para los onclick
-        Object.assign(window, modalFunctions);
+        import { initializeProperty, openMapModal, closeMapModal } from '../../js/propertyRenderer.js';
 
-        // Verificar que las funciones modales estén disponibles
-        console.log('Funciones modales disponibles:', Object.keys(modalFunctions));
+        // Inicializar la propiedad
+        document.addEventListener('DOMContentLoaded', () => {
+            initializeProperty();
+            
+            // Configurar los event listeners para el modal del mapa
+            const openMapBtn = document.getElementById('openMapButton');
+            const closeMapBtn = document.getElementById('closeMapButton');
+            
+            if (openMapBtn) openMapBtn.addEventListener('click', openMapModal);
+            if (closeMapBtn) closeMapBtn.addEventListener('click', closeMapModal);
+        });
 
         // Esperar a que el DOM esté completamente cargado
         document.addEventListener('DOMContentLoaded', async () => {

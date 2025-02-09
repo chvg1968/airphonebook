@@ -1,9 +1,43 @@
 import { villas } from '../../../properties.js';
 
+// Función para inicializar el modal del mapa
+function initializeMapModal() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const propertyKey = decodeURIComponent(urlParams.get('property'));
+    const propertyData = villas[propertyKey];
+
+    if (propertyData && propertyData.location) {
+        const mapImage = document.getElementById('propertyMapImage');
+        if (mapImage) {
+            mapImage.src = propertyData.location;
+            mapImage.alt = `Map for ${propertyData.property_title}`;
+        }
+    }
+}
+
+// Función para abrir el modal del mapa
+export function openMapModal() {
+    const modal = document.getElementById('mapModal');
+    if (modal) {
+        modal.style.display = 'block';
+    }
+}
+
+// Función para cerrar el modal del mapa
+export function closeMapModal() {
+    const modal = document.getElementById('mapModal');
+    if (modal) {
+        modal.style.display = 'none';
+    }
+}
+
 // Función principal que maneja la carga de la página
 export async function initializeProperty() {
     try {
         console.log('Iniciando renderizado de propiedad...');
+        
+        // Inicializar funciones del modal
+        initializeMapModal();
         
         // 1. Obtener datos de la propiedad
         const urlParams = new URLSearchParams(window.location.search);
@@ -61,34 +95,37 @@ export async function initializeProperty() {
         }
 
         // 3.4 Información de acomodación
-        if (accommodationInfo && propertyData['Property Information']?.Accomodation) {
-            const [bedrooms, type] = propertyData['Property Information'].Accomodation.split('<br>');
-            accommodationInfo.textContent = bedrooms.trim();
-            
-            // Crear o actualizar el segundo h3
-            let secondH3 = welcomeSection.querySelectorAll('h3')[1];
-            if (!secondH3) {
-                secondH3 = document.createElement('h3');
-                welcomeSection.insertBefore(secondH3, welcomeSection.querySelector('.property-actions'));
-            }
-            
-            if (type) {
-                // Extraer solo la parte de los huéspedes si existe
-                const guestMatch = type.match(/(.+?)(?:\s*-\s*(\d+)\s*Guests)?$/i);
-                if (guestMatch) {
-                    const [_, propertyType, guests] = guestMatch;
-                    secondH3.textContent = `${propertyType.trim()}${guests ? ` - ${guests} Guests` : ''}`;
-                } else {
-                    secondH3.textContent = type.trim();
+        if (accommodationInfo) {
+            const accommodationData = propertyData['Property Information']?.Accommodation || 
+                                   propertyData['Property Information']?.Accomodation;
+
+            if (accommodationData) {
+                const [bedrooms, type] = accommodationData.split('<br>');
+                accommodationInfo.textContent = bedrooms.trim();
+                
+                // Crear o actualizar el segundo h3
+                let secondH3 = welcomeSection.querySelectorAll('h3')[1];
+                if (!secondH3) {
+                    secondH3 = document.createElement('h3');
+                    welcomeSection.insertBefore(secondH3, welcomeSection.querySelector('.property-actions'));
                 }
+                
+                if (type) {
+                    // Extraer solo la parte de los huéspedes si existe
+                    const guestMatch = type.match(/(.+?)(?:\s*-\s*(\d+)\s*Guests)?$/i);
+                    if (guestMatch) {
+                        const [_, propertyType, guests] = guestMatch;
+                        secondH3.textContent = `${propertyType.trim()}${guests ? ` - ${guests} Guests` : ''}`;
+                    } else {
+                        secondH3.textContent = type.trim();
+                    }
+                }
+                
+                console.log('Acomodación actualizada:', bedrooms.trim(), type?.trim());
+            } else {
+                console.log('Información de acomodación no encontrada para:', propertyKey);
+                accommodationInfo.style.display = 'none';
             }
-            
-            console.log('Acomodación actualizada:', bedrooms.trim(), type?.trim());
-        } else {
-            console.error('No se pudo actualizar la acomodación:', {
-                'elemento h3 existe': !!accommodationInfo,
-                'datos de acomodación existen': !!propertyData['Property Information']?.Accomodation
-            });
         }
 
         // 4. Actualizar información de WiFi y Parking

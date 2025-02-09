@@ -24,8 +24,6 @@ export const villas = {
   },
 "Ocean Bliss Villa": {
       "property_title": "Welcome to Ocean Bliss Villa - Unit 2-102 Las Ventanas",
-      "location":"/assets/images/mapventanas.jpg",
-      "image": "/assets/images/properties/villaoceanbliss/Villa Ocean Bliss.jpg",
       "Property Information": {
         "Accommodation": "2 bedroom/ 3 bathroom<br>Groundfloor Beachfront Villa- 6 Guests"
       },
@@ -216,7 +214,7 @@ export const villas = {
   },
   "Casa Prestige": {
     "property_title": "Welcome to Casa Prestige - Atlantic Drive G7",
-    "location":"/assets/images/mapatlantic.jpeg",
+    "location":"/assets/images/mapatlantic.jpg",
     "image": "/assets/images/properties/casaprestige/Casa Prestige.jpeg",
     "Wifi Information": {
       "Villa Network Name": "Bahia-Home",
@@ -252,7 +250,7 @@ export const villas = {
   },
   "Villa Ocean Bliss": {
     "property_title": "Welcome to Villa Ocean Bliss",
-    "location":"/assets/images/mapverandas.jpg",
+    "location":"/assets/images/mapatlantic.jpg",
     "image": "/assets/images/properties/villaoceanbliss/Villa Ocean Bliss.jpg",
     "Wifi Information": {
       "Villa Network Name": "Villa_Ocean_Bliss",

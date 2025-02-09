@@ -1,7 +1,6 @@
 export const villas = {
   "Villa Clara": {
     "property_title": "Welcome to Villa Clara",
-    "location":"/assets/images/mapverandas.jpg",
     "image": "/assets/images/properties/villaclara/Villa Clara.jpg",
     "Wifi Information": {
       "Villa Network Name": "Villa_Clara",
@@ -22,40 +21,8 @@ export const villas = {
       "content": "<ul class='info-list' style='list-style: none;'>\        <li>Trash disposal room is the last closet down the hall, past the elevator</li>\        <p style='text-decoration: underline;'>At the entrance, to the left of the front door:</p>\        <ul class='info-list' style='list-style: none;'>\            <li><strong>Thermostats to regulate the 3 A/C units temperature are located in:</strong>\                <ul style='list-style: none; padding-left: 20px; margin-top: 5px;'>\                    <li>Closet in the right hallway after the foyer</li>\                    <li>Closet inside the laundry room</li>\                </ul>\            </li>\            <li><strong>Grill:</strong> Turn off the gas after using the grill</li>\            <li><strong>Terrace door:</strong> Lock the terrace door when not at the villa. The door may occasionally open due to airflow</li>\        </ul>\      </ul>"
     }
   },
-"Ocean Bliss Villa": {
-      "property_title": "Welcome to Ocean Bliss Villa - Unit 2-102 Las Ventanas",
-      "location":"/assets/images/mapventanas.jpg",
-      "image": "/assets/images/properties/villaoceanbliss/Villa Ocean Bliss.jpg",
-      "Property Information": {
-        "Accommodation": "2 bedroom/ 3 bathroom<br>Groundfloor Beachfront Villa- 6 Guests"
-      },
-      "Wifi Information": {
-        "Villa Network Name": "Ventanas2-102",
-        "Villa Password": "ILovePuertoRico123!",
-        "Resort Network": "Bahia Beach Resort",
-        "Resort Password": "welcomeHome (Note: The H in Home is capitalized)"
-      },
-      "Parking Information": {
-        "Parking spots": "58, 59",
-        "Golf cart spot": "G-33",
-        "Cart Number": "72"
-      },
-      "Important Villa Information": {
-        "content": "<ul class='info-list' style='list-style: none;'>\
-          <li>Trash disposal room is the furthest closet away from the unit after the elevator</li>\
-          <li><strong>Thermostats to regulate the 2 A/C units temperature are located in:</strong>\
-            <ul style='list-style: none; padding-left: 20px; margin-top: 5px;'>\
-              <li>In the 2 A/C closets to the right of the apartment after entering the villa</li>\
-            </ul>\
-          </li>\
-          <li><strong>Grill:</strong> Turn off the gas after using the grill</li>\
-          <li><strong>Terrace door:</strong> Lock the terrace door when not at the villa. The door may occasionally open due to airflow</li>\
-        </ul>"
-      }
-    },
   "Ocean Haven Villa": {
     "property_title": "Ocean Haven Villa - Unit 2-208 Las Ventanas",
-    "location":"/assets/images/mapventanas.jpg",
     "image": "/assets/images/properties/villaOceanHaven/Ocean Haven Villa.jpg",
     "Wifi Information": {
       "Villa Network Name": "LIB-1953536",
@@ -88,7 +55,6 @@ export const villas = {
   },
   "Villa Paloma": {
     "property_title": "Welcome to Villa Paloma - Unit 5138 Las Verandas",
-    "location":"/assets/images/mapverandas.jpg",
     "image": "/assets/images/properties/villapaloma/Villa Paloma.jpeg",
     "Wifi Information": {
       "Villa Network Name": "Villa_Paloma2",
@@ -120,7 +86,6 @@ export const villas = {
   },
   "Villa Palacio": {
     "property_title": "Welcome to Villa Palacio - Unit 7256 Las Verandas",
-    "location":"/assets/images/mapverandas.jpg",
     "image": "/assets/images/properties/villapalacio/Villa Palacio.jpeg",
     "Wifi Information": {
       "Villa Network Name": "VPalacio",
@@ -152,7 +117,6 @@ export const villas = {
   },
   "Villa Flora": {
     "property_title": "Welcome to Villa Flora - Unit 10180 Las Verandas",
-    "location":"/assets/images/mapverandas.jpg",
     "image": "/assets/images/properties/villaflora/Villa Flora.jpeg",
     "Wifi Information": {
       "Villa Network Name": "Villa Flora",
@@ -183,7 +147,6 @@ export const villas = {
   },
   "Villa Tiffany": {
     "property_title": "Welcome to Villa Tiffany - Unit 10389 Las Verandas",
-    "location":"/assets/images/mapverandas.jpg",
     "image": "/assets/images/properties/villatiffany/Villa Tiffany.jpg",
     "Wifi Information": {
       "Villa Network Name": "Bahia Verandas Guest",
@@ -216,7 +179,6 @@ export const villas = {
   },
   "Casa Prestige": {
     "property_title": "Welcome to Casa Prestige - Atlantic Drive G7",
-    "location":"/assets/images/mapatlantic.jpeg",
     "image": "/assets/images/properties/casaprestige/Casa Prestige.jpeg",
     "Wifi Information": {
       "Villa Network Name": "Bahia-Home",
@@ -252,10 +214,28 @@ export const villas = {
   },
   "Villa Ocean Bliss": {
     "property_title": "Welcome to Villa Ocean Bliss",
-    "location":"/assets/images/mapverandas.jpg",
     "image": "/assets/images/properties/villaoceanbliss/Villa Ocean Bliss.jpg",
     "Wifi Information": {
       "Villa Network Name": "Villa_Ocean_Bliss",
+      "Villa Password": "Bahia3325",
+      "Resort Network": "Bahia Beach Resort",
+      "Resort Password": "welcomeHome (Note: The H in Home is capitalized)"
+    },
+    "Parking Information": {
+      "Parking spots": "84, 85, 86",
+      "Golf cart spot": "G-25",
+      "Cart Number": "119",
+      "This cart doesn't require keys": "true"
+    },
+    "Property Information":{
+      "Accomodation": "4 bedroom/ 4 bathroom<br>Penthouse Villa - 8 Guests"
+    }
+  },
+  "Temporal": {
+    "property_title": "Welcome to Temporal",
+    "image": "/assets/images/properties/Temporal.jpg",
+    "Wifi Information": {
+      "Villa Network Name": "Villa_Temporal",
       "Villa Password": "Bahia3325",
       "Resort Network": "Bahia Beach Resort",
       "Resort Password": "welcomeHome (Note: The H in Home is capitalized)"

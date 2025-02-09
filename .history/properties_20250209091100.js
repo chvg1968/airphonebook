@@ -216,7 +216,7 @@ export const villas = {
   },
   "Casa Prestige": {
     "property_title": "Welcome to Casa Prestige - Atlantic Drive G7",
-    "location":"/assets/images/mapatlantic.jpeg",
+    "location":"/assets/images/mapatlantic.jpg",
     "image": "/assets/images/properties/casaprestige/Casa Prestige.jpeg",
     "Wifi Information": {
       "Villa Network Name": "Bahia-Home",

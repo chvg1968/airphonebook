@@ -126,6 +126,20 @@ export async function initializeProperty() {
         updateSection('Wifi Information', propertyData['Wifi Information']);
         updateSection('Parking Information', propertyData['Parking Information']);
 
+        // Actualizar Important Villa Information
+        const villaInfoSection = document.querySelector('.info-group h3');
+        if (villaInfoSection?.textContent.trim() === 'Important Villa Information' && propertyData['Important Villa Information']?.content) {
+            const infoGroup = villaInfoSection.closest('.info-group');
+            if (infoGroup) {
+                // Mantener el h3 original y reemplazar el contenido después de él
+                const h3Clone = villaInfoSection.cloneNode(true);
+                infoGroup.innerHTML = ''; // Limpiar el contenido actual
+                infoGroup.appendChild(h3Clone); // Agregar el h3 original
+                infoGroup.insertAdjacentHTML('beforeend', propertyData['Important Villa Information'].content);
+                console.log('Important Villa Information actualizada');
+            }
+        }
+
         console.log('Propiedad actualizada completamente');
     } catch (error) {
         console.error('Error en initializeProperty:', error);

@@ -39,7 +39,7 @@ export const villas = {
   },
   "Ocean Haven Villa": {
     "property_title": "Ocean Haven Villa - Unit 2-208 Las Ventanas",
-    "image": "/assets/images/properties/villaOceanHaven/Ocean Haven Villa.jpg",
+    "image": "/assets/images/properties/villaOceanHaven/Ocean Haven Villa.jpeg",
     "Wifi Information": {
       "Villa Network Name": "LIB-1953536",
       "Villa Password": "yLLg8c9tgwwk",
@@ -163,7 +163,7 @@ export const villas = {
   },
   "Villa Tiffany": {
     "property_title": "Welcome to Villa Tiffany - Unit 10389 Las Verandas",
-    "image": "/assets/images/properties/villatiffany/Villa Tiffany.jpg",
+    "image": "/assets/images/properties/villatiffany/Villa Tiffany.jpeg",
     "Wifi Information": {
       "Villa Network Name": "Bahia Verandas Guest",
       "Villa Password": "PracticeFillerExhibit861",

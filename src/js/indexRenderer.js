@@ -2,12 +2,13 @@ import { villas } from '../../properties.js';
 
 function createPropertyCard(propertyKey, propertyData) {
     console.log('Creating card for property:', propertyKey, propertyData);
+    const accommodation = propertyData['Property Information']?.['Accomodation'] || 'Information not available';
     return `
         <a href="/src/html/pages/model.html?property=${encodeURIComponent(propertyKey)}" class="property-card">
             <img src="${propertyData.image}" alt="${propertyData.property_title}" class="property-image">
             <div class="property-info">
                 <h2 class="property-name">${propertyData.property_title}</h2>
-                <p class="property-description">${propertyData['Property Information']['Accomodation']}</p>
+                <p class="property-description">${accommodation}</p>
                 <div class="property-cta">
                     View Directory <i class="fas fa-arrow-right"></i>
                 </div>

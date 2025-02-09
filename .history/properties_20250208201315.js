@@ -163,7 +163,7 @@ export const villas = {
   },
   "Villa Tiffany": {
     "property_title": "Welcome to Villa Tiffany - Unit 10389 Las Verandas",
-    "image": "/assets/images/properties/villatiffany/Villa Tiffany.jpg",
+    "image": "/assets/images/properties/villatiffany/Villa Tiffany.jpeg",
     "Wifi Information": {
       "Villa Network Name": "Bahia Verandas Guest",
       "Villa Password": "PracticeFillerExhibit861",

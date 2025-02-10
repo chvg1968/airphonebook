@@ -6,25 +6,38 @@ let startX = 0;
 let startY = 0;
 let translateX = 0;
 let translateY = 0;
+let lastTouchDistance = 0;
+let isZooming = false;
+
+// Elemento del mapa y su contenedor
+let mapImage = null;
+let mapContainer = null;
 
 // Función para inicializar la interacción con el mapa
 export function initializeMapInteraction() {
-    const mapImage = document.getElementById('propertyMapImage');
-    if (!mapImage) return;
+    mapImage = document.getElementById('propertyMapImage');
+    mapContainer = document.querySelector('.map-container');
+    if (!mapImage || !mapContainer) {
+        console.error('No se encontró la imagen del mapa o su contenedor');
+        return;
+    }
 
     // Resetear transformaciones
-    currentScale = 1;
-    translateX = 0;
-    translateY = 0;
-    updateImageTransform(currentScale, translateX, translateY);
+    resetMapState();
+
+    // Remover event listeners existentes
+    removeEventListeners();
 
     // Agregar event listeners para gestos táctiles
-    mapImage.addEventListener('touchstart', handleTouchStart, { passive: false });
-    mapImage.addEventListener('touchmove', handleTouchMove, { passive: false });
-    mapImage.addEventListener('touchend', handleTouchEnd);
+    mapContainer.addEventListener('touchstart', handleTouchStart, { passive: false });
+    mapContainer.addEventListener('touchmove', handleTouchMove, { passive: false });
+    mapContainer.addEventListener('touchend', handleTouchEnd);
+    mapContainer.addEventListener('touchcancel', handleTouchEnd);
 
     // Agregar soporte para mouse wheel zoom
-    mapImage.addEventListener('wheel', handleWheel, { passive: false });
+    mapContainer.addEventListener('wheel', handleWheel, { passive: false });
+
+    console.log('Interacción del mapa inicializada');
 }
 
 // Función para manejar el zoom con el mouse wheel
@@ -41,43 +54,80 @@ function handleWheel(event) {
 
 function handleTouchStart(event) {
     event.preventDefault();
+    event.stopPropagation();
     
     if (event.touches.length === 2) {
         // Pellizcar para zoom
+        isZooming = true;
+        isDragging = false;
         initialDistance = getDistance(event.touches[0], event.touches[1]);
+        lastTouchDistance = initialDistance;
+        console.log('Inicio de zoom con dos dedos');
     } else if (event.touches.length === 1) {
         // Arrastrar
+        isZooming = false;
         isDragging = true;
         startX = event.touches[0].clientX - translateX;
         startY = event.touches[0].clientY - translateY;
+        console.log('Inicio de arrastre');
     }
 }
 
 function handleTouchMove(event) {
     event.preventDefault();
+    event.stopPropagation();
     
-    if (event.touches.length === 2) {
+    if (event.touches.length === 2 && isZooming) {
         // Pellizcar para zoom
         const currentDistance = getDistance(event.touches[0], event.touches[1]);
-        const scaleFactor = currentDistance / initialDistance;
+        const scaleFactor = currentDistance / lastTouchDistance;
         
-        const newScale = currentScale * scaleFactor;
-        if (newScale >= 0.5 && newScale <= 3) {
-            updateImageTransform(newScale, translateX, translateY);
+        const newScale = limitScale(currentScale * scaleFactor);
+        if (newScale !== currentScale) {
             currentScale = newScale;
+            updateImageTransform();
+            console.log('Zoom actualizado:', currentScale);
         }
-        initialDistance = currentDistance;
+        lastTouchDistance = currentDistance;
     } else if (event.touches.length === 1 && isDragging) {
         // Arrastrar
         const touch = event.touches[0];
         translateX = touch.clientX - startX;
         translateY = touch.clientY - startY;
-        updateImageTransform(currentScale, translateX, translateY);
+        updateImageTransform();
+        console.log('Posición actualizada:', { x: translateX, y: translateY });
     }
 }
 
-function handleTouchEnd() {
+function handleTouchEnd(event) {
+    event.preventDefault();
+    event.stopPropagation();
     isDragging = false;
+    isZooming = false;
+    console.log('Gesto terminado');
+}
+
+function removeEventListeners() {
+    if (!mapContainer) return;
+    
+    mapContainer.removeEventListener('touchstart', handleTouchStart);
+    mapContainer.removeEventListener('touchmove', handleTouchMove);
+    mapContainer.removeEventListener('touchend', handleTouchEnd);
+    mapContainer.removeEventListener('touchcancel', handleTouchEnd);
+    mapContainer.removeEventListener('wheel', handleWheel);
+}
+
+function resetMapState() {
+    currentScale = 1;
+    translateX = 0;
+    translateY = 0;
+    isDragging = false;
+    isZooming = false;
+    updateImageTransform();
+}
+
+function limitScale(scale) {
+    return Math.min(Math.max(scale, 0.5), 3);
 }
 
 function getDistance(touch1, touch2) {
@@ -86,10 +136,9 @@ function getDistance(touch1, touch2) {
     return Math.sqrt(dx * dx + dy * dy);
 }
 
-function updateImageTransform(scale, x, y) {
-    const mapImage = document.getElementById('propertyMapImage');
+function updateImageTransform() {
     if (mapImage) {
-        mapImage.style.transform = `scale(${scale}) translate(${x}px, ${y}px)`;
+        mapImage.style.transform = `scale(${currentScale}) translate(${translateX}px, ${translateY}px)`;
     }
 }
 

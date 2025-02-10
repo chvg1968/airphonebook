@@ -82,10 +82,10 @@
                                 background: #f0f0f0;
                             }
                         </style>
-                        <div class="zoom-controls" style="position: absolute; bottom: 10px; right: 10px; background: rgba(255,255,255,0.8); padding: 5px; border-radius: 5px;">
-                            <button onclick="window.zoomMap(1.2)" style="margin: 2px; padding: 5px 10px;"><i class="fas fa-plus"></i></button>
-                            <button onclick="window.zoomMap(0.8)" style="margin: 2px; padding: 5px 10px;"><i class="fas fa-minus"></i></button>
-                            <button onclick="window.resetMap()" style="margin: 2px; padding: 5px 10px;"><i class="fas fa-sync-alt"></i></button>
+                        <div class="zoom-controls" style="position: absolute; bottom: 10px; right: 10px; background: rgba(255,255,255,0.8); padding: 5px; border-radius: 5px; z-index: 1000;">
+                            <button id="zoomInButton" style="margin: 2px; padding: 5px 10px;"><i class="fas fa-plus"></i></button>
+                            <button id="zoomOutButton" style="margin: 2px; padding: 5px 10px;"><i class="fas fa-minus"></i></button>
+                            <button id="resetZoomButton" style="margin: 2px; padding: 5px 10px;"><i class="fas fa-sync-alt"></i></button>
                         </div>
                     </div>
                 </div>
@@ -420,11 +420,10 @@
     <script type="module">
         // Importar las dependencias necesarias
         import { initializeProperty, openMapModal, closeMapModal } from '../../js/propertyRenderer.js';
-        import { zoomMap, resetMap } from '../../js/modals.js';
+        import { initializeMapInteraction } from '../../js/mapInteraction.js';
 
-        // Exponer las funciones de zoom globalmente
-        window.zoomMap = zoomMap;
-        window.resetMap = resetMap;
+        // Inicializar el mapa cuando se abre el modal
+        document.getElementById('mapModal').addEventListener('show', initializeMapInteraction);
         import * as modalFunctions from '../../js/modals.js';
 
         // Hacer las funciones modales disponibles globalmente

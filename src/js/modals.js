@@ -30,7 +30,12 @@ import { initializeMapInteraction } from './mapInteraction.js';
 export function openMapModal() {
     showModal('mapModal');
     // Inicializar la interacción del mapa
-    initializeMapInteraction();
+    setTimeout(() => {
+        initializeMapInteraction();
+        // Disparar evento personalizado
+        const event = new Event('show');
+        document.getElementById('mapModal').dispatchEvent(event);
+    }, 100); // Pequeño retraso para asegurar que el modal esté visible
 }
 
 export function closeMapModal() {

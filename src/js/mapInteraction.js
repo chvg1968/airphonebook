@@ -28,6 +28,9 @@ export function initializeMapInteraction() {
     // Remover event listeners existentes
     removeEventListeners();
 
+    // Configurar los botones de zoom
+    setupZoomButtons();
+
     // Agregar event listeners para gestos táctiles
     mapContainer.addEventListener('touchstart', handleTouchStart, { passive: false });
     mapContainer.addEventListener('touchmove', handleTouchMove, { passive: false });
@@ -38,6 +41,33 @@ export function initializeMapInteraction() {
     mapContainer.addEventListener('wheel', handleWheel, { passive: false });
 
     console.log('Interacción del mapa inicializada');
+}
+
+function setupZoomButtons() {
+    const zoomInBtn = document.getElementById('zoomInButton');
+    const zoomOutBtn = document.getElementById('zoomOutButton');
+    const resetBtn = document.getElementById('resetZoomButton');
+
+    if (zoomInBtn) {
+        zoomInBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            zoomMap(1.2);
+        });
+    }
+
+    if (zoomOutBtn) {
+        zoomOutBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            zoomMap(0.8);
+        });
+    }
+
+    if (resetBtn) {
+        resetBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            resetMap();
+        });
+    }
 }
 
 // Función para manejar el zoom con el mouse wheel
@@ -53,6 +83,11 @@ function handleWheel(event) {
 }
 
 function handleTouchStart(event) {
+    // No prevenir el evento por defecto para los botones
+    if (event.target.closest('.zoom-controls')) {
+        return;
+    }
+
     event.preventDefault();
     event.stopPropagation();
     
@@ -74,6 +109,11 @@ function handleTouchStart(event) {
 }
 
 function handleTouchMove(event) {
+    // No prevenir el evento por defecto para los botones
+    if (event.target.closest('.zoom-controls')) {
+        return;
+    }
+
     event.preventDefault();
     event.stopPropagation();
     

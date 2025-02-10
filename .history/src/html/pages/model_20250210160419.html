@@ -401,7 +401,7 @@
         
 
         // Inicializar el mapa cuando se abre el modal
-      
+        document.getElementById('mapModal').addEventListener('show', initializeMapInteraction);
         import * as modalFunctions from '../../js/modals.js';
 
         // Hacer las funciones modales disponibles globalmente

@@ -52,7 +52,7 @@ export function closeMapModal() {
 }
 
 // Funciones para el zoom del mapa
-
+export { zoomMap, resetMap } from './mapInteraction.js';
 
 
 

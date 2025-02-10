@@ -25,29 +25,14 @@ function hideModal(modalId) {
     }
 }
 
-let pinchZoom = null;
-
 export function openMapModal() {
     showModal('mapModal');
-    
-    // Inicializar Pinch-Zoom después de que el modal esté visible
-    setTimeout(() => {
-        if (!pinchZoom) {
-            const container = document.querySelector('.pinch-zoom-container');
-            pinchZoom = new PinchZoom(container, {
-                draggable: true,
-                maxZoom: 4
-            });
-
-            // Configurar botones de zoom
-            document.getElementById('zoomInButton').onclick = () => pinchZoom.zoomIn(0.5);
-            document.getElementById('zoomOutButton').onclick = () => pinchZoom.zoomOut(0.5);
-            document.getElementById('resetZoomButton').onclick = () => pinchZoom.reset();
-        }
-    }, 100);
 }
 
 export function closeMapModal() {
+    if (panzoomInstance) {
+        panzoomInstance.reset();
+    }
     hideModal('mapModal');
 }
 

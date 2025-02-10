@@ -52,37 +52,27 @@
                 <div class="modal-content">
                     <span class="close" id="closeMapButton">&times;</span>
                     <h2>Property Location</h2>
-                    <p>On your mobile, rotate your screen to landscape mode for a better view.</p>
-                    <style>
-                        .map-container {
-                            width: 100%;
-                            height: 70vh;
-                            overflow: auto;
-                            position: relative;
-                            border: 1px solid #ddd;
-                            border-radius: 4px;
-                        }
-                        .map-container img {
-                            width: 100%;
-                            height: 100%;
-                            object-fit: contain;
-                            transition: transform 0.3s ease;
-                        }
-                        .map-container img:active {
-                            transform: scale(2.5);
-                            cursor: zoom-out;
-                        }
-                    </style>
-                    <div class="map-wrapper">
-                        <div class="map-container">
-                            <img id="propertyMapImage" src="" alt="Property Map">
-                        </div>
+                    <div class="zoom-controls" style="margin-bottom: 10px; text-align: center;">
+                        <button id="zoomInButton" class="zoom-button" style="margin: 2px; padding: 8px 15px; background: white; border: 1px solid #ddd; border-radius: 4px; cursor: pointer;">
+                            <i class="fas fa-plus"></i>
+                        </button>
+                        <button id="zoomOutButton" class="zoom-button" style="margin: 2px; padding: 8px 15px; background: white; border: 1px solid #ddd; border-radius: 4px; cursor: pointer;">
+                            <i class="fas fa-minus"></i>
+                        </button>
+                        <button id="resetZoomButton" class="zoom-button" style="margin: 2px; padding: 8px 15px; background: white; border: 1px solid #ddd; border-radius: 4px; cursor: pointer;">
+                            <i class="fas fa-sync-alt"></i>
+                        </button>
+                    </div>
+                    <p style="margin: 5px 0;">On your mobile, rotate your screen to landscape mode for a better view.</p>
+                    <div class="map-container" style="position: relative; overflow: hidden; width: 100%; height: 60vh; border: 1px solid #ddd; border-radius: 4px;">
+                        <img id="propertyMapImage" src="" alt="Property Map" 
+                             style="width: 100%; height: 100%; object-fit: contain; transform-origin: center; transition: transform 0.2s ease-out;">
                     </div>
                 </div>
             </div>
 
-            <!-- Agregar panzoom -->
-            <script src="https://unpkg.com/@panzoom/panzoom@4.5.1/dist/panzoom.min.js"></script>
+            <!-- Agregar Pinch-Zoom.js -->
+            <script src="https://unpkg.com/pinch-zoom-js@2.3.5/dist/pinch-zoom.umd.js"></script>
                     </div>
                 </div>
             </div>

@@ -260,21 +260,49 @@ class ContactManager {
 
         if (isPropertyPage) {
             console.log('Adding modal button for:', contact.name);
+            // Crear el botón base
+            let buttonHtml = '';
+            let modalType = '';
+            
             if (isGolfCartSection) {
-                html += `<button class="view-more-btn" onclick="openGolfCartModal()"><i class="fas fa-info-circle"></i> View more information</button>`;
-                console.log('Added Golf Cart button');
+                buttonHtml = `<button class="view-more-btn" data-modal-type="golfCart"><i class="fas fa-info-circle"></i> View more information</button>`;
+                modalType = 'golfCart';
             } else if (isGolfShop) {
-                console.log('Adding Golf Shop modal button');
-                // Verificar que la función existe
-                console.log('openGolfRatesModal exists:', typeof window.openGolfRatesModal === 'function');
-                html += `<button class="view-more-btn" onclick="openGolfRatesModal()"><i class="fas fa-info-circle"></i> View rates and information</button>`;
-                console.log('Added Golf Shop button');
+                buttonHtml = `<button class="view-more-btn" data-modal-type="golfRates"><i class="fas fa-info-circle"></i> View rates and information</button>`;
+                modalType = 'golfRates';
             } else if (isTennis) {
-                html += `<button class="view-more-btn" onclick="openTennisModal()"><i class="fas fa-info-circle"></i>See tennis schedule and rates</button>`;
-                console.log('Added Tennis button');
+                buttonHtml = `<button class="view-more-btn" data-modal-type="tennis"><i class="fas fa-info-circle"></i>See tennis schedule and rates</button>`;
+                modalType = 'tennis';
             } else if (isKidsClub) {
-                html += `<button class="view-more-btn" onclick="openKidsClubModal()"><i class="fas fa-info-circle"></i> View Kids Club information</button>`;
-                console.log('Added Kids Club button');
+                buttonHtml = `<button class="view-more-btn" data-modal-type="kidsClub"><i class="fas fa-info-circle"></i> View Kids Club information</button>`;
+                modalType = 'kidsClub';
+            }
+
+            if (buttonHtml) {
+                html += buttonHtml;
+                // Usar setTimeout para asegurarnos de que el botón existe en el DOM
+                setTimeout(() => {
+                    const button = document.querySelector(`button[data-modal-type="${modalType}"]`);
+                    if (button) {
+                        import('./src/js/modals.js')
+                            .then(modalsModule => {
+                                const modalFunctions = {
+                                    golfCart: modalsModule.openGolfCartModal,
+                                    golfRates: modalsModule.openGolfRatesModal,
+                                    tennis: modalsModule.openTennisModal,
+                                    kidsClub: modalsModule.openKidsClubModal
+                                };
+                                
+                                const modalFunction = modalFunctions[modalType];
+                                if (modalFunction) {
+                                    button.addEventListener('click', modalFunction);
+                                } else {
+                                    console.error(`Modal function for ${modalType} not found`);
+                                }
+                            })
+                            .catch(error => console.error('Error loading modals.js:', error));
+                    }
+                }, 0);
             }
         } else {
             console.log('Not Villa Clara page, skipping modal buttons');

@@ -1,0 +1,41 @@
+.service-button {
+    margin: 8px 0;
+    transition: transform 0.2s ease;
+}
+
+.service-button .tree-content {
+    cursor: pointer;
+    padding: 10px 15px;
+    border-radius: 8px;
+    background-color: #f5f5f5;
+    display: flex;
+    align-items: center;
+    transition: background-color 0.2s ease;
+}
+
+.service-button .tree-content:hover {
+    background-color: #e0e0e0;
+    transform: translateX(5px);
+}
+
+.service-icon {
+    margin-right: 10px;
+    font-size: 1.2em;
+}
+
+/* Estilos específicos para cada servicio */
+.service-button[data-service="golf-cart"] .tree-content {
+    border-left: 4px solid #4CAF50;
+}
+
+.service-button[data-service="golf-rates"] .tree-content {
+    border-left: 4px solid #2196F3;
+}
+
+.service-button[data-service="tennis"] .tree-content {
+    border-left: 4px solid #FF9800;
+}
+
+.service-button[data-service="kids-club"] .tree-content {
+    border-left: 4px solid #E91E63;
+}

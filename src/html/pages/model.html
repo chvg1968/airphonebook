@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="../../../assets/styles/components/search.css">
     <link rel="stylesheet" href="../../../assets/styles/components/contacts.css">
     <link rel="stylesheet" href="../../../assets/styles/components/layout.css">
+    <link rel="stylesheet" href="../../../assets/styles/components/services.css">
     <link rel="stylesheet" href="../../../styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -125,7 +126,7 @@
             <!-- Modal para el Golf Cart -->
             <div id="golfCartModal" class="modal">
                 <div class="modal-content">
-                    <span class="close" onclick="closeGolfCartModal()">&times;</span>
+                    <span class="close" data-modal="golfCart">&times;</span>
                     <h2>Golf Cart Information</h2>
                     
                     <div class="info-section">
@@ -163,7 +164,7 @@
             <!-- Modal para Golf Shop -->
             <div id="golfRatesModal" class="modal" data-modal-type="golf-shop">
                 <div class="modal-content">
-                    <span class="close" onclick="closeGolfRatesModal()">&times;</span>
+                    <span class="close" data-modal="golfRates">&times;</span>
                     <h2>Golf Shop - Rates and Information</h2>
                     <!-- Verificación de carga del modal -->
                     <script>
@@ -285,7 +286,7 @@
             <!-- Modal para Tennis -->
             <div id="tennisModal" class="modal">
                 <div class="modal-content">
-                    <span class="close" onclick="closeTennisModal()">&times;</span>
+                    <span class="close" data-modal="tennis">&times;</span>
                     <h2>Tennis Services</h2>
                     
                     <div class="info-section">
@@ -334,7 +335,7 @@
             <!-- Modal para Kids Club -->
             <div id="kidsClubModal" class="modal">
                 <div class="modal-content">
-                    <span class="close" onclick="closeKidsClubModal()">&times;</span>
+                    <span class="close" data-modal="kidsClub">&times;</span>
                     <h2>👦 🐢 St. Regis Tortuga Kid's Club</h2>
                     
                     <div class="info-section">
@@ -387,9 +388,33 @@
     <script type="module">
         // Importar las dependencias necesarias
         import { initializeProperty, openMapModal, closeMapModal } from '../../js/propertyRenderer.js';
+        import * as modalFunctions from '../../js/modals.js';
+
+        // Hacer las funciones modales disponibles globalmente
+        Object.assign(window, modalFunctions);
 
         // Inicializar la propiedad
         document.addEventListener('DOMContentLoaded', () => {
+            // Configurar manejadores de eventos para los botones de cierre
+            document.querySelectorAll('.close').forEach(button => {
+                button.addEventListener('click', () => {
+                    const modalType = button.getAttribute('data-modal');
+                    switch(modalType) {
+                        case 'golfCart':
+                            closeGolfCartModal();
+                            break;
+                        case 'golfRates':
+                            closeGolfRatesModal();
+                            break;
+                        case 'tennis':
+                            closeTennisModal();
+                            break;
+                        case 'kidsClub':
+                            closeKidsClubModal();
+                            break;
+                    }
+                });
+            });
             initializeProperty();
             
             // Configurar los event listeners para el modal del mapa

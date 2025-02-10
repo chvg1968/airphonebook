@@ -233,6 +233,46 @@ export async function buildTree() {
                 if (treeChildren.children.length === 0) {
                     // Si es una sección especial o no tiene categorías, mostrar los contactos directamente
                     if (sectionData.isSpecial || sectionData.categories.length === 0) {
+                        // Agregar botones de modales si es la sección de servicios
+                        if (sectionName === 'Services') {
+                            const serviceButtons = [
+                                { name: 'Golf Cart Information', icon: '🛺', modalFunction: 'openGolfCartModal' },
+                                { name: 'Golf Rates', icon: '⛳', modalFunction: 'openGolfRatesModal' },
+                                { name: 'Tennis Services', icon: '🎾', modalFunction: 'openTennisModal' },
+                                { name: "Kid's Club", icon: '👶', modalFunction: 'openKidsClubModal' }
+                            ];
+
+                            serviceButtons.forEach(service => {
+                                const serviceItem = document.createElement('div');
+                                serviceItem.className = 'tree-item service-button';
+                                
+                                const treeContent = document.createElement('div');
+                                treeContent.className = 'tree-content';
+                                
+                                const iconSpan = document.createElement('span');
+                                iconSpan.className = 'service-icon';
+                                iconSpan.textContent = service.icon;
+                                
+                                treeContent.appendChild(iconSpan);
+                                treeContent.appendChild(document.createTextNode(service.name));
+                                
+                                // Importar la función del módulo modals.js dinámicamente
+                                import('../../js/modals.js')
+                                    .then(modalsModule => {
+                                        const modalFunction = modalsModule[service.modalFunction];
+                                        if (modalFunction) {
+                                            treeContent.addEventListener('click', () => modalFunction());
+                                        } else {
+                                            console.error(`Modal function ${service.modalFunction} not found`);
+                                        }
+                                    })
+                                    .catch(error => console.error('Error loading modals.js:', error));
+                                
+                                serviceItem.appendChild(treeContent);
+                                treeChildren.appendChild(serviceItem);
+                            });
+                        }
+
                         const contacts = sectionData.contacts || contactManager.contacts.filter(contact => contact.section === sectionName);
                         displayContacts(contacts);
                         return;

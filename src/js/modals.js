@@ -25,13 +25,12 @@ function hideModal(modalId) {
     }
 }
 
+import { initializeMapInteraction } from './mapInteraction.js';
+
 export function openMapModal() {
     showModal('mapModal');
-    // Inicializar el zoom
-    const mapImage = document.getElementById('mapImage');
-    if (mapImage) {
-        mapImage.style.transform = 'scale(1)';
-    }
+    // Inicializar la interacción del mapa
+    initializeMapInteraction();
 }
 
 export function closeMapModal() {
@@ -39,32 +38,9 @@ export function closeMapModal() {
 }
 
 // Funciones para el zoom del mapa
-export function zoomMap(factor) {
-    const mapImage = document.getElementById('propertyMapImage');
-    if (mapImage) {
-        const currentScale = mapImage.style.transform ? 
-            parseFloat(mapImage.style.transform.replace('scale(', '').replace(')', '')) : 1;
-        const newScale = currentScale * factor;
-        
-        // Limitar el zoom entre 0.5 y 3
-        if (newScale >= 0.5 && newScale <= 3) {
-            mapImage.style.transform = `scale(${newScale})`;
-            console.log('Zoom aplicado:', newScale);
-        }
-    } else {
-        console.error('Elemento propertyMapImage no encontrado');
-    }
-}
+export { zoomMap, resetMap } from './mapInteraction.js';
 
-export function resetMap() {
-    const mapImage = document.getElementById('propertyMapImage');
-    if (mapImage) {
-        mapImage.style.transform = 'scale(1)';
-        console.log('Zoom reseteado');
-    } else {
-        console.error('Elemento propertyMapImage no encontrado');
-    }
-}
+
 
 // Golf Cart Modal
 export function openGolfCartModal() {

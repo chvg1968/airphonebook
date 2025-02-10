@@ -25,33 +25,180 @@ function hideModal(modalId) {
     }
 }
 
+let scale = 1;
+let startX = 0;
+let startY = 0;
+let translateX = 0;
+let translateY = 0;
+let isPanning = false;
+let lastTouchDistance = 0;
+
 export function openMapModal() {
     showModal('mapModal');
-    setTimeout(initializeImage, 100);
+    setTimeout(setupZoom, 100);
 }
 
-function initializeImage() {
-    const container = document.getElementById('mapContainer');
+function setupZoom() {
+    const container = document.querySelector('.map-container');
     const image = document.getElementById('propertyMapImage');
     if (!container || !image) return;
 
-    // Asegurar que la imagen tenga su tamaño natural
-    image.style.width = 'auto';
-    image.style.height = 'auto';
-
-    // Ajustar el tamaño inicial para que quepa en el contenedor
-    const containerRatio = container.clientWidth / container.clientHeight;
-    const imageRatio = image.naturalWidth / image.naturalHeight;
-
-    if (imageRatio > containerRatio) {
-        // La imagen es más ancha que el contenedor
-        image.style.width = '100%';
-        image.style.height = 'auto';
+    // Esperar a que la imagen cargue
+    if (!image.complete) {
+        image.onload = () => initializeZoom(container, image);
     } else {
-        // La imagen es más alta que el contenedor
-        image.style.height = '100%';
-        image.style.width = 'auto';
+        initializeZoom(container, image);
     }
+}
+
+function initializeZoom(container, image) {
+    resetZoom(container, image);
+
+    // Prevenir el scroll del documento cuando se hace zoom
+    container.addEventListener('wheel', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+
+        const delta = e.deltaY * -0.002;
+        const newScale = Math.min(Math.max(scale + delta, 1), 5);
+        const rect = container.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+
+        zoomTo(newScale, x, y, container, image);
+    }, { passive: false });
+
+    // Mouse events para pan
+    container.addEventListener('mousedown', (e) => {
+        if (scale > 1) {
+            e.preventDefault();
+            startPan(e);
+        }
+    });
+
+    document.addEventListener('mousemove', (e) => {
+        if (isPanning) {
+            e.preventDefault();
+            pan(e, container, image);
+        }
+    });
+
+    document.addEventListener('mouseup', () => {
+        if (isPanning) {
+            isPanning = false;
+            container.classList.remove('panning');
+        }
+    });
+
+    // Touch events
+    container.addEventListener('touchstart', (e) => {
+        if (e.touches.length === 2) {
+            e.preventDefault();
+            const touch1 = e.touches[0];
+            const touch2 = e.touches[1];
+            lastTouchDistance = getTouchDistance(touch1, touch2);
+        } else if (scale > 1) {
+            startPan(e.touches[0]);
+        }
+    }, { passive: false });
+
+    container.addEventListener('touchmove', (e) => {
+        e.preventDefault();
+        if (e.touches.length === 2) {
+            const touch1 = e.touches[0];
+            const touch2 = e.touches[1];
+            const currentDistance = getTouchDistance(touch1, touch2);
+            const delta = currentDistance / lastTouchDistance;
+
+            const newScale = Math.min(Math.max(scale * delta, 1), 5);
+            const rect = container.getBoundingClientRect();
+            const centerX = (touch1.clientX + touch2.clientX) / 2 - rect.left;
+            const centerY = (touch1.clientY + touch2.clientY) / 2 - rect.top;
+
+            zoomTo(newScale, centerX, centerY, container, image);
+            lastTouchDistance = currentDistance;
+        } else if (isPanning) {
+            pan(e.touches[0], container, image);
+        }
+    }, { passive: false });
+
+    container.addEventListener('touchend', () => {
+        lastTouchDistance = 0;
+        if (isPanning) {
+            isPanning = false;
+            container.classList.remove('panning');
+        }
+    });
+}
+
+function getTouchDistance(touch1, touch2) {
+    return Math.hypot(
+        touch2.clientX - touch1.clientX,
+        touch2.clientY - touch1.clientY
+    );
+}
+
+function startPan(e) {
+    isPanning = true;
+    startX = (e.clientX || e.touches[0].clientX) - translateX;
+    startY = (e.clientY || e.touches[0].clientY) - translateY;
+    document.querySelector('.map-container').classList.add('panning');
+}
+
+function pan(e, container, image) {
+    const clientX = e.clientX || e.touches[0].clientX;
+    const clientY = e.clientY || e.touches[0].clientY;
+
+    translateX = clientX - startX;
+    translateY = clientY - startY;
+
+    // Limitar el paneo al área visible
+    const containerRect = container.getBoundingClientRect();
+    const imageRect = image.getBoundingClientRect();
+
+    const maxX = (imageRect.width * scale - containerRect.width) / 2;
+    const maxY = (imageRect.height * scale - containerRect.height) / 2;
+
+    translateX = Math.min(Math.max(translateX, -maxX), maxX);
+    translateY = Math.min(Math.max(translateY, -maxY), maxY);
+
+    updateTransform(image);
+}
+
+function zoomTo(newScale, x, y, container, image) {
+    if (newScale === scale) return;
+
+    // Calcular el punto de zoom relativo a la imagen
+    const rect = image.getBoundingClientRect();
+    const prevScale = scale;
+    scale = newScale;
+
+    // Ajustar la posición para mantener el punto de zoom
+    if (scale > 1) {
+        const scaleRatio = scale / prevScale;
+        translateX = x - (x - translateX) * scaleRatio;
+        translateY = y - (y - translateY) * scaleRatio;
+        container.classList.add('zoomed');
+    } else {
+        translateX = 0;
+        translateY = 0;
+        container.classList.remove('zoomed');
+    }
+
+    updateTransform(image);
+}
+
+function resetZoom(container, image) {
+    scale = 1;
+    translateX = 0;
+    translateY = 0;
+    isPanning = false;
+    container.classList.remove('zoomed', 'panning');
+    updateTransform(image);
+}
+
+function updateTransform(image) {
+    image.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
 }
 
 export function closeMapModal() {

@@ -40,7 +40,7 @@ export function closeMapModal() {
 
 // Funciones para el zoom del mapa
 export function zoomMap(factor) {
-    const mapImage = document.getElementById('mapImage');
+    const mapImage = document.getElementById('propertyMapImage');
     if (mapImage) {
         const currentScale = mapImage.style.transform ? 
             parseFloat(mapImage.style.transform.replace('scale(', '').replace(')', '')) : 1;
@@ -49,14 +49,20 @@ export function zoomMap(factor) {
         // Limitar el zoom entre 0.5 y 3
         if (newScale >= 0.5 && newScale <= 3) {
             mapImage.style.transform = `scale(${newScale})`;
+            console.log('Zoom aplicado:', newScale);
         }
+    } else {
+        console.error('Elemento propertyMapImage no encontrado');
     }
 }
 
 export function resetMap() {
-    const mapImage = document.getElementById('mapImage');
+    const mapImage = document.getElementById('propertyMapImage');
     if (mapImage) {
         mapImage.style.transform = 'scale(1)';
+        console.log('Zoom reseteado');
+    } else {
+        console.error('Elemento propertyMapImage no encontrado');
     }
 }
 

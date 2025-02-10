@@ -1,4 +1,5 @@
 import { villas } from '../../../properties.js';
+import { openMapModal as openMap, closeMapModal as closeMap } from './modals.js';
 
 // Función para inicializar el modal del mapa
 function initializeMapModal() {
@@ -15,21 +16,12 @@ function initializeMapModal() {
     }
 }
 
-// Función para abrir el modal del mapa
-export function openMapModal() {
-    const modal = document.getElementById('mapModal');
-    if (modal) {
-        modal.style.display = 'block';
-    }
-}
+// Exportar las funciones del modal
+export const openMapModal = openMap;
+export const closeMapModal = closeMap;
 
-// Función para cerrar el modal del mapa
-export function closeMapModal() {
-    const modal = document.getElementById('mapModal');
-    if (modal) {
-        modal.style.display = 'none';
-    }
-}
+// Exportar la función de inicialización
+export { initializeMapModal };
 
 // Función principal que maneja la carga de la página
 export async function initializeProperty() {

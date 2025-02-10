@@ -82,10 +82,11 @@
                             flex: 1;
                             position: relative;
                             background: #f5f5f5;
-                            overflow: hidden;
+                            overflow: auto; /* Permitir scroll en ambas direcciones */
                             display: flex;
                             align-items: center;
                             justify-content: center;
+                            -webkit-overflow-scrolling: touch; /* Scroll suave en iOS */
                         }
 
                         #propertyMapImage {
@@ -93,9 +94,11 @@
                             max-height: none;
                             width: auto;
                             height: auto;
-                            transform-origin: 0 0;
+                            transform-origin: center;
                             will-change: transform;
                             transition: transform 0.1s ease-out;
+                            min-width: 100%; /* Asegurar que la imagen ocupe al menos el ancho del contenedor */
+                            min-height: 100%; /* Asegurar que la imagen ocupe al menos el alto del contenedor */
                         }
 
                         .map-container.zoomed #propertyMapImage {
@@ -108,8 +111,17 @@
                         }
                     </style>
                     <div class="map-wrapper">
+                        <div class="map-instructions">
+                            Usa los botones + y - para hacer zoom, o arrastra para mover el mapa
+                        </div>
                         <div id="mapContainer" class="map-container">
                             <img id="propertyMapImage" src="" alt="Property Map">
+                        </div>
+                        <div class="zoom-controls">
+                            <button class="zoom-button" id="zoomInBtn" title="Acercar">+</button>
+                            <button class="zoom-button" id="zoomOutBtn" title="Alejar">-</button>
+                            <button class="zoom-button" id="resetZoomBtn" title="Restablecer zoom">↺</button>
+                        </div>
                         </div>
                     </div>
                 </div>
@@ -446,7 +458,19 @@
 
     <script type="module">
         // Importar las dependencias necesarias
-        import { initializeProperty, openMapModal, closeMapModal } from '../../js/propertyRenderer.js';
+        import { initializeProperty } from '../../js/propertyRenderer.js';
+        import { zoomIn, zoomOut, resetZoom } from '../../js/modals.js';
+
+        // Configurar los botones de zoom cuando el documento esté listo
+        document.addEventListener('DOMContentLoaded', () => {
+            const zoomInBtn = document.getElementById('zoomInBtn');
+            const zoomOutBtn = document.getElementById('zoomOutBtn');
+            const resetZoomBtn = document.getElementById('resetZoomBtn');
+
+            if (zoomInBtn) zoomInBtn.addEventListener('click', zoomIn);
+            if (zoomOutBtn) zoomOutBtn.addEventListener('click', zoomOut);
+            if (resetZoomBtn) resetZoomBtn.addEventListener('click', resetZoom);
+        });
         
 
         // Inicializar el mapa cuando se abre el modal

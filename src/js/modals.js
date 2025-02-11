@@ -17,24 +17,39 @@ function hideModal(modalId) {
 // Variable para la instancia de Panzoom
 let panzoomInstance = null;
 
-// Funciones exportadas para los botones de zoom
-export function zoomIn() {
+// Exponer funciones de zoom globalmente
+window.zoomIn = function() {
     if (panzoomInstance) {
-        panzoomInstance.zoomIn();
+        const currentScale = panzoomInstance.getScale();
+        const newScale = Math.min(currentScale * 1.2, 4);
+        panzoomInstance.zoom(newScale, { 
+            animate: true,
+            duration: 250
+        });
+        
+        // Centrar la imagen si está en escala 1 o menor
+        if (currentScale <= 1) {
+            panzoomInstance.pan(0, 0);
+        }
     }
-}
+};
 
-export function zoomOut() {
+window.zoomOut = function() {
     if (panzoomInstance) {
-        panzoomInstance.zoomOut();
+        const currentScale = panzoomInstance.getScale();
+        const newScale = Math.max(currentScale * 0.8, 1);
+        panzoomInstance.zoom(newScale, { 
+            animate: true,
+            duration: 250
+        });
     }
-}
+};
 
-export function resetZoom() {
+window.resetZoom = function() {
     if (panzoomInstance) {
-        panzoomInstance.reset();
+        panzoomInstance.reset({ animate: true });
     }
-}
+};
 
 // Ocultar las instrucciones después de un tiempo
 function hideInstructions() {
@@ -51,7 +66,7 @@ export function openMapModal() {
 
 function setupZoom() {
     const container = document.querySelector('.map-container');
-    const image = document.getElementById('propertyMapImage');
+    const image = document.querySelector('.panzoom');
     if (!container || !image) return;
 
     // Mostrar instrucciones y ocultarlas después de 5 segundos
@@ -71,25 +86,74 @@ function initializeZoom(container) {
         panzoomInstance.destroy();
     }
 
+    const img = container.querySelector('.panzoom');
+
     // Inicializar Panzoom con opciones mejoradas
-    panzoomInstance = Panzoom(container, {
+    panzoomInstance = Panzoom(img, {
         maxScale: 4,
-        minScale: 1,
+        minScale: 0.5,
         contain: 'outside',
         startScale: 1,
-        step: 0.1,
-        animate: true
+        animate: true,
+        duration: 250,
+        easing: 'ease-out'
+    });
+
+    // Habilitar el zoom y pan en la imagen
+    img.parentElement.addEventListener('panzoomstart', (event) => {
+        event.preventDefault();
+    });
+
+    img.parentElement.addEventListener('panzoomend', () => {
+        const scale = panzoomInstance.getScale();
+        if (scale <= 1) {
+            panzoomInstance.pan(0, 0);
+        }
     });
 
     // Mouse wheel zoom
-    container.addEventListener('wheel', (e) => {
-        e.preventDefault();
-        panzoomInstance.zoomWithWheel(e);
+    img.addEventListener('wheel', function(event) {
+        event.preventDefault();
+        const delta = event.deltaY;
+        const scale = panzoomInstance.getScale();
+        const newScale = delta > 0 ? scale * 0.9 : scale * 1.1;
+
+        if (newScale >= 0.5 && newScale <= 4) {
+            panzoomInstance.zoom(newScale, {
+                animate: true,
+                focal: {
+                    x: event.clientX,
+                    y: event.clientY
+                }
+            });
+        }
     });
 
-    // Actualizar el cursor
-    container.style.cursor = 'grab';
+    // Habilitar el arrastre en la imagen
+    container.addEventListener('mousedown', function(e) {
+        if (panzoomInstance.getScale() > 1) {
+            container.style.cursor = 'grabbing';
+        }
+    });
 
+    container.addEventListener('mouseup', function() {
+        container.style.cursor = 'grab';
+    });
+
+    container.addEventListener('mouseleave', function() {
+        container.style.cursor = 'grab';
+    });
+
+    // Gestos táctiles
+    container.addEventListener('touchstart', () => {
+        container.style.cursor = 'grabbing';
+    });
+
+    container.addEventListener('touchend', () => {
+        container.style.cursor = 'grab';
+    });
+
+    // Eventos del mouse
     container.addEventListener('mousedown', () => {
         container.style.cursor = 'grabbing';
     });

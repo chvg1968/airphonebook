@@ -50,15 +50,10 @@
 
             <!-- Modal para el mapa -->
             <div id="mapModal" class="modal">
-                <div class="modal-content map-modal-content">
-                    <div class="modal-header">
-                        <span class="close" id="closeMapButton">&times;</span>
-                        <h2>Property Location</h2>
-                        <div class="map-instructions">
-                            <p>Rotate your mobile device for a better viewing experience.</p>
-                            <p class="zoom-tip">Pinch to zoom and drag to move around the map.</p>
-                        </div>
-                    </div>
+                <div class="modal-content">
+                    <span class="close" id="closeMapButton">&times;</span>
+                    <h2>Property Location</h2>
+                    <p class="map-instructions">On your mobile, rotate your screen to landscape mode for a better view.</p>
                     <div class="map-container">
                         <img id="propertyMapImage" src="" alt="Property Map" class="panzoom">
                     </div>
@@ -66,6 +61,21 @@
                         <button class="zoom-btn zoom-in" onclick="window.zoomIn()">+</button>
                         <button class="zoom-btn zoom-out" onclick="window.zoomOut()">−</button>
                         <button class="zoom-btn zoom-reset" onclick="window.resetZoom()">↺</button>
+                    </div>
+                    <div class="map-wrapper">
+                        <div class="map-instructions">
+                            Pinch to zoom and pan to move on the map.
+                        </div>
+                        <div id="mapContainer" class="map-container">
+                            <img id="propertyMapImage" src="" alt="Property Map">
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Agregar panzoom -->
+            <script src="https://unpkg.com/@panzoom/panzoom@4.5.1/dist/panzoom.min.js"></script>
                     </div>
                 </div>
             </div>

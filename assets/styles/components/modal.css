@@ -601,6 +601,27 @@
 
 .modal-header {
     margin-bottom: 15px !important;
+    position: relative !important;
+}
+
+.close {
+    float: right !important;
+    font-size: 28px !important;
+    font-weight: bold !important;
+    color: #666 !important;
+    cursor: pointer !important;
+    background: transparent !important;
+    border: none !important;
+    padding: 0 5px !important;
+    margin: -10px -10px 0 0 !important;
+    line-height: 1 !important;
+    opacity: 1 !important;
+    display: block !important;
+    z-index: 9999 !important;
+}
+
+.modal-header .close:hover {
+    color: #333 !important;
 }
 
 .map-instructions {

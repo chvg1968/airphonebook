@@ -93,8 +93,8 @@ export const ICONS = {
 // Orden predefinido de secciones
 export const SECTION_ORDER = [
     "Medical and Security Emergencies",
-    "Unit's Golf Cart",
     "Resort Restaurants and Venues",
+    "Unit's Golf Cart",
     "Resort Activities and Adventures", 
     "Off Property Tours and Places to Visit",
     "Off Property Transportation and Airport Transfers",

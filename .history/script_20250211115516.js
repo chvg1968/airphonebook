@@ -265,13 +265,8 @@ class ContactManager {
             let modalType = '';
             
             if (isGolfCartSection) {
-                buttonHtml = `
-                    <div class="view-more-text">View more information:</div>
-                    <div class="modal-links">
-                        <button class="view-more-btn" data-modal-type="golfCartInfo"><i class="fas fa-info-circle"></i> Instructions</button>
-                        <button class="view-more-btn" data-modal-type="golfCartRules"><i class="fas fa-exclamation-circle"></i> Rules</button>
-                    </div>`;
-                modalType = 'golfCartInfo';
+                buttonHtml = `<button class="view-more-btn" data-modal-type="golfCart"><i class="fas fa-info-circle"></i> View more information</button>`;
+                modalType = 'golfCart';
             } else if (isGolfShop) {
                 buttonHtml = `<button class="view-more-btn" data-modal-type="golfRates"><i class="fas fa-info-circle"></i> View rates and information</button>`;
                 modalType = 'golfRates';
@@ -287,27 +282,23 @@ class ContactManager {
                 html += buttonHtml;
                 // Usar setTimeout para asegurarnos de que el botón existe en el DOM
                 setTimeout(() => {
-                    const buttons = document.querySelectorAll('.view-more-btn');
-                    if (buttons.length > 0) {
+                    const button = document.querySelector(`button[data-modal-type="${modalType}"]`);
+                    if (button) {
                         import('./src/js/modals.js')
                             .then(modalsModule => {
                                 const modalFunctions = {
-                                    golfCartInfo: modalsModule.openGolfCartModalInfo,
-                                    golfCartRules: modalsModule.openGolfCartModalRules,
+                                    golfCart: modalsModule.openGolfCartModal,
                                     golfRates: modalsModule.openGolfRatesModal,
                                     tennis: modalsModule.openTennisModal,
                                     kidsClub: modalsModule.openKidsClubModal
                                 };
                                 
-                                buttons.forEach(button => {
-                                    const modalType = button.getAttribute('data-modal-type');
-                                    const modalFunction = modalFunctions[modalType];
-                                    if (modalFunction) {
-                                        button.addEventListener('click', modalFunction);
-                                    } else {
-                                        console.error(`Modal function for ${modalType} not found`);
-                                    }
-                                });
+                                const modalFunction = modalFunctions[modalType];
+                                if (modalFunction) {
+                                    button.addEventListener('click', modalFunction);
+                                } else {
+                                    console.error(`Modal function for ${modalType} not found`);
+                                }
                             })
                             .catch(error => console.error('Error loading modals.js:', error));
                     }

@@ -221,6 +221,46 @@
     background-color: transparent;
 }
 
+/* Estilos específicos para los modales del Golf Cart */
+#golfCartModalinfo .modal-content,
+#golfCartModalrules .modal-content {
+    max-width: 600px !important;
+}
+
+#golfCartModalinfo .info-section,
+#golfCartModalrules .info-section {
+    margin-bottom: 20px !important;
+    padding: 15px !important;
+    border-radius: 8px !important;
+}
+
+#golfCartModalinfo .info-section {
+    background-color: #f8f9fa !important;
+    border: 1px solid #e9ecef !important;
+}
+
+#golfCartModalrules .info-section.warning {
+    background-color: #fff5f5 !important;
+    border: 1px solid #fed7d7 !important;
+}
+
+#golfCartModalrules .warning-text {
+    color: #e53e3e !important;
+    font-weight: 500 !important;
+    margin-top: 10px !important;
+}
+
+#golfCartModalinfo h3,
+#golfCartModalrules h3 {
+    color: #2d3748 !important;
+    margin-bottom: 10px !important;
+    font-size: 1.2em !important;
+}
+
+#golfCartModalrules .info-section.warning h3 {
+    color: #c53030 !important;
+}
+
 /* Estilos para la tabla de tarifas de golf */
 .table-responsive {
     overflow-x: auto;

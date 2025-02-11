@@ -181,13 +181,21 @@ export function closeMapModal() {
     hideModal('mapModal');
 }
 
-// Golf Cart Modal
-export function openGolfCartModal() {
-    showModal('golfCartModal');
+// Golf Cart Modals
+export function openGolfCartModalInfo() {
+    showModal('golfCartModalinfo');
 }
 
-export function closeGolfCartModal() {
-    hideModal('golfCartModal');
+export function closeGolfCartModalInfo() {
+    hideModal('golfCartModalinfo');
+}
+
+export function openGolfCartModalRules() {
+    showModal('golfCartModalrules');
+}
+
+export function closeGolfCartModalRules() {
+    hideModal('golfCartModalrules');
 }
 
 // Golf Rates Modal
@@ -220,7 +228,8 @@ export function closeKidsClubModal() {
 // Cerrar los modales cuando se hace clic fuera de ellos
 window.addEventListener('click', (event) => {
     const mapModal = document.getElementById('mapModal');
-    const golfCartModal = document.getElementById('golfCartModal');
+    const golfCartModalInfo = document.getElementById('golfCartModalinfo');
+    const golfCartModalRules = document.getElementById('golfCartModalrules');
     const golfRatesModal = document.getElementById('golfRatesModal');
     const tennisModal = document.getElementById('tennisModal');
     const kidsClubModal = document.getElementById('kidsClubModal');
@@ -228,8 +237,10 @@ window.addEventListener('click', (event) => {
     if (event.target === mapModal) {
         closeMapModal();
     }
-    if (event.target === golfCartModal) {
-        closeGolfCartModal();
+    if (event.target === golfCartModalInfo) {
+        closeGolfCartModalInfo();
+    } else if (event.target === golfCartModalRules) {
+        closeGolfCartModalRules();
     }
     if (event.target === golfRatesModal) {
         closeGolfRatesModal();

@@ -50,6 +50,50 @@ body {
     margin-bottom: 1rem;
 }
 
+/* Estilos para los enlaces de modales */
+.view-more-text {
+    margin: 10px 0 5px;
+    color: #666;
+    font-size: 0.9em;
+}
+
+.modal-links {
+    display: flex;
+    gap: 10px;
+    margin-top: 5px;
+}
+
+.view-more-btn {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    background-color: #f0f0f0;
+    color: #333;
+    cursor: pointer;
+    font-size: 0.9em;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    transition: background-color 0.2s ease;
+}
+
+.view-more-btn:hover {
+    background-color: #e0e0e0;
+}
+
+.view-more-btn i {
+    font-size: 1em;
+}
+
+.view-more-btn[data-modal-type="golfCartRules"] {
+    background-color: #fff3f3;
+    color: #d32f2f;
+}
+
+.view-more-btn[data-modal-type="golfCartRules"]:hover {
+    background-color: #ffe6e6;
+}
+
 /* Sección de contactos */
 .contacts-section {
     background-color: #fff;

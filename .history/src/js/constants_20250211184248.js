@@ -46,7 +46,7 @@ export const ICONS = {
         "Nanny Services":"👩‍👶",
         "Professional Photography":"📸",
         "Personal Care and Fitness":"🤲",
-        "Groceries and Shopping": "🛒",
+        "Groceries and Shopping": "🛍️",
 
         // Transportation
         "Car Rental": "🚗",

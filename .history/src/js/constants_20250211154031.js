@@ -36,7 +36,7 @@ export const ICONS = {
 
         // Services
         "Concierge Services": "🤵",
-        "St. Regis Iridium Spa": "💆‍♀️",
+        "Spa": "💆‍♀️",
         "Personal Chefs, Catering and Pre-Made Meals":"🧑🏻‍🍳",
         "Grocery Shopping and Errands":"🛒",
         "Concierge Services":"🤵",

@@ -15,7 +15,7 @@ export const ICONS = {
         "Bars": "🍸",
         "Pools": "🏊",
         "Beaches": "⛱️",
-        "Blends Café":"☕️",
+        "Wellness Center":"🧘🏻‍♀️",
         "Hotel":"🏨", 
         "Places to Visit": "🏰",
 

@@ -16,7 +16,7 @@ export const villas = {
       "This cart doesn't require keys": "true"
     },
     "Property Information":{
-      "Accommodation": "4 bedroom/ 4 bathroom<br>Amazing Golf Course/ Lake View Penthouse Villa - 8 Guests"
+      "Accommodation": "4 bedroom/ 4 bathroom<br>Penthouse Villa - 8 Guests"
     },
     "Important Villa Information": {
       "content": "<ul class='info-list' style='list-style: none;'>\        <li>Trash disposal room is the last closet down the hall, past the elevator</li>\        <p style='text-decoration: underline;'>At the entrance, to the left of the front door:</p>\        <ul class='info-list' style='list-style: none;'>\            <li><strong>Thermostats to regulate the 3 A/C units temperature are located in:</strong>\                <ul style='list-style: none; padding-left: 20px; margin-top: 5px;'>\                    <li>Closet in the right hallway after the foyer</li>\                    <li>Closet inside the laundry room</li>\                </ul>\            </li>\            <li><strong>Grill:</strong> Turn off the gas after using the grill</li>\            <li><strong>Terrace door:</strong> Lock the terrace door when not at the villa. The door may occasionally open due to airflow</li>\        </ul>\      </ul>"

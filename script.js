@@ -196,7 +196,7 @@ class ContactManager {
     // Método de renderizado actualizado
     renderPhoneNumbers(phone, phoneIcon) {
         if (!phone || phone === 'null') {
-            return '<div class="phone-number">Phone contact is not available</div>';
+            return '';
         }
 
         // Primero limpiamos el string de teléfono de cualquier <br> y lo reemplazamos por comas

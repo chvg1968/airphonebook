@@ -99,14 +99,17 @@ const handleCategoryClick = (category, sectionName) => (e) => {
             contactsContainer.appendChild(subcategoryDiv);
         });
     } else {
-        // Mostrar contactos de la categoría directamente
-        const contacts = contactManager.getContactsInCategory(sectionName, category.name);
-        if (contacts && contacts.length > 0) {
-            contactsContainer.appendChild(renderContacts(contacts));
-        } else {
-            // Si la categoría no tiene contactos, mostrar los contactos de la sección
-            const sectionContacts = contactManager.contacts.filter(contact => contact.section === sectionName);
-            contactsContainer.appendChild(renderContacts(sectionContacts));
+        // Para "Aqua Tours and Boat Charters" no mostrar contactos directos
+        if (category.name !== "Aqua Tours and Boat Charters") {
+            // Mostrar contactos de la categoría directamente
+            const contacts = contactManager.getContactsInCategory(sectionName, category.name);
+            if (contacts && contacts.length > 0) {
+                contactsContainer.appendChild(renderContacts(contacts));
+            } else {
+                // Si la categoría no tiene contactos, mostrar los contactos de la sección
+                const sectionContacts = contactManager.contacts.filter(contact => contact.section === sectionName);
+                contactsContainer.appendChild(renderContacts(sectionContacts));
+            }
         }
     }
 

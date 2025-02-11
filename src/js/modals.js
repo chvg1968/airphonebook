@@ -184,6 +184,11 @@ export function closeMapModal() {
 // Golf Cart Modals
 export function openGolfCartModalInfo() {
     showModal('golfCartModalinfo');
+    // Configurar el botón de cierre
+    const closeBtn = document.querySelector('#golfCartModalinfo .close');
+    if (closeBtn) {
+        closeBtn.onclick = closeGolfCartModalInfo;
+    }
 }
 
 export function closeGolfCartModalInfo() {
@@ -192,6 +197,11 @@ export function closeGolfCartModalInfo() {
 
 export function openGolfCartModalRules() {
     showModal('golfCartModalrules');
+    // Configurar el botón de cierre
+    const closeBtn = document.querySelector('#golfCartModalrules .close');
+    if (closeBtn) {
+        closeBtn.onclick = closeGolfCartModalRules;
+    }
 }
 
 export function closeGolfCartModalRules() {

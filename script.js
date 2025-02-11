@@ -268,8 +268,8 @@ class ContactManager {
                 buttonHtml = `
                     <div class="view-more-text">View more information:</div>
                     <div class="modal-links">
-                        <button class="view-more-btn" data-modal-type="golfCartInfo"><i class="fas fa-info-circle"></i> Instructions</button>
-                        <button class="view-more-btn" data-modal-type="golfCartRules"><i class="fas fa-exclamation-circle"></i> Rules</button>
+                        <button class="view-more-btn" data-modal-type="golfCartInfo"><i class="fas fa-info-circle"></i> Charging Instructions and Parking</button>
+                        <button class="view-more-btn" data-modal-type="golfCartRules"><i class="fas fa-exclamation-triangle"></i> Rules and Regulations</button>
                     </div>`;
                 modalType = 'golfCartInfo';
             } else if (isGolfShop) {

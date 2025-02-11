@@ -31,7 +31,7 @@ export const ICONS = {
         "Aqua Tours and Boat Charters":"🛥️", 
         "Scuba Diving Tours":"🏊",
         "Excursions":"🚗",
-        "Off-Property Transportation":"🚖",
+        "Off-Property Transportation":"🚙",
         "General Tours, Old San Juan and Adventures":"🧭",
 
         // Services

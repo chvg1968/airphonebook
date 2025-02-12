@@ -53,11 +53,14 @@ const handleCategoryClick = (category, sectionName) => (e) => {
     const isExpanding = !e.currentTarget.classList.contains('expanded');
     e.currentTarget.classList.toggle('expanded');
 
-    // Si estamos colapsando la categoría, limpiar los contactos
+    // Si estamos colapsando la categoría, limpiar los contactos y ocultar
     if (!isExpanding) {
         clearContacts();
+        document.getElementById('contacts-display').classList.add('hidden');
         return;
     }
+    // Asegurarnos que el display de contactos esté visible al expandir
+    document.getElementById('contacts-display').classList.remove('hidden');
 
     // Actualizar estado
     currentCategory = category.name;
@@ -307,8 +310,17 @@ export async function buildTree() {
 
                             categoryContent.addEventListener('click', (e) => {
                                 e.stopPropagation();
-                                currentCategory = category.name;
-
+                                
+                                // Verificar si estamos expandiendo o colapsando
+                                const isExpanding = !categoryContent.classList.contains('expanded');
+                                
+                                // Si estamos colapsando
+                                if (!isExpanding) {
+                                    clearContacts();
+                                    document.getElementById('contacts-display').classList.add('hidden');
+                                    currentCategory = null;
+                                }
+                                
                                 // Colapsar otras categorías en la misma sección
                                 const siblingCategories = treeChildren.querySelectorAll('.tree-content');
                                 siblingCategories.forEach(el => {
@@ -325,6 +337,12 @@ export async function buildTree() {
                                     categoryToggle.classList.toggle('expanded');
                                     categoryChildren.classList.toggle('expanded');
                                     categoryContent.classList.toggle('expanded');
+                                    
+                                    // Solo actualizar estado y mostrar contactos si estamos expandiendo
+                                    if (isExpanding) {
+                                        currentCategory = category.name;
+                                        document.getElementById('contacts-display').classList.remove('hidden');
+                                    }
 
                                     // Cargar subcategorías si es la primera vez
                                     if (categoryChildren.children.length === 0) {

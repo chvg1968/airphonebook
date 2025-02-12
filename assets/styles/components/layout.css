@@ -1,8 +1,8 @@
 .two-column-layout {
     display: grid;
-    grid-template-columns: 2fr 1fr;
-    gap: 1rem;
-    padding: 0.5rem;
+    grid-template-columns: 3fr 2fr;
+    gap: 2rem;
+    padding: 1rem;
     margin-top: 1rem;
     width: 100%;
     margin-bottom: 4rem;
@@ -40,6 +40,7 @@
     border-radius: 8px;
     padding: 1.5rem;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-size: 1.1rem;
 }
 
 .search-container {

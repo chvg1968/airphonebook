@@ -7,7 +7,7 @@ function createPropertyCard(propertyKey, propertyData) {
         <a href="/src/html/pages/model.html?property=${encodeURIComponent(propertyKey)}" class="property-card">
             <img src="${propertyData.image}" alt="${propertyData.property_title}" class="property-image">
             <div class="property-info">
-                <h2 class="property-name">${propertyData.property_title}</h2>
+                <h2 class="property-name">${propertyData.property_title.replace(/\n/g, '<br>')}</h2>
                 <p class="property-description">${accommodation}</p>
                 <div class="property-cta">
                     View Directory <i class="fas fa-arrow-right"></i>

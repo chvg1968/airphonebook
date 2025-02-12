@@ -80,7 +80,7 @@ export async function initializeProperty() {
 
         // 3.3 Título principal
         if (propertyTitle) {
-            propertyTitle.textContent = propertyData.property_title;
+            propertyTitle.innerHTML = propertyData.property_title.replace(/\n/g, '<br>');
             console.log('Título principal actualizado:', propertyTitle.textContent);
         } else {
             console.error('No se encontró el elemento de título');

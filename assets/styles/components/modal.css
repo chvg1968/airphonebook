@@ -34,6 +34,13 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1) !important;
 }
 
+/* Estilos específicos para los modales de Golf Cart */
+.golf-cart-modal {
+    max-width: 600px !important;
+    width: 90% !important;
+    margin: 5% auto !important;
+}
+
 /* Estilos responsive para el modal */
 @media screen and (max-width: 768px) {
     .modal-content {

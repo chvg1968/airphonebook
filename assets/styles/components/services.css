@@ -1,6 +1,8 @@
 .service-button {
     margin: 8px 0;
     transition: transform 0.2s ease;
+    width: 100%;
+    display: block;
 }
 
 .service-button .tree-content {
@@ -11,6 +13,8 @@
     display: flex;
     align-items: center;
     transition: background-color 0.2s ease;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .service-button .tree-content:hover {
@@ -23,9 +27,20 @@
     font-size: 1.2em;
 }
 
-/* Estilos específicos para cada servicio */
-.service-button[data-service="golf-cart"] .tree-content {
-    border-left: 4px solid #4CAF50;
+/* Estilos para botones de ver más */
+.view-more-btn {
+    width: 200px;
+    height: 40px;
+    margin: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+    flex: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .service-button[data-service="golf-rates"] .tree-content {

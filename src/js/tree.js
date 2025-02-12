@@ -242,7 +242,8 @@ export async function buildTree() {
                         // Agregar botones de modales si es la sección de servicios
                         if (sectionName === 'Services') {
                             const serviceButtons = [
-                                { name: 'Golf Cart Information', icon: '🛺', modalFunction: 'openGolfCartModal' },
+                                { name: 'Parking & Charging', icon: '🛺', modalFunction: 'openGolfCartModal' },
+                                { name: 'Rules & Safety', icon: '⚠️', modalFunction: 'openGolfCartModalRules' },
                                 { name: 'Golf Rates', icon: '⛳', modalFunction: 'openGolfRatesModal' },
                                 { name: 'Tennis Services', icon: '🎾', modalFunction: 'openTennisModal' },
                                 { name: "Kid's Club", icon: '👶', modalFunction: 'openKidsClubModal' }

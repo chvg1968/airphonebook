@@ -30,7 +30,7 @@ export const ICONS = {
         // Off Property Tours and Places to Visit
         "Aqua Tours and Boat Charters":"🛥️", 
         "Scuba Diving Tours":"🏊",
-        "Excursions":"⛴️",
+        "Excursions":"🚗",
         "Off-Property Transportation":"🚖",
         "General Tours, Old San Juan and Adventures":"🧭",
 
@@ -63,7 +63,7 @@ export const ICONS = {
     },
     subcategories: {
         // Restaurants
-        "Excursions":"⛴️",
+        "Excursions":"🧭",
         "Private Charters":"🛥️",
         "Scuba Diving Tours":"🤿",
 

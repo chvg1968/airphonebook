@@ -63,7 +63,7 @@ export const ICONS = {
     },
     subcategories: {
         // Restaurants
-        "Excursions":"⛴️",
+        "Excursions":"🧭",
         "Private Charters":"🛥️",
         "Scuba Diving Tours":"🤿",
 

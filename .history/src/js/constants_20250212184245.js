@@ -76,7 +76,7 @@ export const ICONS = {
         
         "Grocery Shopping on the Way from the Airport": "🛒",
         "Grocery Shopping Near Bahia Beach": "🛒",
-        "Specialty Food, Wine and Liquor  Stores": "🍷",
+        "Specialty Food, Wine and Liquors Stores": "🍷",
         "Shopping Malls": "🏢",
     },
     contactTypes: {

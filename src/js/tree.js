@@ -337,12 +337,10 @@ export async function buildTree() {
                                     categoryToggle.classList.toggle('expanded');
                                     categoryChildren.classList.toggle('expanded');
                                     categoryContent.classList.toggle('expanded');
-                                    
-                                    // Solo actualizar estado y mostrar contactos si estamos expandiendo
-                                    if (isExpanding) {
-                                        currentCategory = category.name;
-                                        document.getElementById('contacts-display').classList.remove('hidden');
-                                    }
+                                    // Limpiar contactos cuando hay subcategorías
+                                    clearContacts();
+                                    document.getElementById('contacts-display').classList.add('hidden');
+                                    currentCategory = category.name;
 
                                     // Cargar subcategorías si es la primera vez
                                     if (categoryChildren.children.length === 0) {

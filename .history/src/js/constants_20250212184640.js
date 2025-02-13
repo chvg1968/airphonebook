@@ -68,16 +68,16 @@ export const ICONS = {
         "Scuba Diving Tours":"🤿",
 
         "Near and Casual": "🍴",
-        "Carolina - 30 min West": "🍴",
-        "Fajardo - 30 min East": "🍴",
-        "San Juan - 45 min West": "🍴",
+        "Carolina - 30 min West": "🧭",
+        "Fajardo - 30 min East": "🧭",
+        "San Juan - 45 min West": "🧭",
 
         // Shopping
         
         "Grocery Shopping on the Way from the Airport": "🛒",
         "Grocery Shopping Near Bahia Beach": "🛒",
         "Specialty Food, Wine and Liquor Stores": "🍷",
-        "Shopping Malls": "🛍️",
+        "Shopping Malls": "🏢",
     },
     contactTypes: {
         "restaurant": "🍽️",

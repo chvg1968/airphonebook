@@ -21,40 +21,70 @@
             background: var(--background-color);
             border-radius: var(--border-radius);
             overflow: hidden;
-            box-shadow: var(--shadow-sm);
-            transition: var(--transition);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
             text-decoration: none;
             color: var(--text-color);
             margin: 0 auto;
             max-width: 400px;
             width: 100%;
+            display: flex;
+            flex-direction: column;
         }
 
         .property-card:hover {
             transform: translateY(-4px);
-            box-shadow: var(--shadow-md);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
         }
 
         .property-image {
             width: 100%;
-            height: 200px;
+            height: 240px;
             object-fit: cover;
         }
 
         .property-info {
-            padding: var(--spacing-md);
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            flex-grow: 1;
+            background: white;
         }
 
         .property-name {
             font-size: 1.25rem;
-            margin-bottom: var(--spacing-xs);
-            color: var(--text-color);
+            font-weight: 600;
+            color: #2d3748;
+            margin: 0;
+            line-height: 1.4;
+        }
+
+        .property-location {
+            font-size: 1rem;
+            color: #4a5568;
+            margin: 0;
         }
 
         .property-description {
-            color: var(--text-light);
+            color: #718096;
+            font-size: 0.95rem;
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        .property-details {
+            display: flex;
+            gap: 1rem;
+            margin-top: 0.5rem;
+            color: #4a5568;
             font-size: 0.9rem;
-            margin-bottom: var(--spacing-sm);
+        }
+
+        .property-detail {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
         }
 
         .property-cta {

@@ -97,6 +97,7 @@ export const villas = {
     "Important Villa Information": {
       content:
         "<ul class='info-list' style='list-style: none;'>\
+        <li>View Location/ Property Map</li>\
         <li>The trash disposal room is on the outside hall. It is the closet to the left of the unit</li>\
         <li><strong>Thermostats to regulate the 2 A/C units' temperature are located:</strong>\
           <ul style='list-style: none; padding-left: 20px; margin-top: 5px;'>\

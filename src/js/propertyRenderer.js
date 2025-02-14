@@ -143,10 +143,14 @@ export async function initializeProperty() {
             }
 
             // Actualizar contenido
-            const items = Object.entries(data)
-                .map(([key, value]) => `<li><strong>${key}:</strong> ${value}</li>`)
-                .join('');
-
+            let items = '';
+            if (data.qr_code) {
+                items = `<li><img src="${data.qr_code}" alt="WiFi QR Code" style="max-width: 200px;"></li>`;
+            } else {
+                items = Object.entries(data)
+                    .map(([key, value]) => `<li><strong>${key}:</strong> ${value}</li>`)
+                    .join('');
+            }
             ul.innerHTML = items;
             console.log(`${sectionTitle} actualizado:`, data);
         };

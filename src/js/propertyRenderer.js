@@ -145,19 +145,35 @@ export async function initializeProperty() {
             // Actualizar contenido
             let items = '';
             if (data.qr_code) {
+                const style = `
+                    @media (max-width: 768px) {
+                        .wifi-container > div {
+                            flex-direction: column !important;
+                        }
+                        .wifi-container .qr-item {
+                            width: 100% !important;
+                            margin-bottom: 20px;
+                        }
+                        .wifi-info-container > div {
+                            width: 100% !important;
+                            margin-bottom: 20px;
+                        }
+                    }
+                `;
                 items = `
-                    <div style="display: flex; flex-direction: column; gap: 20px;">
+                    <style>${style}</style>
+                    <div class="wifi-container" style="display: flex; flex-direction: column; gap: 20px;">
                         <div style="display: flex; justify-content: space-around; align-items: center; gap: 20px;">
-                            <div style="text-align: center; flex: 1;">
+                            <div class="qr-item" style="text-align: center; flex: 1;">
                                 <h4 style="margin-bottom: 10px;">Villa Network</h4>
                                 <img src="${data.qr_code}" alt="Villa WiFi QR Code" style="max-width: 200px;">
                             </div>
-                            <div style="text-align: center; flex: 1;">
+                            <div class="qr-item" style="text-align: center; flex: 1;">
                                 <h4 style="margin-bottom: 10px;">Resort Network</h4>
                                 <img src="${data.qr_code_resort}" alt="Resort WiFi QR Code" style="max-width: 200px;">
                             </div>
                         </div>
-                        <div style="display: flex; justify-content: space-around; align-items: start; gap: 20px;">
+                        <div class="wifi-info-container" style="display: flex; justify-content: space-around; align-items: start; gap: 20px;">
                             <div style="flex: 1; text-align: center;">
                                 <p><strong>Network:</strong> ${data.villa_network}</p>
                                 <p><strong>Password:</strong> ${data.villa_password}</p>

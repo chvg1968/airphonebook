@@ -6,6 +6,10 @@ export const villas = {
     "Wifi Information": {
       "qr_code": "/assets/images/properties/villaclara/Villa_Clara-qrcode.png",
       "qr_code_resort": "/assets/images/wifi_qr_resort.png",
+      "villa_network": "Villa_Clara",
+      "villa_password": "Bahia3325",
+      "resort_network": "Bahia Beach Resort",
+      "resort_password": "welcomeHome (Note: The H in Home is capitalized)",
     },
     "Property Information": {
       Accommodation:
@@ -41,6 +45,10 @@ export const villas = {
     "Wifi Information": {
       "qr_code": "/assets/images/properties/villaoceanbliss/Ocean_Bliss-qrcode.png",
       "qr_code_resort": "/assets/images/wifi_qr_resort.png",
+      "villa_network": "Ventanas2-102",
+      "villa_password": "ILovePuertoRico123!",
+      "resort_network": "Bahia Beach Resort",
+      "resort_password": "welcomeHome (Note: The H in Home is capitalized)",
     },
     "Property Information": {
       Accommodation:
@@ -77,6 +85,10 @@ export const villas = {
     "Wifi Information": {
       "qr_code": "/assets/images/properties/villaOceanHaven/Ocean_Haven-qrcode.png",
       "qr_code_resort": "/assets/images/wifi_qr_resort.png",
+      "villa_network": "LIB-1953536",
+      "villa_password": "yLLg8c9tgwwk",
+      "resort_network": "Bahia Beach Resort",
+      "resort_password": "welcomeHome (Note: The H in Home is capitalized)",
     },
     "Property Information": {
       Accommodation: "2 bedroom/ 2 bathroom<br>Amazing Ocean View Villa - 6 Guests",
@@ -113,6 +125,10 @@ export const villas = {
     "Wifi Information": {
       "qr_code": "/assets/images/properties/villapaloma/Villa_Paloma-qrcode.png",
       "qr_code_resort": "/assets/images/wifi_qr_resort.png",
+      "villa_network": "Villa_Paloma2",
+      "villa_password": "Bahia5138",
+      "resort_network": "Bahia Beach Resort",
+      "resort_password": "welcomeHome (Note: The H in Home is capitalized)",
     },
     "Property Information": {
       Accommodation: "3 bedroom/ 3 bathroom<br>Groundfloor Golf Course/ Lake View Villa - 8 Guests",
@@ -144,6 +160,10 @@ export const villas = {
     "Wifi Information": {
       "qr_code": "/assets/images/properties/villapalacio/Villa_Palacio-qrcode.png",
       "qr_code_resort": "/assets/images/wifi_qr_resort.png",
+      "villa_network": "VPalacio",
+      "villa_password": "Bahia7256",
+      "resort_network": "Bahia Beach Resort",
+      "resort_password": "welcomeHome (Note: The H in Home is capitalized)",
     },
     "Property Information": {
       Accommodation:
@@ -176,6 +196,10 @@ export const villas = {
     "Wifi Information": {
       "qr_code": "/assets/images/properties/villaflora/Villa_Flora-qrcode.png",
       "qr_code_resort": "/assets/images/wifi_qr_resort.png",
+      "villa_network": "Villa Flora",
+      "villa_password": "Flora10180",
+      "resort_network": "Bahia Beach Resort",
+      "resort_password": "welcomeHome (Note: The H in Home is capitalized)",
     },
     "Property Information": {
       Accommodation:
@@ -207,6 +231,10 @@ export const villas = {
     "Wifi Information": {
       "qr_code": "/assets/images/properties/villatiffany/Villa_Tiffany-qrcode.png",
       "qr_code_resort": "/assets/images/wifi_qr_resort.png",
+      "villa_network": "Bahia Verandas Guest",
+      "villa_password": "PracticeFillerExhibit861",
+      "resort_network": "Bahia Beach Resort",
+      "resort_password": "welcomeHome (Note: The H in Home is capitalized)",
     },
     "Parking Information": {
       "Parking spots": "44, 45, 46",
@@ -240,6 +268,10 @@ export const villas = {
     "Wifi Information": {
       "qr_code": "/assets/images/properties/casaprestige/Casa_Prestige-qrcode.png",
       "qr_code_resort": "/assets/images/wifi_qr_resort.png",
+      "villa_network": "Bahia-Home",
+      "villa_password": "BHwifi@2022",
+      "resort_network": "Bahia Beach Resort",
+      "resort_password": "welcomeHome (Note: The H in Home is capitalized)",
     },
     "Property Information": {
       Accommodation:

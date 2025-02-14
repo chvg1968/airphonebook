@@ -150,10 +150,18 @@ export async function initializeProperty() {
                         <div style="text-align: center;">
                             <h4 style="margin-bottom: 10px;">Villa Network</h4>
                             <img src="${data.qr_code}" alt="Villa WiFi QR Code" style="max-width: 200px;">
+                            <div style="margin-top: 10px; text-align: left;">
+                                <p><strong>Network:</strong> ${data.villa_network}</p>
+                                <p><strong>Password:</strong> ${data.villa_password}</p>
+                            </div>
                         </div>
                         <div style="text-align: center;">
                             <h4 style="margin-bottom: 10px;">Resort Network</h4>
                             <img src="${data.qr_code_resort}" alt="Resort WiFi QR Code" style="max-width: 200px;">
+                            <div style="margin-top: 10px; text-align: left;">
+                                <p><strong>Network:</strong> ${data.resort_network}</p>
+                                <p><strong>Password:</strong> ${data.resort_password}</p>
+                            </div>
                         </div>
                     </div>`;
             } else {

@@ -35,9 +35,9 @@ export const ICONS = {
         "General Tours, Old San Juan and Adventures":"🧭",
 
         // Services
-        "Personal Chefs, Catering and Pre-made Meals":"🧑🏻‍🍳",
         "Concierge Services": "🤵",
-        "St. Regis Iridium Spa": "💆‍♀️",      
+        "St. Regis Iridium Spa": "💆‍♀️",
+        "Personal Chefs, Catering and Pre-made Meals":"🧑🏻‍🍳",
         "Grocery Shopping and Errands":"🛒",
         "Concierge Services":"🤵",
         "Butler Services":"👨‍🔧",

@@ -103,7 +103,6 @@ export const villas = {
         <li><strong>Thermostats to regulate the 2 A/C units' temperature are located:</strong>\
           <ul style='list-style: none; padding-left: 20px; margin-top: 5px;'>\
             <li>Inside the closet on the hall to the left after the main entrance</li>\
-            <li>Behind the master closet door</li>\
           </ul>\
         </li>\
         <li><strong>Grill:</strong>\

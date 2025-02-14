@@ -59,7 +59,10 @@ export const villas = {
       "Golf cart spot": "G-33",
       "Cart Number": "72",
     },
-
+    "Property Information": {
+      Accommodation:
+        "2 bedroom/ 3 bathroom<br>Groundfloor Beachfront Villa - 6 Guests",
+    },
     "Important Villa Information": {
       content:
         "<ul class='info-list' style='list-style: none;'>\
@@ -103,7 +106,6 @@ export const villas = {
         <li><strong>Thermostats to regulate the 2 A/C units' temperature are located:</strong>\
           <ul style='list-style: none; padding-left: 20px; margin-top: 5px;'>\
             <li>Inside the closet on the hall to the left after the main entrance</li>\
-            <li>Behind the master closet door</li>\
           </ul>\
         </li>\
         <li><strong>Grill:</strong>\
@@ -260,7 +262,7 @@ export const villas = {
     },
   },
   "Casa Prestige": {
-    property_title: "Casa Prestige/Atlantic Drive G7",
+    property_title: "Casa Prestige/Atlantic Drive G7\nBahia Beach",
     location: "/assets/images/mapatlantic.jpeg",
     image: "/assets/images/properties/casaprestige/Casa Prestige.jpeg",
     "Wifi Information": {

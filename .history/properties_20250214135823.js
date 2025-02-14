@@ -19,7 +19,7 @@ export const villas = {
       "Parking spots": "84, 85, 86",
       "Golf cart spot": "G-25",
       "Cart Number": "119",
-      "This cart doesn't require keys": " ",
+      "<b>This cart doesn't require keys</b>": " ",
     },
     "Important Villa Information": {
       content:

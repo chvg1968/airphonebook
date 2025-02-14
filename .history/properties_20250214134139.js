@@ -24,7 +24,7 @@ export const villas = {
     "Important Villa Information": {
       content:
         "<ul class='info-list' style='list-style: none;'>\
-        <li>Trash disposal room is the furthest closet away from the unit after the elevator</li>\
+        <li>Trash disposal room is the last closet down the hall, past the elevator</li>\
         <li><strong>Thermostats to regulate the 3 A/C units' temperature are located:</strong>\
           <ul style='list-style: none; padding-left: 20px; margin-top: 5px;'>\
             <li>At the entrance, to the left of the front door</li>\

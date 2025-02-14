@@ -170,7 +170,12 @@ export async function initializeProperty() {
                     </div>`;
             } else {
                 items = Object.entries(data)
-                    .map(([key, value]) => `<li><strong>${key}:</strong> ${value}</li>`)
+                    .map(([key, value]) => {
+                        if (key === "This cart doesn't require keys") {
+                            return `<li><strong>${key}</strong></li>`;
+                        }
+                        return `<li><strong>${key}:</strong> ${value}</li>`;
+                    })
                     .join('');
             }
             ul.innerHTML = items;

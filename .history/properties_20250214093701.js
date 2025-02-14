@@ -7,15 +7,15 @@ export const villas = {
       "qr_code": "/assets/images/properties/villaclara/Villa_Clara-qrcode.png",
       "qr_code_resort": "/assets/images/wifi_qr_resort.png",
     },
-    "Property Information": {
-      Accommodation:
-        "4 bedroom/ 4 bathroom<br>Amazing Golf Course/ Lake View Penthouse Villa - 8 Guests",
-    },
     "Parking Information": {
       "Parking spots": "84, 85, 86",
       "Golf cart spot": "G-25",
       "Cart Number": "119",
       "This cart doesn't require keys": "true",
+    },
+    "Property Information": {
+      Accommodation:
+        "4 bedroom/ 4 bathroom<br>Amazing Golf Course/ Lake View Penthouse Villa - 8 Guests",
     },
     "Important Villa Information": {
       content:
@@ -38,13 +38,15 @@ export const villas = {
     property_title: "Ocean Bliss Villa/Unit 2-102\nLas Ventanas",
     location: "/assets/images/mapventanas.jpg",
     image: "/assets/images/properties/villaoceanbliss/Villa Ocean Bliss.jpg",
-    "Wifi Information": {
-      "qr_code": "/assets/images/properties/villaoceanbliss/Ocean_Bliss-qrcode.png",
-      "qr_code_resort": "/assets/images/wifi_qr_resort.png",
-    },
     "Property Information": {
       Accommodation:
         "2 bedroom/ 3 bathroom<br>Groundfloor Beachfront Villa- 6 Guests",
+    },
+    "Wifi Information": {
+      "Villa Network Name": "Ventanas2-102",
+      "Villa Password": "ILovePuertoRico123!",
+      "Resort Network": "Bahia Beach Resort",
+      "Resort Password": "welcomeHome (Note: The H in Home is capitalized)",
     },
     "Parking Information": {
       "Parking spots": "58, 59",
@@ -75,16 +77,18 @@ export const villas = {
     location: "/assets/images/mapventanas.jpg",
     image: "/assets/images/properties/villaOceanHaven/Ocean Haven Villa.jpg",
     "Wifi Information": {
-      "qr_code": "/assets/images/properties/villaOceanHaven/Ocean_Haven-qrcode.png",
-      "qr_code_resort": "/assets/images/wifi_qr_resort.png",
-    },
-    "Property Information": {
-      Accommodation: "2 bedroom/ 2 bathroom<br>Amazing Ocean View Villa - 6 Guests",
+      "Villa Network Name": "LIB-1953536",
+      "Villa Password": "yLLg8c9tgwwk",
+      "Resort Network": "Bahia Beach Resort",
+      "Resort Password": "welcomeHome (Note: The H in Home is capitalized)",
     },
     "Parking Information": {
       "Parking spots": "53, 54",
       "Golf cart spot": "G-40",
       "Cart Number": "71",
+    },
+    "Property Information": {
+      Accommodation: "2 bedroom/ 2 bathroom<br>Amazing Ocean View Villa - 6 Guests",
     },
     "Important Villa Information": {
       content:
@@ -111,16 +115,18 @@ export const villas = {
     location: "/assets/images/mapverandas.jpg",
     image: "/assets/images/properties/villapaloma/Villa Paloma.jpeg",
     "Wifi Information": {
-      "qr_code": "/assets/images/properties/villapaloma/Villa_Paloma-qrcode.png",
-      "qr_code_resort": "/assets/images/wifi_qr_resort.png",
-    },
-    "Property Information": {
-      Accommodation: "3 bedroom/ 3 bathroom<br>Groundfloor Golf Course/ Lake View Villa - 8 Guests",
+      "Villa Network Name": "Villa_Paloma2",
+      "Villa Password": "Bahia5138",
+      "Resort Network": "Bahia Beach Resort",
+      "Resort Password": "welcomeHome (Note: The H in Home is capitalized)",
     },
     "Parking Information": {
       "Parking spots": "111 & 112",
       "Golf cart spot": "G-38",
       "Cart Number": "101",
+    },
+    "Property Information": {
+      Accommodation: "3 bedroom/ 3 bathroom<br>Groundfloor Golf Course/ Lake View Villa - 8 Guests",
     },
     "Important Villa Information": {
       content:
@@ -142,17 +148,19 @@ export const villas = {
     location: "/assets/images/mapverandas.jpg",
     image: "/assets/images/properties/villapalacio/Villa Palacio.jpeg",
     "Wifi Information": {
-      "qr_code": "/assets/images/properties/villapalacio/Villa_Palacio-qrcode.png",
-      "qr_code_resort": "/assets/images/wifi_qr_resort.png",
-    },
-    "Property Information": {
-      Accommodation:
-        "3 bedroom/ 3 bathroom<br>Amazing Golf Course/ Lake View Villa - 8 Guests",
+      "Villa Network Name": "VPalacio",
+      "Villa Password": "Bahia7256",
+      "Resort Network": "Bahia Beach Resort",
+      "Resort Password": "welcomeHome (Note: The H in Home is capitalized)",
     },
     "Parking Information": {
       "Parking spots": "146 & 156",
       "Golf cart spot": "G-56",
       "Cart Number": "130",
+    },
+    "Property Information": {
+      Accommodation:
+        "3 bedroom/ 3 bathroom<br>Amazing Golf Course/ Lake View Villa - 8 Guests",
     },
     "Important Villa Information": {
       content:
@@ -174,17 +182,19 @@ export const villas = {
     location: "/assets/images/mapverandas.jpg",
     image: "/assets/images/properties/villaflora/Villa Flora.jpeg",
     "Wifi Information": {
-      "qr_code": "/assets/images/properties/villaflora/Villa_Flora-qrcode.png",
-      "qr_code_resort": "/assets/images/wifi_qr_resort.png",
-    },
-    "Property Information": {
-      Accommodation:
-        "2 bedroom/ 3 bathroom<br>Groundfloor Golf Course/ Lake View Villa - 5 Guests",
+      "Villa Network Name": "Villa Flora",
+      "Villa Password": "Flora10180",
+      "Resort Network": "Bahia Beach Resort",
+      "Resort Password": "welcomeHome (Note: The H in Home is capitalized)",
     },
     "Parking Information": {
       "Parking spots": "32 & 33",
       "Golf cart spot": "G-80",
       "Cart Number": "18",
+    },
+    "Property Information": {
+      Accommodation:
+        "2 bedroom/ 3 bathroom<br>Groundfloor Golf Course/ Lake View Villa - 5 Guests",
     },
     "Important Villa Information": {
       content:
@@ -205,8 +215,10 @@ export const villas = {
     location: "/assets/images/mapverandas.jpg",
     image: "/assets/images/properties/villatiffany/Villa Tiffany.jpg",
     "Wifi Information": {
-      "qr_code": "/assets/images/properties/villatiffany/Villa_Tiffany-qrcode.png",
-      "qr_code_resort": "/assets/images/wifi_qr_resort.png",
+      "Villa Network Name": "Bahia Verandas Guest",
+      "Villa Password": "PracticeFillerExhibit861",
+      "Resort Network": "Bahia Beach Resort",
+      "Resort Password": "welcomeHome (Note: The H in Home is capitalized)",
     },
     "Parking Information": {
       "Parking spots": "44, 45, 46",
@@ -238,8 +250,10 @@ export const villas = {
     location: "/assets/images/mapatlantic.jpeg",
     image: "/assets/images/properties/casaprestige/Casa Prestige.jpeg",
     "Wifi Information": {
-      "qr_code": "/assets/images/properties/casaprestige/Casa_Prestige-qrcode.png",
-      "qr_code_resort": "/assets/images/wifi_qr_resort.png",
+      "Villa Network Name": "Bahia-Home",
+      "Villa Password": "BHwifi@2022",
+      "Resort Network": "Bahia Beach Resort",
+      "Resort Password": "welcomeHome (Note: The H in Home is capitalized)",
     },
     "Property Information": {
       Accommodation:

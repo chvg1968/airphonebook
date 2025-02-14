@@ -145,7 +145,17 @@ export async function initializeProperty() {
             // Actualizar contenido
             let items = '';
             if (data.qr_code) {
-                items = `<li><img src="${data.qr_code}" alt="WiFi QR Code" style="max-width: 200px;"></li>`;
+                items = `
+                    <div style="display: flex; justify-content: space-around; align-items: start; flex-wrap: wrap; gap: 20px;">
+                        <div style="text-align: center;">
+                            <h4 style="margin-bottom: 10px;">Villa Network</h4>
+                            <img src="${data.qr_code}" alt="Villa WiFi QR Code" style="max-width: 200px;">
+                        </div>
+                        <div style="text-align: center;">
+                            <h4 style="margin-bottom: 10px;">Resort Network</h4>
+                            <img src="${data.qr_code_resort}" alt="Resort WiFi QR Code" style="max-width: 200px;">
+                        </div>
+                    </div>`;
             } else {
                 items = Object.entries(data)
                     .map(([key, value]) => `<li><strong>${key}:</strong> ${value}</li>`)

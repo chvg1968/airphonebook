@@ -238,8 +238,10 @@ export const villas = {
     location: "/assets/images/mapatlantic.jpeg",
     image: "/assets/images/properties/casaprestige/Casa Prestige.jpeg",
     "Wifi Information": {
-      "qr_code": "/assets/images/properties/casaprestige/Casa_Prestige-qrcode.png",
-      "qr_code_resort": "/assets/images/wifi_qr_resort.png",
+      "Villa Network Name": "Bahia-Home",
+      "Villa Password": "BHwifi@2022",
+      "Resort Network": "Bahia Beach Resort",
+      "Resort Password": "welcomeHome (Note: The H in Home is capitalized)",
     },
     "Property Information": {
       Accommodation:

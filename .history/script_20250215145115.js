@@ -239,7 +239,6 @@ class ContactManager {
         const isTennis = contact.name.includes('Tennis Reservations');
         const isKidsClub = contact.name.includes('St. Regis Tortuga Kid\'s Club');
         const isGroceryShopping = contact.name === 'Grocery Shopping Services';
-        const isCleaningFees = contact.name === 'During Stay Cleaning Fees';
         // Detectar si estamos en una página de propiedad
         const isPropertyPage = window.location.pathname.includes('/pages/model.html');
         console.log('Is Property page:', isPropertyPage, 'Path:', window.location.pathname, 'URL:', window.location.href);
@@ -286,9 +285,6 @@ class ContactManager {
             } else if (isGroceryShopping) {
                 buttonHtml = `<button class="view-more-btn" data-modal-type="groceryShopping"><i class="fas fa-info-circle"></i> View rates and fees</button>`;
                 modalType = 'groceryShopping';
-            } else if (isCleaningFees) {
-                buttonHtml = `<button class="view-more-btn" data-modal-type="cleaningFees"><i class="fas fa-info-circle"></i> View Cleaning Fees</button>`;
-                modalType = 'cleaningFees';
             }
 
             if (buttonHtml) {

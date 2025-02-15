@@ -244,15 +244,6 @@ export function closeGroceryShoppingModal() {
     hideModal('groceryShoppingModal');
 }
 
-// Cleaning Fees Modal
-export function openCleaningFeesModal() {
-    showModal('cleaningFeesModal');
-}
-
-export function closeCleaningFeesModal() {
-    hideModal('cleaningFeesModal');
-}
-
 // Cerrar los modales cuando se hace clic fuera de ellos
 window.addEventListener('click', (event) => {
     const mapModal = document.getElementById('mapModal');
@@ -283,9 +274,6 @@ window.addEventListener('click', (event) => {
     }
     if (event.target === groceryShoppingModal) {
         closeGroceryShoppingModal();
-    }
-    if (event.target === cleaningFeesModal) {
-        closeCleaningFeesModal();
     }
 });
 

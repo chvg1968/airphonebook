@@ -204,6 +204,29 @@ header {
     }
 }
 
+/* Estilos para títulos de modales */
+.modal-content h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    word-wrap: break-word;
+    hyphens: auto;
+    line-height: 1.3;
+}
+
+.modal-content h2 br {
+    display: block;
+    margin: 10px 0;
+}
+
+/* Ajuste para títulos largos */
+@media (max-width: 600px) {
+    .modal-content h2 {
+        font-size: 1.2rem;
+    }
+}
+
 /* Responsive Design */
 @media (max-width: 600px) {
     .app-container {

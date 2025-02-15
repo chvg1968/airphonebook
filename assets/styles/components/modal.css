@@ -32,6 +32,7 @@
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12) !important;
     display: flex !important;
     flex-direction: column !important;
+    overflow: visible !important;
 }
 
 /* Estilos específicos para los modales de Golf Cart */
@@ -44,14 +45,15 @@
 /* Estilos responsive para el modal */
 @media screen and (max-width: 768px) {
     .modal {
-        padding: 15px !important;
+        padding: 20px !important;
     }
     
     .modal-content {
-        margin: 20px auto !important;
+        margin: 30px auto !important;
         padding: 0 !important;
         width: 95% !important;
-        border-radius: 8px !important;
+        border-radius: 12px !important;
+        overflow: visible !important;
     }
     
     .modal-header {
@@ -270,15 +272,28 @@
 
 .modal-header {
     display: flex !important;
-    justify-content: space-between !important;
+    flex-direction: column !important;
     align-items: center !important;
     margin: 0 !important;
     background-color: transparent !important;
     position: relative !important;
-    min-height: 64px !important;
-    padding: 16px 24px !important;
+    min-height: 100px !important;
+    padding: 48px 24px 20px !important;
     border-bottom: 1px solid #f0f0f0 !important;
-    flex-wrap: wrap !important;
+}
+
+/* Estilos para el título del modal */
+.modal-header h1,
+.modal-header h2,
+.modal-header h3 {
+    margin: 0 !important;
+    font-size: 1.5em !important;
+    color: #333 !important;
+    text-align: center !important;
+    width: 100% !important;
+    padding: 0 40px !important;
+    position: relative !important;
+    top: 0 !important;
 }
 
 /* Estilos específicos para los modales del Golf Cart */

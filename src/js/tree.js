@@ -246,7 +246,8 @@ export async function buildTree() {
                                 { name: 'Rules & Safety', icon: '⚠️', modalFunction: 'openGolfCartModalRules' },
                                 { name: 'Golf Rates', icon: '⛳', modalFunction: 'openGolfRatesModal' },
                                 { name: 'Tennis Services', icon: '🎾', modalFunction: 'openTennisModal' },
-                                { name: "Kid's Club", icon: '👶', modalFunction: 'openKidsClubModal' }
+                                { name: "Kid's Club", icon: '👶', modalFunction: 'openKidsClubModal' },
+                                { name: 'Grocery Shopping Services', icon: '🛒', modalFunction: 'openGroceryShoppingModal' }
                             ];
 
                             serviceButtons.forEach(service => {

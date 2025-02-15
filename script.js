@@ -238,6 +238,7 @@ class ContactManager {
         });
         const isTennis = contact.name.includes('Tennis Reservations');
         const isKidsClub = contact.name.includes('St. Regis Tortuga Kid\'s Club');
+        const isGroceryShopping = contact.name === 'Grocery Shopping Services';
         // Detectar si estamos en una página de propiedad
         const isPropertyPage = window.location.pathname.includes('/pages/model.html');
         console.log('Is Property page:', isPropertyPage, 'Path:', window.location.pathname, 'URL:', window.location.href);
@@ -281,6 +282,9 @@ class ContactManager {
             } else if (isKidsClub) {
                 buttonHtml = `<button class="view-more-btn" data-modal-type="kidsClub"><i class="fas fa-info-circle"></i> View Kids Club information</button>`;
                 modalType = 'kidsClub';
+            } else if (isGroceryShopping) {
+                buttonHtml = `<button class="view-more-btn" data-modal-type="groceryShopping"><i class="fas fa-info-circle"></i> View rates and fees</button>`;
+                modalType = 'groceryShopping';
             }
 
             if (buttonHtml) {
@@ -296,7 +300,8 @@ class ContactManager {
                                     golfCartRules: modalsModule.openGolfCartModalRules,
                                     golfRates: modalsModule.openGolfRatesModal,
                                     tennis: modalsModule.openTennisModal,
-                                    kidsClub: modalsModule.openKidsClubModal
+                                    kidsClub: modalsModule.openKidsClubModal,
+                                    groceryShopping: modalsModule.openGroceryShoppingModal
                                 };
                                 
                                 buttons.forEach(button => {

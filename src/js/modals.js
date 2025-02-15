@@ -235,6 +235,42 @@ export function closeKidsClubModal() {
     hideModal('kidsClubModal');
 }
 
+// Grocery Shopping Modal
+export function openGroceryShoppingModal() {
+    const modal = document.getElementById('groceryShoppingModal');
+    if (!modal) return;
+
+    // Cargar el contenido de shopping.html
+    fetch('/src/html/pages/shopping.html')
+        .then(response => response.text())
+        .then(html => {
+            // Extraer el contenido del body
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(html, 'text/html');
+            const content = doc.body.innerHTML;
+
+            // Insertar el contenido en el modal
+            const modalContent = modal.querySelector('.modal-content');
+            modalContent.innerHTML = `
+                <span class="close">&times;</span>
+                ${content}
+            `;
+
+            // Configurar el botón de cierre
+            const closeBtn = modalContent.querySelector('.close');
+            if (closeBtn) {
+                closeBtn.onclick = closeGroceryShoppingModal;
+            }
+
+            showModal('groceryShoppingModal');
+        })
+        .catch(error => console.error('Error loading shopping content:', error));
+}
+
+export function closeGroceryShoppingModal() {
+    hideModal('groceryShoppingModal');
+}
+
 // Cerrar los modales cuando se hace clic fuera de ellos
 window.addEventListener('click', (event) => {
     const mapModal = document.getElementById('mapModal');
@@ -243,6 +279,7 @@ window.addEventListener('click', (event) => {
     const golfRatesModal = document.getElementById('golfRatesModal');
     const tennisModal = document.getElementById('tennisModal');
     const kidsClubModal = document.getElementById('kidsClubModal');
+    const groceryShoppingModal = document.getElementById('groceryShoppingModal');
 
     if (event.target === mapModal) {
         closeMapModal();
@@ -260,6 +297,9 @@ window.addEventListener('click', (event) => {
     }
     if (event.target === kidsClubModal) {
         closeKidsClubModal();
+    }
+    if (event.target === groceryShoppingModal) {
+        closeGroceryShoppingModal();
     }
 });
 

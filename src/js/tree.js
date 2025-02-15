@@ -410,13 +410,19 @@ const displayContacts = (contacts, shouldScroll = true) => {
             // Scroll automático al inicio de la lista de contactos
             setTimeout(() => {
                 const contactsDisplay = document.getElementById('contacts-display');
-                if (contactsDisplay) {
-                    window.scrollTo({
-                        top: contactsDisplay.offsetTop - 20,
-                        behavior: 'smooth'
-                    });
+                const sectionsMenu = document.getElementById('sections-menu');
+                
+                if (contactsDisplay && sectionsMenu) {
+                    // Método alternativo de scroll
+                    const targetElement = document.getElementById('contacts-list');
+                    if (targetElement) {
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth', 
+                            block: 'start'
+                        });
+                    }
                 }
-            }, 100);
+            }, 150);  // Aumentar tiempo de espera
         }
     } else {
         const noContactsDiv = document.createElement('div');

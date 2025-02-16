@@ -87,7 +87,7 @@ export const villas = {
       "resort_password": "welcomeHome<br>Note: The H in Home is capitalized",
     },
     "Property Information": {
-      Accommodation: "2 bedroom/ 2 bathroom<br>Amazing Ocean View Villa<br>6 Guests",
+      Accommodation: "2 bedroom/ 2 bathroom<br>Amazing Ocean View Villa - 6 Guests",
     },
     "Parking Information": {
       "Parking spots": "53, 54",

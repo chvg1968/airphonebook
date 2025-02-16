@@ -86,60 +86,34 @@ export async function initializeProperty() {
             console.error('No se encontró el elemento de título');
         }
 
-
         // 3.4 Información de acomodación
         if (accommodationInfo) {
-            const accommodationData = propertyData['Property Information']?.Accommodation;
+            const accommodationData = propertyData['Property Information']?.Accommodation || 
+                                   propertyData['Property Information']?.Accommodation;
 
             if (accommodationData) {
-                // Limpiar cualquier h3 adicional existente
-                const existingDetails = welcomeSection.querySelector('.accommodation-details');
-                if (existingDetails) {
-                    existingDetails.remove();
+                const [bedrooms, type] = accommodationData.split('<br>');
+                accommodationInfo.textContent = bedrooms.trim();
+                
+                // Crear o actualizar el segundo h3
+                let secondH3 = welcomeSection.querySelectorAll('h3')[1];
+                if (!secondH3) {
+                    secondH3 = document.createElement('h3');
+                    welcomeSection.insertBefore(secondH3, welcomeSection.querySelector('.property-actions'));
                 }
-
-                // Dividir toda la información en partes
-                const parts = accommodationData.split('<br>');
                 
-                // El primer h3 muestra la información de dormitorios/baños
-                accommodationInfo.textContent = parts[0].trim();
-                
-                // Crear contenedor para información adicional
-                const infoContainer = document.createElement('div');
-                infoContainer.className = 'accommodation-details';
-                
-                // Procesar el texto promocional y la información de huéspedes
-                if (parts.length > 1) {
-                    // Extraer la información de huéspedes (última parte)
-                    const guestsInfo = parts[parts.length - 1].trim();
-                    
-                    // Combinar el texto promocional (todo excepto primera y última parte)
-                    const promotionalText = parts.slice(1, -1).join(' ').trim();
-                    
-                    // Crear h3 para el texto promocional
-                    if (promotionalText) {
-                        const promoH3 = document.createElement('h3');
-                        promoH3.textContent = promotionalText;
-                        infoContainer.appendChild(promoH3);
-                    }
-                    
-                    // Crear h3 para la información de huéspedes
-                    if (guestsInfo) {
-                        const guestsH3 = document.createElement('h3');
-                        guestsH3.textContent = guestsInfo;
-                        infoContainer.appendChild(guestsH3);
+                if (type) {
+                    // Extraer solo la parte de los huéspedes si existe
+                    const guestMatch = type.match(/(.+?)(?:\s*-\s*(\d+)\s*Guests)?$/i);
+                    if (guestMatch) {
+                        const [_, propertyType, guests] = guestMatch;
+                        secondH3.textContent = `${propertyType.trim()}${guests ? ` - ${guests} Guests` : ''}`;
+                    } else {
+                        secondH3.textContent = type.trim();
                     }
                 }
                 
-                // Insertar el contenedor después del primer h3 y antes de property-actions
-                const propertyActions = welcomeSection.querySelector('.property-actions');
-                if (propertyActions) {
-                    welcomeSection.insertBefore(infoContainer, propertyActions);
-                } else {
-                    welcomeSection.appendChild(infoContainer);
-                }
-                
-                console.log('Acomodación actualizada con todas las partes:', parts);
+                console.log('Acomodación actualizada:', bedrooms.trim(), type?.trim());
             } else {
                 console.log('Información de acomodación no encontrada para:', propertyKey);
                 accommodationInfo.style.display = 'none';

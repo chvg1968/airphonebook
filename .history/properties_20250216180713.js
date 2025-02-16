@@ -87,7 +87,7 @@ export const villas = {
       "resort_password": "welcomeHome<br>Note: The H in Home is capitalized",
     },
     "Property Information": {
-      Accommodation: "2 bedroom/ 2 bathroom<br>Amazing Ocean View Villa<br>6 Guests",
+      Accommodation: "2 bedroom/ 2 bathroom<br>Amazing Ocean View Villa - 6 Guests",
     },
     "Parking Information": {
       "Parking spots": "53, 54",
@@ -271,7 +271,7 @@ export const villas = {
     },
     "Property Information": {
       Accommodation:
-        "6 bedroom/ 9 bathroom<br>Amazing Golf Course<br>Lake View Mansion<br>12 Guests",
+        "6 bedroom/ 9 bathroom<br>Amazing Golf Course<br>Lake View Mansion - 12 Guests",
     },
     "Access Information": {
       "Atlantic Drive Gate Code": "9842#",

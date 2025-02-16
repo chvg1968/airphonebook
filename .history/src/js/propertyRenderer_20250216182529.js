@@ -86,18 +86,17 @@ export async function initializeProperty() {
             console.error('No se encontró el elemento de título');
         }
 
-
         // 3.4 Información de acomodación
         if (accommodationInfo) {
             const accommodationData = propertyData['Property Information']?.Accommodation;
-
+        
             if (accommodationData) {
                 // Limpiar cualquier h3 adicional existente
                 const existingDetails = welcomeSection.querySelector('.accommodation-details');
                 if (existingDetails) {
                     existingDetails.remove();
                 }
-
+        
                 // Dividir toda la información en partes
                 const parts = accommodationData.split('<br>');
                 
@@ -108,26 +107,20 @@ export async function initializeProperty() {
                 const infoContainer = document.createElement('div');
                 infoContainer.className = 'accommodation-details';
                 
-                // Procesar el texto promocional y la información de huéspedes
-                if (parts.length > 1) {
-                    // Extraer la información de huéspedes (última parte)
-                    const guestsInfo = parts[parts.length - 1].trim();
-                    
-                    // Combinar el texto promocional (todo excepto primera y última parte)
-                    const promotionalText = parts.slice(1, -1).join(' ').trim();
-                    
-                    // Crear h3 para el texto promocional
-                    if (promotionalText) {
-                        const promoH3 = document.createElement('h3');
-                        promoH3.textContent = promotionalText;
-                        infoContainer.appendChild(promoH3);
-                    }
-                    
-                    // Crear h3 para la información de huéspedes
-                    if (guestsInfo) {
-                        const guestsH3 = document.createElement('h3');
-                        guestsH3.textContent = guestsInfo;
-                        infoContainer.appendChild(guestsH3);
+                // Crear h3 adicionales solo para las partes restantes
+                for (let i = 1; i < parts.length; i++) {
+                    const text = parts[i].trim();
+                    if (text) {
+                        if (text.includes('Guests')) {
+                            // Si es la información de huéspedes, la guardamos para el final
+                            const guestsInfo = document.createElement('h3');
+                            guestsInfo.textContent = text;
+                            infoContainer.appendChild(guestsInfo);
+                        } else {
+                            const newH3 = document.createElement('h3');
+                            newH3.textContent = text;
+                            infoContainer.appendChild(newH3);
+                        }
                     }
                 }
                 

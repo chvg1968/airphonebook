@@ -13,7 +13,7 @@ export const villas = {
     },
     "Property Information": {
       Accommodation:
-        "4 bedroom/ 4 bathroom<br>Amazing Golf Course<br>Lake View Penthouse Villa<br>8 Guests",
+        "4 bedroom/ 4 bathroom<br>Amazing Golf Course<br>Lake View Penthouse Villa - 8 Guests",
     },
     "Parking Information": {
       "Parking spots": "84, 85, 86",
@@ -52,7 +52,7 @@ export const villas = {
     },
     "Property Information": {
       Accommodation:
-        "2 bedroom/ 3 bathroom<br>Groundfloor Beachfront<br>Ocean View Villa<br>6 Guests",
+        "2 bedroom/ 3 bathroom<br>Groundfloor Beachfront<br>Ocean View Villa - 6 Guests",
     },
     "Parking Information": {
       "Parking spots": "58, 59",
@@ -87,7 +87,7 @@ export const villas = {
       "resort_password": "welcomeHome<br>Note: The H in Home is capitalized",
     },
     "Property Information": {
-      Accommodation: "2 bedroom/ 2 bathroom<br>Amazing Ocean View Villa<br>6 Guests",
+      Accommodation: "2 bedroom/ 2 bathroom<br>Amazing Ocean View Villa - 6 Guests",
     },
     "Parking Information": {
       "Parking spots": "53, 54",
@@ -127,7 +127,7 @@ export const villas = {
       "resort_password": "welcomeHome<br>Note: The H in Home is capitalized",
     },
     "Property Information": {
-      Accommodation: "3 bedroom/ 3 bathroom<br>Groundfloor Golf Course<br>Lake View Villa<br>8 Guests",
+      Accommodation: "3 bedroom/ 3 bathroom<br>Groundfloor Golf Course<br>Lake View Villa - 8 Guests",
     },
     "Parking Information": {
       "Parking spots": "111 & 112",
@@ -163,7 +163,7 @@ export const villas = {
     },
     "Property Information": {
       Accommodation:
-        "3 bedroom/ 3 bathroom<br>Amazing Golf Course<br>Lake View Villa<br>8 Guests",
+        "3 bedroom/ 3 bathroom<br>Amazing Golf Course<br>Lake View Villa - 8 Guests",
     },
     "Parking Information": {
       "Parking spots": "146 & 156",
@@ -199,7 +199,7 @@ export const villas = {
     },
     "Property Information": {
       Accommodation:
-        "2 bedroom/ 3 bathroom<br>Groundfloor Golf Course<br>Lake View Villa<br>5 Guests",
+        "2 bedroom/ 3 bathroom<br>Groundfloor Golf Course<br>Lake View Villa - 5 Guests",
     },
     "Parking Information": {
       "Parking spots": "32 & 33",
@@ -239,7 +239,7 @@ export const villas = {
     },
     "Property Information": {
       Accommodation:
-        "4 bedroom/ 4 bathroom<br>Amazing Golf Course<br>Lake View Penthouse Villa<br>8 Guests",
+        "4 bedroom/ 4 bathroom<br>Amazing Golf Course<br>Lake View Penthouse Villa - 8 Guests",
     },
     "Important Villa Information": {
       content:
@@ -271,7 +271,7 @@ export const villas = {
     },
     "Property Information": {
       Accommodation:
-        "6 bedroom/ 9 bathroom<br>Amazing Golf Course<br>Lake View Mansion<br>12 Guests",
+        "6 bedroom/ 9 bathroom<br>Amazing Golf Course<br>Lake View Mansion - 12 Guests",
     },
     "Access Information": {
       "Atlantic Drive Gate Code": "9842#",

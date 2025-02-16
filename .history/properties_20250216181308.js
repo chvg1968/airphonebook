@@ -13,7 +13,7 @@ export const villas = {
     },
     "Property Information": {
       Accommodation:
-        "4 bedroom/ 4 bathroom<br>Amazing Golf Course<br>Lake View Penthouse Villa<br>8 Guests",
+        "4 bedroom/ 4 bathroom<br>Amazing Golf Course<br>Lake View Penthouse Villa - 8 Guests",
     },
     "Parking Information": {
       "Parking spots": "84, 85, 86",

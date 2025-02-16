@@ -86,7 +86,7 @@ export async function initializeProperty() {
             console.error('No se encontró el elemento de título');
         }
 
-
+        
         // 3.4 Información de acomodación
         if (accommodationInfo) {
             const accommodationData = propertyData['Property Information']?.Accommodation;

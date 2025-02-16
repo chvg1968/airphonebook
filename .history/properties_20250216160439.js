@@ -52,7 +52,7 @@ export const villas = {
     },
     "Property Information": {
       Accommodation:
-        "2 bedroom/ 3 bathroom<br>Groundfloor Beachfront<br>Ocean View Villa - 6 Guests",
+        "2 bedroom/ 3 bathroom<br>Groundfloor Beachfront Ocean View Villa - 6 Guests",
     },
     "Parking Information": {
       "Parking spots": "58, 59",

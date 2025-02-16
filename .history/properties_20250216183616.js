@@ -228,7 +228,7 @@ export const villas = {
       "qr_code": "/assets/images/properties/villatiffany/Villa_Tiffany-qrcode.png",
       "qr_code_resort": "/assets/images/wifi_qr_resort.png",
       "villa_network": "Bahia Verandas Guest",
-      "villa_password": "PracticeFillerExhibit861", 
+      "villa_password": "PracticeFillerExhibit861",
       "resort_network": "Bahia Beach Resort",
       "resort_password": "welcomeHome<br>Note: The H in Home is capitalized",
     },

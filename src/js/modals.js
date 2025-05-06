@@ -92,8 +92,24 @@ export function openMapModal() {
     setTimeout(() => {
         setupZoom();
         adjustMapModalDimensions();
+        handleOrientationWarning();
     }, 50);
 }
+
+function handleOrientationWarning() {
+    const warning = document.getElementById('orientation-warning');
+    function checkOrientation() {
+        if(window.innerHeight > window.innerWidth) {
+            warning.style.display = 'flex';
+        } else {
+            warning.style.display = 'none';
+        }
+    }
+    checkOrientation();
+    window.addEventListener('orientationchange', checkOrientation);
+    window.addEventListener('resize', checkOrientation);
+}
+
 
 export function closeMapModal() {
     if (panzoomInstance) {

@@ -48,23 +48,48 @@
                 </div>
             </div>
 
-            <!-- Modal para el mapa -->
-            <div id="mapModal" class="modal">
-  <div class="modal-content map-modal-content">
-    <div id="orientation-warning" class="orientation-warning" style="display:none;">
-      <i class="fas fa-rotate fa-lg"></i> Please rotate your device to landscape mode for a better map experience.
-    </div>
-    <span class="close" id="closeMapButton" title="Close">×</span>
-    <div class="map-container">
-      <img id="propertyMapImage" src="" alt="Property Map" class="panzoom">
-      <div class="zoom-controls">
-        <button class="zoom-btn zoom-in">+</button>
-        <button class="zoom-btn zoom-out">−</button>
-        <button class="zoom-btn zoom-reset">↺</button>
-      </div>
-    </div>
-  </div>
+            <!-- =====================
+                 MODAL DEL MAPA (DOCUMENTADA)
+                 ===================== -->
+            <div id="mapModal" class="modal map-modal-content" style="display: none;">
+              <!-- Botón para cerrar la modal -->
+              <button id="closeMapButton" class="modal-close-btn" aria-label="Cerrar mapa">
+                <i class="fas fa-times"></i>
+              </button>
+
+              <!-- Contenedor principal del mapa (necesario para Panzoom) -->
+              <div class="map-container">
+                <!-- Imagen del mapa sobre la que se aplica Panzoom -->
+                <img
+                  id="propertyMapImage"
+                  src="/assets/images/mapa_villa_clara.png"
+                  alt="Mapa de la propiedad"
+                  draggable="false"
+                />
+
+                <!-- Controles de zoom (siempre visibles y accesibles) -->
+                <div class="zoom-controls">
+                  <button class="zoom-btn zoom-in" aria-label="Acercar">
+                    <i class="material-icons">zoom_in</i>
+                  </button>
+                  <button class="zoom-btn zoom-out" aria-label="Alejar">
+                    <i class="material-icons">zoom_out</i>
+                  </button>
+                  <button class="zoom-btn zoom-reset" aria-label="Restablecer">
+                    <i class="material-icons">center_focus_strong</i>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Mensaje opcional de advertencia para orientación vertical en móvil -->
+              <div id="orientation-warning" class="orientation-warning" style="display: none;">
+  <i class="fas fa-exclamation-triangle"></i>
+  For best experience, please rotate your device to landscape mode.
 </div>
+            </div>
+            <!-- =====================
+                 FIN MODAL DEL MAPA
+                 ===================== -->
 
             <div class="two-column-layout">
                 <!-- Columna de información de la propiedad -->

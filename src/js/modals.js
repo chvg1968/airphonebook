@@ -26,16 +26,26 @@ function setupZoom() {
     }
     panzoomInstance = Panzoom(map, {
         maxScale: 5,
-        minScale: 0.5,
-        contain: 'outside',
-        startScale: 0.7,
+        minScale: 1,
+        contain: 'outside', // Permite panear incluso en escala mínima
+        startScale: 1,
         animate: true,
         disableXAxis: false,
         disableYAxis: false,
         excludeClass: 'zoom-btn', // Asegura que los controles no bloqueen paneo
+        step: 0.2,
     });
     // Habilita los eventos de wheel y pinch para zoom interactivo
     map.parentElement.addEventListener('wheel', panzoomInstance.zoomWithWheel);
+
+    // Permitir paneo siempre
+    panzoomInstance.setOptions({ panOnlyWhenZoomed: false });
+
+    // Forzar actualización de transform manualmente tras zoom
+    function updateTransform() {
+        map.style.transform = panzoomInstance.getTransform();
+    }
+
     // No agregues pointerdown aquí, Panzoom lo maneja internamente
 
 
@@ -49,6 +59,8 @@ function setupZoom() {
         e.stopPropagation();
         console.log('ZOOM IN CLICK', panzoomInstance);
         panzoomInstance.zoomIn();
+        // Forzar actualización visual
+        map.style.transform = panzoomInstance.getTransform();
         console.log('Current scale after zoomIn:', panzoomInstance.getScale());
         console.log('Current transform:', map.style.transform);
     };
@@ -57,6 +69,7 @@ function setupZoom() {
         e.stopPropagation();
         console.log('ZOOM OUT CLICK', panzoomInstance);
         panzoomInstance.zoomOut();
+        map.style.transform = panzoomInstance.getTransform();
         console.log('Current scale after zoomOut:', panzoomInstance.getScale());
         console.log('Current transform:', map.style.transform);
     };
@@ -65,6 +78,7 @@ function setupZoom() {
         e.stopPropagation();
         console.log('RESET CLICK', panzoomInstance);
         panzoomInstance.reset();
+        map.style.transform = panzoomInstance.getTransform();
         console.log('Current scale after reset:', panzoomInstance.getScale());
         console.log('Current transform:', map.style.transform);
     };

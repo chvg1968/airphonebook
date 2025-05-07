@@ -158,18 +158,26 @@
             </div>
 
             <!-- Modal para el Golf Cart -->
-            <div id="golfCartModalinfo" class="modal">
+            <div id="golfCartInfoModal" class="modal">
                 <div class="modal-content golf-cart-modal">
-                    <span class="close" data-modal="golfCartModalinfo">&times;</span>
+                    <span class="close" onclick="closeGolfCartInfoModal()">&times;</span>
                     <h2>Unit's Golf Cart</h2>
                     <div class="info-section">
-                        <h3>Charging Instructions</h3>
+                        <h3><button class="modal-link-btn" onclick="openGolfCartChargingModal();return false;">Charging Instructions</button></h3>
                         <p>The golf cart has a retractable cord on the back for charging. Please make sure to
                         retract it when in use so it is not hanging loose and gets damaged.</p>
                     </div>
 
                     <div class="info-section">
-                        <h3>Golf Cart Parking</h3>
+                        <!-- Modal Charging Instructions -->
+                        <div id="golfCartChargingModal" class="modal">
+                            <div class="modal-content">
+                                <span class="close" onclick="closeGolfCartChargingModal()">&times;</span>
+                                <h2>Charging Instructions</h2>
+                                <p>The golf cart has a retractable cord on the back for charging. Please make sure to retract it when in use so it is not hanging loose and gets damaged.</p>
+                            </div>
+                        </div>
+                        <h3><button class="modal-link-btn" onclick="openGolfCartParkingModal();return false;">Golf Cart Parking</button></h3>
                         <p>Park your cart at its designated parking space and appropriate parking at the different resort venues:</p>
                         <ul>
                             <li>Wellness Center</li>
@@ -179,13 +187,29 @@
                             <li>Sand Dollar Beach</li>
                             <li>Valet parking at the St. Regis Hotel</li>
                         </ul>
+                        <!-- Modal Golf Cart Parking -->
+                        <div id="golfCartParkingModal" class="modal">
+                            <div class="modal-content">
+                                <span class="close" onclick="closeGolfCartParkingModal()">&times;</span>
+                                <h2>Golf Cart Parking</h2>
+                                <ul>
+                                    <li>Wellness Center</li>
+                                    <li>Boathouse/ Water Park</li>
+                                    <li>Beach Club pools, restaurants, concierge and golf shop</li>
+                                    <li>Cocoteros Diner</li>
+                                    <li>Sand Dollar Beach</li>
+                                    <li>Valet parking at the St. Regis Hotel</li>
+                                </ul>
+                                <p>Park your cart at its designated parking space and appropriate parking at the different resort venues.</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <div id="golfCartModalrules" class="modal">
+            <div id="golfCartRulesModal" class="modal">
                 <div class="modal-content golf-cart-modal">
-                    <span class="close" data-modal="golfCartModalrules">&times;</span>
+                    <span class="close" onclick="closeGolfCartRulesModal()">&times;</span>
                     <h2>Unit's Golf Cart</h2>
                     <div class="info-section warning">
                         <h3>Rules and Regulations</h3>
@@ -202,10 +226,11 @@
 
             <!-- Modal para Golf Rates -->
             <!-- Modal para Golf Shop -->
-            <div id="golfRatesModal" class="modal" data-modal-type="golf-shop">
+            <div id="golfRatesModal" class="modal">
                 <div class="modal-content">
-                    <span class="close" data-modal="golfRates">&times;</span>
+                    <span class="close" onclick="closeGolfRatesModal()">&times;</span>
                     <h2>Golf Shop - Rates and Schedules</h2>
+
                     <!-- Verificación de carga del modal -->
                     <script>
                         console.log('Golf Shop modal loaded:', {
@@ -326,8 +351,9 @@
             <!-- Modal para Tennis -->
             <div id="tennisModal" class="modal">
                 <div class="modal-content">
-                    <span class="close" data-modal="tennis">&times;</span>
+                    <span class="close" onclick="closeTennisModal()">&times;</span>
                     <h2>Tennis Rates and Schedules</h2>
+
                     
                     <div class="info-section">
                         <h3>Court Reservations</h3>
@@ -375,8 +401,9 @@
             <!-- Modal para Cleaning Fees -->
             <div id="cleaningFeesModal" class="modal">
                 <div class="modal-content">
-                    <span class="close" data-modal="cleaningFees">&times;</span>
+                    <span class="close" onclick="closeCleaningFeesModal()">&times;</span>
                     <h2>During Stay Cleaning Services</h2>
+
                 <p class="service-description">Refresh clean, bed setup & towel wash</p>
                 
                 <table class="rates-table">
@@ -417,8 +444,9 @@
             <!-- Modal para Grocery Shopping -->
             <div id="groceryShoppingModal" class="modal">
                 <div class="modal-content">
-                    <span class="close" data-modal="groceryShopping">&times;</span>
+                    <span class="close" onclick="closeGroceryShoppingModal()">&times;</span>
                     <h2>Grocery Shopping Services</h2>
+
                 <table class="rates-table">
                     <thead>
                         <tr>
@@ -452,8 +480,9 @@
             <!-- Modal para Kids Club -->
             <div id="kidsClubModal" class="modal">
                 <div class="modal-content">
-                    <span class="close" data-modal="kidsClub">&times;</span>
+                    <span class="close" onclick="closeKidsClubModal()">&times;</span>
                     <h2>👦 🐢 St. Regis Tortuga Kid's Club</h2>
+
                     
                     <div class="info-section">
                         <h3>About Tortuga Kid's Club</h3>

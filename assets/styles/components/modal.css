@@ -1,3 +1,70 @@
+.view-more-btn,
+button.view-more-btn {
+  background-color: #1565c0 !important;
+  color: #fff !important;
+  border: none !important;
+  border-radius: 6px;
+  padding: 16px 32px;
+  font-size: 0.89rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  min-width: 260px;
+  max-width: 100%;
+  width: 100%;
+  cursor: pointer;
+  transition: background 0.2s, box-shadow 0.2s;
+  box-shadow: 0 3px 10px rgba(21,101,192,0.10);
+  margin: 0.5em 0;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.10);
+  outline: none;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  line-height: 1.4;
+  white-space: normal;
+  word-break: break-word;
+  text-align: center;
+  gap: 10px;
+}
+
+
+
+.view-more-btn i {
+  font-size: 1.1em;
+  margin-right: 8px;
+}
+
+
+.view-more-btn i {
+  font-size: 1.1em;
+  margin-right: 8px;
+}
+
+.view-more-btn:hover,
+button.view-more-btn:hover {
+  background-color: #0d47a1 !important;
+  color: #fff !important;
+}
+/* Botón estilo azul para links de modales */
+.modal-link-btn {
+  background-color: #1565c0;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 18px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, box-shadow 0.2s;
+  box-shadow: 0 2px 6px rgba(21,101,192,0.08);
+  margin: 0.5em 0;
+}
+.modal-link-btn:hover, .modal-link-btn:focus {
+  background-color: #0d47a1;
+  outline: none;
+}
+
 /*
 ============================================
  MAP MODAL PANZOOM - DOCUMENTACIÓN DE CSS

@@ -3,6 +3,10 @@ function showModal(modalId) {
     const modal = document.getElementById(modalId);
     if (modal) {
         modal.style.setProperty('display', 'flex', 'important');
+    } else {
+        console.error(`[MODAL ERROR] No existe un elemento con id="${modalId}" en el DOM.`);
+        const allModals = Array.from(document.querySelectorAll('.modal')).map(m => m.id);
+        console.warn('Modales encontrados en el DOM:', allModals);
     }
 }
 
@@ -132,4 +136,70 @@ export function closeMapModal() {
     hideModal('mapModal');
 }
 
-// (Resto de funciones para otros modales se mantienen igual) //
+// --- MODALS GENERIC OPEN/CLOSE FUNCTIONS ---
+
+export function openGolfCartInfoModal() {
+    showModal('golfCartInfoModal');
+}
+export function closeGolfCartInfoModal() {
+    hideModal('golfCartInfoModal');
+}
+
+export function openGolfCartRulesModal() {
+    showModal('golfCartRulesModal');
+}
+export function closeGolfCartRulesModal() {
+    hideModal('golfCartRulesModal');
+}
+
+export function openGolfRatesModal() {
+    showModal('golfRatesModal');
+}
+export function closeGolfRatesModal() {
+    hideModal('golfRatesModal');
+}
+
+export function openTennisModal() {
+    showModal('tennisModal');
+}
+export function closeTennisModal() {
+    hideModal('tennisModal');
+}
+
+export function openKidsClubModal() {
+    showModal('kidsClubModal');
+}
+export function closeKidsClubModal() {
+    hideModal('kidsClubModal');
+}
+
+export function openGroceryShoppingModal() {
+    showModal('groceryShoppingModal');
+}
+export function closeGroceryShoppingModal() {
+    hideModal('groceryShoppingModal');
+}
+
+export function openCleaningFeesModal() {
+    showModal('cleaningFeesModal');
+}
+export function closeCleaningFeesModal() {
+    hideModal('cleaningFeesModal');
+}
+
+// Si necesitas más modales, sigue este patrón.
+
+export function openGolfCartChargingModal() {
+    showModal('golfCartChargingModal');
+}
+export function closeGolfCartChargingModal() {
+    hideModal('golfCartChargingModal');
+}
+
+export function openGolfCartParkingModal() {
+    showModal('golfCartParkingModal');
+}
+export function closeGolfCartParkingModal() {
+    hideModal('golfCartParkingModal');
+}
+

@@ -300,8 +300,8 @@ class ContactManager {
                         import('./src/js/modals.js')
                             .then(modalsModule => {
                                 const modalFunctions = {
-                                    golfCartInfo: modalsModule.openGolfCartModalInfo,
-                                    golfCartRules: modalsModule.openGolfCartModalRules,
+                                    golfCartInfo: modalsModule.openGolfCartInfoModal,
+                                    golfCartRules: modalsModule.openGolfCartRulesModal,
                                     golfRates: modalsModule.openGolfRatesModal,
                                     tennis: modalsModule.openTennisModal,
                                     kidsClub: modalsModule.openKidsClubModal,

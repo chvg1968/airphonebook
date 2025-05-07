@@ -242,8 +242,8 @@ export async function buildTree() {
                         // Agregar botones de modales si es la sección de servicios
                         if (sectionName === 'Services') {
                             const serviceButtons = [
-                                { name: 'Parking & Charging', icon: '🛺', modalFunction: 'openGolfCartModal' },
-                                { name: 'Rules & Safety', icon: '⚠️', modalFunction: 'openGolfCartModalRules' },
+                                { name: 'Parking & Charging', icon: '🛺', modalFunction: 'openGolfCartInfoModal' },
+{ name: 'Rules & Safety', icon: '⚠️', modalFunction: 'openGolfCartRulesModal' },
                                 { name: 'Golf Rates', icon: '⛳', modalFunction: 'openGolfRatesModal' },
                                 { name: 'Tennis Services', icon: '🎾', modalFunction: 'openTennisModal' },
                                 { name: "Kid's Club", icon: '👶', modalFunction: 'openKidsClubModal' },
@@ -265,16 +265,11 @@ export async function buildTree() {
                                 treeContent.appendChild(document.createTextNode(service.name));
                                 
                                 // Importar la función del módulo modals.js dinámicamente
-                                import('../../js/modals.js')
-                                    .then(modalsModule => {
-                                        const modalFunction = modalsModule[service.modalFunction];
-                                        if (modalFunction) {
-                                            treeContent.addEventListener('click', () => modalFunction());
-                                        } else {
-                                            console.error(`Modal function ${service.modalFunction} not found`);
-                                        }
-                                    })
-                                    .catch(error => console.error('Error loading modals.js:', error));
+                                if (window[service.modalFunction]) {
+    treeContent.addEventListener('click', () => window[service.modalFunction]());
+} else {
+    console.error(`Modal function ${service.modalFunction} not found on window`);
+}
                                 
                                 serviceItem.appendChild(treeContent);
                                 treeChildren.appendChild(serviceItem);

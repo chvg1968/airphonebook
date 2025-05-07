@@ -41,76 +41,102 @@
                         <i class="fas fa-home"></i>
                         <span>Back to home</span>
                     </a>
-                    <button class="view-map-btn" id="openMapButton">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <span>View Location</span>
-                    </button>
+                    <button class="view-map-btn map-highlight-btn" id="openMapButton">
+  <i class="fas fa-map-marked-alt"></i>
+  <span>View Location/Property Map</span>
+</button>
                 </div>
             </div>
 
-            <!-- Modal para el mapa -->
-            <div id="mapModal" class="modal">
-                <div class="modal-content map-modal-content">
-                    <div class="modal-header">
-                        <span class="close" id="closeMapButton" title="Close">×</span>
-                        <h2>Property Location</h2>
-                        <div class="map-instructions">
-                            <p>Please rotate your screen to landscape mode for a better view</p>
-                            <p class="zoom-tip">Pinch to zoom and drag to move around the map.</p>
-                        </div>
-                    </div>
-                    <div class="map-container">
-                        <img id="propertyMapImage" src="" alt="Property Map" class="panzoom">
-                    </div>
-                    <div class="zoom-controls">
-                        <button class="zoom-btn zoom-in" onclick="window.zoomIn()">+</button>
-                        <button class="zoom-btn zoom-out" onclick="window.zoomOut()">−</button>
-                        <button class="zoom-btn zoom-reset" onclick="window.resetZoom()">↺</button>
-                    </div>
+            <!-- =====================
+                 MODAL DEL MAPA (DOCUMENTADA)
+                 ===================== -->
+            <div id="mapModal" class="modal map-modal-content" style="display: none;">
+              <!-- Botón para cerrar la modal -->
+              <button id="closeMapButton" class="modal-close-btn" aria-label="Cerrar mapa">
+                <i class="fas fa-times"></i>
+              </button>
+
+              <!-- Contenedor principal del mapa (necesario para Panzoom) -->
+              <div class="map-container">
+                <!-- Imagen del mapa sobre la que se aplica Panzoom -->
+                <img
+                  id="propertyMapImage"
+                  src="/assets/images/mapa_villa_clara.png"
+                  alt="Mapa de la propiedad"
+                  draggable="false"
+                />
+
+                <!-- Controles de zoom (siempre visibles y accesibles) -->
+                <div class="zoom-controls">
+                  <button class="zoom-btn zoom-in" aria-label="Acercar">
+                    <i class="material-icons">zoom_in</i>
+                  </button>
+                  <button class="zoom-btn zoom-out" aria-label="Alejar">
+                    <i class="material-icons">zoom_out</i>
+                  </button>
+                  <button class="zoom-btn zoom-reset" aria-label="Restablecer">
+                    <i class="material-icons">center_focus_strong</i>
+                  </button>
                 </div>
+              </div>
+
+              <!-- Mensaje opcional de advertencia para orientación vertical en móvil -->
+              <div id="orientation-warning" class="orientation-warning" style="display: none;">
+  <i class="fas fa-exclamation-triangle"></i>
+  For best experience, please rotate your device to landscape mode.
+</div>
             </div>
+            <!-- =====================
+                 FIN MODAL DEL MAPA
+                 ===================== -->
 
             <div class="two-column-layout">
                 <!-- Columna de información de la propiedad -->
                 <div class="property-column">
-                    <div class="property-hero">
-                        <div class="property-info">
-                            <div class="info-section">
-                                <h2>Property Information</h2>
-                                <div class="info-group">
-                                    <h3>Wifi Information</h3>
-                                    <ul class="info-list" style="list-style: none;">
-                                        <!-- WiFi information will be inserted dynamically -->
-                                    </ul>
-                                </div>
-                                
-                                <div class="info-group">
-                                    <h3>Parking Information</h3>
-                                    <ul class="info-list" style="list-style: none;">
-                                        <!-- Parking information will be inserted dynamically -->
-                                    </ul>
-                                </div>
+                    <h2 class="column-title">Property Information</h2>
+                    <div class="info-section">
+                        <div class="info-group">
+                            <h3>Wifi Information</h3>
+                            <ul class="info-list" style="list-style: none;">
+                                <!-- WiFi information will be inserted dynamically -->
+                            </ul>
+                        </div>
+                        
+                        <hr class="section-divider">
+                        
+                        <div class="info-group">
+                            <h3>Parking Information</h3>
+                            <ul class="info-list" style="list-style: none;">
+                                <!-- Parking information will be inserted dynamically -->
+                            </ul>
+                        </div>
 
-                                <div class="info-group">
-                                    <h3>Important Villa Information</h3>
-                                    <!-- Important Villa Information will be inserted dynamically -->
-                                </div>
+                        <hr class="section-divider">
 
-                                <div class="info-group warning">
-                                    <h3>St. Regis Hotel Note</h3>
-                                    <p>PLEASE NOTE THAT FOR ALL RESIDENCES AT BAHIA BEACH RESORT, THE ST. REGIS' POOL AREA IS UNAVAILABLE AND THE RESTAURANT RESTRICTS RESERVATIONS WHEN THE HOTEL HAS HIGH OCCUPANCY.</p>
-                                    <p>YOU WILL STILL HAVE FULL ACCESS TO THREE OTHER BEAUTIFUL AND MORE EXCLUSIVE MEMBERS' POOLS (TWO WITH FULL SERVICE,) BEACHES AND RESTAURANTS ESPECIALLY DEDICATED FOR MEMBERS AND RESIDENTS.</p>
-                                </div>
-                            </div>
+                        <div class="info-group">
+                            <h3>Important Villa Information</h3>
+                            <!-- Important Villa Information will be inserted dynamically -->
+                        </div>
+
+                        <hr class="section-divider">
+
+                        <div class="info-group warning">
+                            <h3>St. Regis Hotel Note</h3>
+                            <p>PLEASE NOTE THAT FOR ALL RESIDENCES AT BAHIA BEACH RESORT, THE ST. REGIS' POOL AREA IS UNAVAILABLE AND THE RESTAURANT RESTRICTS RESERVATIONS WHEN THE HOTEL HAS HIGH OCCUPANCY.</p>
+                            <p>YOU WILL STILL HAVE FULL ACCESS TO THREE OTHER BEAUTIFUL AND MORE EXCLUSIVE MEMBERS' POOLS (TWO WITH FULL SERVICE,) BEACHES AND RESTAURANTS ESPECIALLY DEDICATED FOR MEMBERS AND RESIDENTS.</p>
                         </div>
                     </div>
                 </div>
 
+                <!-- Línea divisoria vertical -->
+                <div class="vertical-divider"></div>
+                
                 <!-- Columna del menú -->
                 <div class="menu-column">
-                    <h2>Services Book</h2>
+                    <h2 class="column-title">Services Book</h2>
                     <div class="search-container">
-                        <input type="text" id="global-search" placeholder="Buscar contactos...">
+                        <input type="text" id="global-search" placeholder="Search...">
                         <i class="material-icons search-icon">search</i>
                     </div>
                     <section id="sections-menu">
@@ -132,19 +158,26 @@
             </div>
 
             <!-- Modal para el Golf Cart -->
-            <div id="golfCartModal" class="modal">
-                <div class="modal-content">
-                    <span class="close" data-modal="golfCart">&times;</span>
-                    <h2>Golf Cart Information</h2>
-                    
+            <div id="golfCartInfoModal" class="modal">
+                <div class="modal-content golf-cart-modal">
+                    <span class="close" onclick="closeGolfCartInfoModal()">&times;</span>
+                    <h2>Unit's Golf Cart</h2>
                     <div class="info-section">
-                        <h3>Charging Instructions</h3>
+                        <h3><button class="modal-link-btn" onclick="openGolfCartChargingModal();return false;">Charging Instructions</button></h3>
                         <p>The golf cart has a retractable cord on the back for charging. Please make sure to
                         retract it when in use so it is not hanging loose and gets damaged.</p>
                     </div>
 
                     <div class="info-section">
-                        <h3>Golf Cart Parking</h3>
+                        <!-- Modal Charging Instructions -->
+                        <div id="golfCartChargingModal" class="modal">
+                            <div class="modal-content">
+                                <span class="close" onclick="closeGolfCartChargingModal()">&times;</span>
+                                <h2>Charging Instructions</h2>
+                                <p>The golf cart has a retractable cord on the back for charging. Please make sure to retract it when in use so it is not hanging loose and gets damaged.</p>
+                            </div>
+                        </div>
+                        <h3><button class="modal-link-btn" onclick="openGolfCartParkingModal();return false;">Golf Cart Parking</button></h3>
                         <p>Park your cart at its designated parking space and appropriate parking at the different resort venues:</p>
                         <ul>
                             <li>Wellness Center</li>
@@ -154,8 +187,30 @@
                             <li>Sand Dollar Beach</li>
                             <li>Valet parking at the St. Regis Hotel</li>
                         </ul>
+                        <!-- Modal Golf Cart Parking -->
+                        <div id="golfCartParkingModal" class="modal">
+                            <div class="modal-content">
+                                <span class="close" onclick="closeGolfCartParkingModal()">&times;</span>
+                                <h2>Golf Cart Parking</h2>
+                                <ul>
+                                    <li>Wellness Center</li>
+                                    <li>Boathouse/ Water Park</li>
+                                    <li>Beach Club pools, restaurants, concierge and golf shop</li>
+                                    <li>Cocoteros Diner</li>
+                                    <li>Sand Dollar Beach</li>
+                                    <li>Valet parking at the St. Regis Hotel</li>
+                                </ul>
+                                <p>Park your cart at its designated parking space and appropriate parking at the different resort venues.</p>
+                            </div>
+                        </div>
                     </div>
+                </div>
+            </div>
 
+            <div id="golfCartRulesModal" class="modal">
+                <div class="modal-content golf-cart-modal">
+                    <span class="close" onclick="closeGolfCartRulesModal()">&times;</span>
+                    <h2>Unit's Golf Cart</h2>
                     <div class="info-section warning">
                         <h3>Rules and Regulations</h3>
                         <ul>
@@ -168,12 +223,14 @@
                 </div>
             </div>
 
+
             <!-- Modal para Golf Rates -->
             <!-- Modal para Golf Shop -->
-            <div id="golfRatesModal" class="modal" data-modal-type="golf-shop">
+            <div id="golfRatesModal" class="modal">
                 <div class="modal-content">
-                    <span class="close" data-modal="golfRates">&times;</span>
-                    <h2>Golf Shop - Rates and Information</h2>
+                    <span class="close" onclick="closeGolfRatesModal()">&times;</span>
+                    <h2>Golf Shop - Rates and Schedules</h2>
+
                     <!-- Verificación de carga del modal -->
                     <script>
                         console.log('Golf Shop modal loaded:', {
@@ -294,12 +351,13 @@
             <!-- Modal para Tennis -->
             <div id="tennisModal" class="modal">
                 <div class="modal-content">
-                    <span class="close" data-modal="tennis">&times;</span>
-                    <h2>Tennis Services</h2>
+                    <span class="close" onclick="closeTennisModal()">&times;</span>
+                    <h2>Tennis Rates and Schedules</h2>
+
                     
                     <div class="info-section">
                         <h3>Court Reservations</h3>
-                        <p><strong>Complementary with your resort fee</strong></p>
+                        <p><strong>Complimentary with your resort fee</strong></p>
                         <ul class="info-list">
                             <li>Four tennis courts available:
                                 <ul>
@@ -340,11 +398,91 @@
                 </div>
             </div>
 
+            <!-- Modal para Cleaning Fees -->
+            <div id="cleaningFeesModal" class="modal">
+                <div class="modal-content">
+                    <span class="close" onclick="closeCleaningFeesModal()">&times;</span>
+                    <h2>During Stay Cleaning Services</h2>
+
+                <p class="service-description">Refresh clean, bed setup & towel wash</p>
+                
+                <table class="rates-table">
+                    <thead>
+                        <tr>
+                            <th>Property Type</th>
+                            <th>Service Fee</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>2 Bedroom Villa</td>
+                            <td>$150</td>
+                        </tr>
+                        <tr>
+                            <td>3 Bedroom Villa</td>
+                            <td>$175</td>
+                        </tr>
+                        <tr>
+                            <td>4 Bedroom Villa</td>
+                            <td>$200</td>
+                        </tr>
+                        <tr>
+                            <td>4 Bedroom House</td>
+                            <td>$350</td>
+                        </tr>
+                        <tr>
+                            <td>6 Bedroom House</td>
+                            <td>$550</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <p class="note">* Additional fee of $100 for extra bed linens change</p>
+                </div>
+            </div>
+
+            <!-- Modal para Grocery Shopping -->
+            <div id="groceryShoppingModal" class="modal">
+                <div class="modal-content">
+                    <span class="close" onclick="closeGroceryShoppingModal()">&times;</span>
+                    <h2>Grocery Shopping Services</h2>
+
+                <table class="rates-table">
+                    <thead>
+                        <tr>
+                            <th>Order Value</th>
+                            <th>Service Fee</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Up to $200</td>
+                            <td>$100</td>
+                        </tr>
+                        <tr>
+                            <td>Up to $500</td>
+                            <td>$150</td>
+                        </tr>
+                        <tr>
+                            <td>Up to $800</td>
+                            <td>$200</td>
+                        </tr>
+                        <tr>
+                            <td>$800 or more</td>
+                            <td>$250</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p class="note">* Additional fee of $25 per extra stop</p>
+                </div>
+            </div>
+
             <!-- Modal para Kids Club -->
             <div id="kidsClubModal" class="modal">
                 <div class="modal-content">
-                    <span class="close" data-modal="kidsClub">&times;</span>
+                    <span class="close" onclick="closeKidsClubModal()">&times;</span>
                     <h2>👦 🐢 St. Regis Tortuga Kid's Club</h2>
+
                     
                     <div class="info-section">
                         <h3>About Tortuga Kid's Club</h3>
@@ -375,17 +513,8 @@
                     <div class="info-section warning">
                         <h3>Important Information</h3>
                         <ul class="info-list">
-                            <li>Charges apply when children enjoy Tortuga Kid's Club program under recreation attendants' supervised childcare services</li>
                             <li>Every Child participating in the program must be at least four (4) years old and no older than twelve (12) years old</li>
                             <li>Every child participating in the program must be fully potty trained and must be able to re-dress themselves without assistance</li>
-                        </ul>
-                    </div>
-
-                    <div class="info-section">
-                        <h3>Additional Services</h3>
-                        <ul class="info-list">
-                            <li>Babysitting services are arranged through the St. Regis Concierge</li>
-                            <li>Tortuga Kid's Club facilities are complimentary when children are accompanied by a guardian</li>
                         </ul>
                     </div>
                 </div>
@@ -422,6 +551,12 @@
                             break;
                         case 'kidsClub':
                             closeKidsClubModal();
+                            break;
+                        case 'groceryShopping':
+                        closeGroceryShoppingModal();
+                        break;
+                        case 'cleaningFees':
+                            closeCleaningFeesModal();
                             break;
                     }
                 });

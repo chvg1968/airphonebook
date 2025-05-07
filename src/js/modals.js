@@ -26,13 +26,13 @@ function setupZoom() {
     }
     panzoomInstance = Panzoom(map, {
         maxScale: 5,
-        minScale: 1,
+        minScale: 0.5,
         contain: 'outside',
-        startScale: 1,
-        // Habilita controles táctiles y de mouse
+        startScale: 0.7,
         animate: true,
-        // Permitir que Panzoom maneje los eventos de pointer
-        excludeClass: '',
+        disableXAxis: false,
+        disableYAxis: false,
+        excludeClass: 'zoom-btn', // Asegura que los controles no bloqueen paneo
     });
     // Habilita los eventos de wheel y pinch para zoom interactivo
     map.parentElement.addEventListener('wheel', panzoomInstance.zoomWithWheel);

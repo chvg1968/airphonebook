@@ -1,26 +1,101 @@
 /* --- MAP MODAL PANZOOM FINAL OPTIMIZED + NO OVERLAYS --- */
 
 .orientation-warning {
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
-  width: 100vw;
-  background: #ffe082;
-  color: #333;
+  width: 100%;
+  background: none;
+  color: #222;
   text-align: center;
-  font-size: 1.1rem;
-  font-weight: 600;
-  padding: 12px 8px 10px 8px;
-  z-index: 9999;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
+  font-size: 1rem;
+  font-weight: 400;
+  padding: 8px 0 4px 0;
+  z-index: 200;
+  box-shadow: none;
+  display: block;
+  border-bottom: 1px solid #bbb;
+  text-decoration: underline;
+  letter-spacing: 0.02em;
   pointer-events: none;
 }
 
-.map-modal-content { position: relative !important; }
+.map-modal-content {
+  position: relative !important;
+  overflow: visible !important;
+}
+
+#propertyMapImage,
+.panzoom {
+  width: 100% !important;
+  height: 100% !important;
+  max-width: none !important;
+  max-height: none !important;
+  object-fit: contain !important;
+  position: absolute !important;
+  top: 0; left: 0; right: 0; bottom: 0;
+  z-index: 20 !important;
+  margin: 0 !important;
+  background: transparent !important;
+}
+
+.map-modal-content,
+.map-container {
+  width: 98vw !important;
+  height: 98vh !important;
+  max-width: none !important;
+  max-height: none !important;
+  position: relative !important;
+  overflow: hidden !important;
+  background: #fff !important;
+  display: flex !important;
+  align-items: stretch !important;
+  justify-content: stretch !important;
+}
+
+
+/* Para landscape: que la imagen se centre verticalmente si sobra espacio */
+/* RESTORE PANZOOM AND MAP FUNCTIONALITY, NO LANDSCAPE OVERRIDES */
+#propertyMapImage,
+.panzoom {
+  width: 100% !important;
+  height: 100% !important;
+  max-width: 100% !important;
+  max-height: 100% !important;
+  object-fit: contain !important;
+  position: absolute !important;
+  top: 0; left: 0; right: 0; bottom: 0;
+  z-index: 20 !important;
+  margin: 0 !important;
+  background: transparent !important;
+}
+
+.map-modal-content {
+  position: relative !important;
+  display: flex !important;
+  flex-direction: column !important;
+  height: 98vh !important;
+  width: 98vw !important;
+  max-width: none !important;
+  background: #fff !important;
+  border-radius: 8px !important;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1) !important;
+  overflow: hidden !important;
+}
+
+.map-container {
+  width: 100% !important;
+  height: 100% !important;
+  position: relative !important;
+  background: #fff !important;
+  z-index: 10 !important;
+  display: flex !important;
+  align-items: stretch !important;
+  justify-content: stretch !important;
+  overflow: hidden !important;
+}
+
+
 
 
 

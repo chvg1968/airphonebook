@@ -1,3 +1,71 @@
+/* Modal más ancha para tablas grandes */
+.modal-content {
+  max-width: 700px;
+  width: 95vw;
+  margin-left: auto;
+  margin-right: auto;
+  overflow-x: auto;
+}
+
+@media (max-width: 800px) {
+  .modal-content {
+    max-width: 99vw;
+    width: 99vw;
+  }
+}
+/* Estilos compactos para tablas dentro de modales */
+.modal-content table {
+  font-size: 0.89em;
+  border-collapse: collapse;
+}
+.modal-content th,
+.modal-content td {
+  padding: 3px 4px;
+  font-size: 0.82em;
+  word-break: break-word;
+  white-space: normal;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.modal-content th {
+  font-weight: 600;
+  text-align: center;
+  vertical-align: middle;
+  hyphens: auto;
+}
+
+.modal-content th {
+  font-weight: 600;
+}
+
+@media (max-width: 600px) {
+  .modal-content table {
+    font-size: 0.78em;
+  }
+  .modal-content th,
+  .modal-content td {
+    padding: 3px 4px;
+    font-size: 0.78em;
+  }
+}
+/* Habilitar scroll horizontal para tablas grandes dentro de modales */
+.modal-content table {
+  display: block;
+  width: 100%;
+  overflow-x: auto;
+  white-space: nowrap;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Si la tabla está dentro de un contenedor específico, puedes usar un selector más específico */
+.modal-content .rates-table {
+  display: block;
+  width: 100%;
+  overflow-x: auto;
+  white-space: nowrap;
+  -webkit-overflow-scrolling: touch;
+}
 .view-more-btn,
 button.view-more-btn {
   background-color: #1565c0 !important;

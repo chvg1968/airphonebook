@@ -20,28 +20,33 @@
         }
 
         body {
-            background-color: var(--background-color);
+            background-color: transparent;
             color: var(--primary-black);
             line-height: 1.6;
-            padding: 2rem;
-            max-width: 800px;
-            margin: 0 auto;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
 
         .container {
-            background-color: var(--primary-white);
-            padding: 3rem;
-            border-radius: 12px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            background-color: transparent;
+            padding: 1rem;
+            flex: 1;
+            overflow-y: auto;
         }
 
         h1 {
             color: var(--primary-black);
-            font-size: 2rem;
-            margin-bottom: 2rem;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
             text-align: center;
-            border-bottom: 3px solid var(--primary-orange);
-            padding-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            position: sticky;
+            top: 0;
+            background: #fff;
+            z-index: 1;
         }
 
         .section {
@@ -78,7 +83,12 @@
             background-color: #FFF;
             padding: 1.5rem;
             border-radius: 8px;
-            border-left: 4px solid var(--primary-orange);
+            border-left: 4px solid #d32f2f;
+        }
+        .rates ul li {
+            text-decoration: underline;
+            text-decoration-color: #d32f2f;
+            text-underline-offset: 2px;
         }
 
         .note {

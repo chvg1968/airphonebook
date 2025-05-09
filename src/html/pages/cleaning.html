@@ -4,40 +4,69 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Luxe Properties - Cleaning Services</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-            color: #333;
-        }
-        h1, h2 {
-            text-align: center;
-            color: #666;
-            font-weight: normal;
-        }
-        .service-description {
-            text-align: center;
-            color: #666;
-            margin: 30px 0;
-        }
-        .rates-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 30px;
-        }
-        .rates-table th, .rates-table td {
-            padding: 15px;
-            text-align: left;
-            border-bottom: 1px solid #ddd;
-        }
-        .note {
-            color: #666;
-            font-style: italic;
-            margin-top: 20px;
-        }
-    </style>
+    <link rel="stylesheet" href="../../../assets/styles/components/modal.css">
+<link rel="stylesheet" href="../../../assets/styles/components/table.css">
+<style>
+    body {
+        font-family: 'Inter', 'Segoe UI', 'Roboto', Arial, sans-serif;
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        color: #223046;
+        background: #f6f7fa;
+    }
+    h1, h2 {
+        text-align: center;
+        color: #24415a;
+        font-weight: 700;
+        margin-bottom: 0.5em;
+    }
+    .service-description {
+        text-align: center;
+        color: #666;
+        margin: 30px 0;
+    }
+    .note {
+        color: #666;
+        font-style: italic;
+        margin-top: 20px;
+    }
+    .rates-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-family: 'Segoe UI', 'Inter', Arial, sans-serif;
+        background: #fff;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.10);
+        margin-bottom: 20px;
+        border-radius: 10px;
+        overflow: hidden;
+    }
+    .rates-table th, .rates-table td {
+        padding: 12px 10px;
+        border: 1px solid #ddd;
+        text-align: right;
+        white-space: nowrap;
+    }
+    .rates-table thead th {
+        background-color: #f0f4f8;
+        color: #333;
+        font-weight: 600;
+    }
+    .rates-table th {
+        font-weight: 700;
+    }
+    .rates-table tbody tr:nth-child(even) td {
+        background-color: #f9fbfc;
+    }
+    .rates-table td {
+        background: #fff;
+        color: #223046;
+    }
+    .rates-table tfoot td {
+        font-weight: bold;
+        background-color: #eef2f6;
+    }
+</style>
 </head>
 <body>
     <h2>During Stay Cleaning Services</h2>

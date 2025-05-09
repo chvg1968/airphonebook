@@ -1,3 +1,174 @@
+/* --- MODAL MODERNA, MINIMALISTA, PASTELES --- */
+.modal-content {
+  background: #f6f7fa;
+  border-radius: 18px;
+  box-shadow: 0 8px 32px rgba(30, 60, 90, 0.10), 0 2px 8px rgba(0,0,0,0.06);
+  padding: 32px 24px 24px 24px;
+  font-family: 'Inter', 'Segoe UI', 'Roboto', Arial, sans-serif;
+  color: #223046;
+  position: relative;
+}
+
+.modal-content h2, .modal-content h3 {
+  color: #24415a;
+  font-family: 'Inter', 'Segoe UI', 'Roboto', Arial, sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  margin-bottom: 0.5em;
+}
+
+/* Mensajes importantes en rojo (especial para modal tortugas/kid) */
+.modal-content .important-message,
+.modal-content .turtle-warning,
+.modal-content .kid-warning {
+  color: #d32f2f !important;
+  background: #fff5f5;
+  border: 1px solid #f7bdbd;
+  border-radius: 7px;
+  padding: 10px 16px;
+  font-weight: 700;
+  margin: 1em 0 1.5em 0;
+  font-size: 1.04em;
+  text-align: center;
+  letter-spacing: 0.01em;
+  box-shadow: 0 2px 6px rgba(211,47,47,0.06);
+}
+
+.modal-content h2 {
+  font-size: 1.5rem;
+  margin-top: 0.2em;
+}
+
+.modal-content h3 {
+  font-size: 1.1rem;
+  margin-top: 0.6em;
+}
+
+.modal-content p, .modal-content ul, .modal-content li, .modal-content td, .modal-content th {
+  font-family: 'Inter', 'Segoe UI', 'Roboto', Arial, sans-serif;
+  color: #223046;
+  font-size: 1em;
+  line-height: 1.6;
+}
+
+.modal-content table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: 'Segoe UI', 'Inter', Arial, sans-serif;
+  background-color: #fff;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.10);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.modal-content th, .modal-content td {
+  padding: 12px 10px;
+  border: 1px solid #ddd;
+  text-align: right;
+  white-space: nowrap;
+}
+
+.modal-content thead th {
+  background-color: #f0f4f8;
+  color: #333;
+  font-weight: 600;
+}
+
+.modal-content th {
+  font-weight: 700;
+}
+
+.modal-content tbody tr:nth-child(even) td {
+  background-color: #f9fbfc;
+}
+
+.modal-content td {
+  background: #fff;
+  color: #223046;
+}
+
+.modal-content tfoot td {
+  font-weight: bold;
+  background-color: #eef2f6;
+  text-align: left;
+}
+
+.modal-content tr:last-child td {
+  border-bottom: none;
+}
+
+.modal-content .close {
+  color: #1976d2;
+  background: #e5eaf1;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  font-size: 1.8rem;
+  line-height: 36px;
+  text-align: center;
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(25, 118, 210, 0.08);
+  transition: background 0.2s, color 0.2s;
+}
+.modal-content .close:hover {
+  background: #b2e0ff;
+  color: #0d47a1;
+}
+
+.modal-content ul {
+  background: #f2f4f7;
+  border-radius: 8px;
+  padding: 12px 18px;
+  margin: 1em 0;
+}
+.modal-content ul li {
+  margin-bottom: 0.5em;
+}
+
+/* Botón dentro de la modal */
+.modal-link-btn, .view-more-btn, button.modal-link-btn {
+  background: #e3eaf6;
+  color: #1976d2 !important;
+  border: none !important;
+  border-radius: 6px;
+  padding: 13px 28px;
+  font-size: 1rem;
+  font-family: 'Inter', 'Segoe UI', 'Roboto', Arial, sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  box-shadow: 0 2px 8px rgba(25, 118, 210, 0.08);
+  margin: 0.5em 0;
+  cursor: pointer;
+  transition: background 0.2s, box-shadow 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+.modal-link-btn:hover, .view-more-btn:hover, button.modal-link-btn:hover {
+  background: #c6dbf7;
+  color: #1565c0;
+  box-shadow: 0 4px 12px rgba(25, 118, 210, 0.12);
+}
+
+/* Scrollbar pastel */
+.modal-content ::-webkit-scrollbar {
+  height: 8px;
+  background: #e5eaf1;
+  border-radius: 6px;
+}
+.modal-content ::-webkit-scrollbar-thumb {
+  background: #b8c7e0;
+  border-radius: 6px;
+}
+
+.modal-content ::selection {
+  background: #e5eaf1;
+  color: #1976d2;
+}
 /* Modal más ancha para tablas grandes */
 .modal-content {
   max-width: 700px;

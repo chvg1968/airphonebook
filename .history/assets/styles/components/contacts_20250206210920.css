@@ -239,6 +239,8 @@ html, body {
     from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
 }
+    animation: fadeIn 0.3s ease;
+}
 
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(20px); }
@@ -318,7 +320,8 @@ html, body {
     width: 16px;
     display: inline-block;
 }
-
+    transition: all 0.3s ease;
+}
 
 .contact:hover {
     transform: translateY(-2px);

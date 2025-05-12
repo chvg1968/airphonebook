@@ -114,6 +114,41 @@ export const villas = {
       </ul>",
     },
   },
+  "Ocean Sound Villa": {
+    property_title: "Ocean Sound Villa<br>Unit 2-103<br>Las Ventanas",
+    location: "/assets/images/mapventanas.jpg",
+    image: "/assets/images/properties/oceansound/Villa Ocean Sound.jpg",
+    "Wifi Information": {
+      "qr_code": "/assets/images/properties/oceansound/Ocean_sound-qrcode.png",
+      "qr_code_resort": "/assets/images/wifi_qr_resort.png",
+      "villa_network": "Rivendell",
+      "villa_password": "WhoIsJohnGalt?",
+      "resort_network": "Bahia Beach Resort",
+      "resort_password": "welcomeHome<br>Note: The H in Home is capitalized",
+    },
+    "Property Information": {
+      Accommodation: "2 bedroom/ 2 bathroom<br>Groundfloor Beachfront<br>6 Guests",
+    },
+    "Parking Information": {
+      "Parking Spots": "51, 52",
+      "Golf Cart": "174",
+      "Golf Cart Parking Spot": "G-139",
+    },
+    "Important Villa Information": {
+      content:
+        "<ul class='info-list' style='list-style: none;'>\
+        <li style='color: red;'><strong>Thermostats to regulate the 2 A/C units' temperature are located:</strong>\
+          <ul style='list-style: none; padding-left: 20px; margin-top: 5px;'>\
+            <li style='color: red;'>Inside the closet on the hall to the left after entering the apartment</li>\
+            <li style='color: red;'>Behind the master room&rsquo;s door</li>\
+          </ul>\
+        </li>\
+        <li><strong>Grill:</strong> Make sure to turn the gas off after using the grill</li>\
+        <li style='color: red;'>The trash disposal room is on the outside hall. It is the closet to the left of the unit</li>\
+        <li>When you are not in the villa, please lock the porch door. The door will occasionally open from the wind/airflow</li>\
+      </ul>",
+    },
+  },
   "Villa Paloma": {
     property_title: "Villa Paloma/Unit 5138<br>Las Verandas",
     location: "/assets/images/mapverandas.jpg",
@@ -303,7 +338,7 @@ export const villas = {
     location: "/assets/images/mapventanas.jpg",
     image: "/assets/images/properties/oceangrace/Ocean_Grace.jpg",
     "Wifi Information": {
-      "qr_code": "/assets/images/properties/oceangrace/Ocean_Grace-qrcode.png",
+      "qr_code": "/assets/images/properties/oceangrace/Ocean_grace-qrcode.png",
       "qr_code_resort": "/assets/images/wifi_qr_resort.png",
       "villa_network": "SeaSalt-105",
       "villa_password": "LasPalmas",
@@ -316,8 +351,8 @@ export const villas = {
     },
     "Parking Information": {
       "Parking spots": "56, 57",
-      "Golf Cart Spot": "G-56",
-      "Cart Number": "193 & 22",
+      "Golf Cart": "76",
+      "Golf Cart Parking Spot": "G-32",
     },
     "Important Villa Information": {
       content:
@@ -325,50 +360,9 @@ export const villas = {
         <li>The hot water heater is powered by the red switch in the laundry room. When the heater is on the red switch is lit. Please make sure it is on</li>\
         <li>The golf carts have a retractable cord on the back for charging. Please make sure to retract it when in use so it is not hanging loose and gets damaged</li>\
         <li>The trash disposal room is on the hall before passing the elevator</li>\
-        <li>There are two thermostats to regulate the temperature in the villa inside the closet that is on the hallway in front of the laundry room</li>\
+        <li style='color: red;'>There are two thermostats to regulate the temperature in the villa inside the closet that is on the hallway in front of the laundry room</li>\
         <li>Please make sure to turn the gas off after using the grill</li>\
         <li>When you are not in the villa, please lock the porch door. The door will occasionally open from the wind/airflow</li>\
-      </ul>",
-    },
-  },
-  "Casa Prestige": {
-    property_title: "Casa Prestige/Atlantic Drive G7",
-    location: "/assets/images/mapatlantic.jpeg",
-    image: "/assets/images/properties/casaprestige/Casa Prestige.jpeg",
-    "Wifi Information": {
-      "qr_code": "/assets/images/properties/casaprestige/Casa_Prestige-qrcode.png",
-      "qr_code_resort": "/assets/images/wifi_qr_resort.png",
-      "villa_network": "Bahia-Home",
-      "villa_password": "BHwifi@2022",
-      "resort_network": "Bahia Beach Resort",
-      "resort_password": "welcomeHome<br>Note: The H in Home is capitalized",
-    },
-    "Property Information": {
-      Accommodation:
-        "6 bedroom/ 9 bathroom<br>Amazing Golf Course<br>Lake View Mansion<br>12 Guests",
-    },
-    "Access Information": {
-      "Atlantic Drive Gate Code": "9842#",
-      "Main Garage Door Access": "6655",
-      "House Garage Door Access":
-        "There is a black touch screen. Two random numbers will light up. Press those two numbers and the whole keypad will light up. Enter code 0617 to unlock the door. Press the lock sign to lock the door.",
-    },
-    "Parking Information": {
-      "Cart Number": "193 & 22",
-    },
-    "Important Villa Information": {
-      content:
-        "<ul class='info-list' style='list-style: none;'>\
-        <li>The golf carts have a retractable cord on the back for charging. Please make sure to retract it when in use so it is not hanging loose and gets damaged</li>\
-        <li>The trash can be placed in the bin on a hall after the garage</li>\
-        <li>The elevator is working to get to the second floor. Will be instructed at check in</li>\
-        <li>The A/C can be controlled from each room individually</li>\
-        <li>There are controls in each room to open/close the shades and blackouts</li>\
-        <li>There is a switch next to the grill that lights up the pool lights</li>\
-        <li>Turn the gas off after using the grill (Below the grill)</li>\
-        <li>Juke sound system w/ designated ipad. Select the room/rooms where you want to hear the music. Pandora and Spotify are downloaded to use with your account</li>\
-        <li>Shades down during daytime to lower temp. A/Cs freeze if taken to lowest temp</li>\
-        <li>Outdoor fan starts slowly. Please be patient</li>\
       </ul>",
     },
   },

@@ -378,6 +378,10 @@ export const villas = {
       "resort_network": "Bahia Beach Resort",
       "resort_password": "welcomeHome<br>Note: The H in Home is capitalized",
     },
+    "Property Information": {
+      Accommodation:
+        "3 bedroom/ 3 bathroom<br>Groundfloor Beachfront<br>8 Guests",
+    },
     "Parking Information": {
       "Parking spots": "56, 57",
       "Golf Cart": "76",

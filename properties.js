@@ -366,4 +366,34 @@ export const villas = {
       </ul>",
     },
   },
+  "Ocean Grace Villa": {
+    property_title: "Ocean Grace Villa/Unit 2-105<br>Las Ventanas",
+    location: "/assets/images/mapventanas.jpg",
+    image: "/assets/images/properties/oceangrace/Ocean_Grace.jpg",
+    "Wifi Information": {
+      "qr_code": "/assets/images/properties/oceangrace/Ocean_Grace-qrcode.png",
+      "qr_code_resort": "/assets/images/wifi_qr_resort.png",
+      "villa_network": "SeaSalt-105",
+      "villa_password": "LasPalmas",
+      "resort_network": "Bahia Beach Resort",
+      "resort_password": "welcomeHome<br>Note: The H in Home is capitalized",
+    },
+    "Parking Information": {
+      "Parking spots": "56, 57",
+      "Golf Cart": "76",
+      "Golf Cart Parking Spot": "G-32",
+    },
+    "Important Villa Information": {
+      content:
+        "<ul class='info-list' style='list-style: none;'>\
+        <li>The hot water heater is powered by the red switch in the laundry room. When the heater is on the red switch is lit. Please make sure it is on</li>\
+        <li>The golf cart has a retractable cord on the back for charging. Please make sure to retract it when in use so it is not hanging loose and gets damaged</li>\
+        <li>The trash disposal room is on the hall before passing the elevator</li>\
+        <li style='color: red;'>There are two thermostats to regulate the temperature in the villa inside the closet that is on the hallway in front of the laundry room</li>\
+        <li>Please make sure to turn the gas off after using the grill</li>\
+        <li>When you are not in the villa, please lock the porch door. The door will occasionally open from the wind/airflow</li>\
+      </ul>",
+    },
+  },
+
 };

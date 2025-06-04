@@ -341,7 +341,7 @@ export const villas = {
       "qr_code": "/assets/images/properties/oceanserenity/Ocean_Serenity-qrcode.png",
       "qr_code_resort": "/assets/images/wifi_qr_resort.png",
       "villa_network": "SeaSalt-101",
-      "villa_password": "LasPalmas",
+      "villa_password": "LasBrisas",
       "resort_network": "Bahia Beach Resort",
       "resort_password": "welcomeHome<br>Note: The H in Home is capitalized",
     },

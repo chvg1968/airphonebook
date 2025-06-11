@@ -366,8 +366,10 @@ export const villas = {
         "<ul class='info-list' style='list-style: none;'>\
         <li>The hot water heater is powered by the red switch in the laundry room. When the heater is on the red switch is lit. Please make sure it is on</li>\
         <li>The golf cart has a retractable cord on the back for charging. Please make sure to retract it when in use so it is not hanging loose and gets damaged</li>\
-        <li>The trash disposal room is on the hall before passing the elevator</li>\
+        <li>The trash disposal room is on the hall after passing the elevator</li>\
         <li>There are two thermostats to regulate the temperature in the villa inside the closet that is on the hallway in front of the laundry room</li>\
+        <li>There are controls in each room to operate the TVS with Apple TV for streaming and regular cable. It takes some seconds to switch from one option to the other</li>\
+        <li>To use the sound system, connect to both the villa's WIFI and to your Spotify account on your phone</li>\
         <li>Please make sure to turn the gas off after using the grill</li>\
         <li>When you are not in the villa, please lock the porch door. The door will occasionally open from the wind/airflow</li>\
       </ul>",

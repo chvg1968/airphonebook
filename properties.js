@@ -112,7 +112,6 @@ export const villas = {
         <li><strong>Grill:</strong>\
           <ul style='list-style: none; padding-left: 20px; margin-top: 5px;'>\
             <li>Turn off the gas after using the grill</li>\
-            <li>Please request the grill for your stay if you will be using it</li>\
           </ul>\
         </li>\
         <li><strong>Terrace door:</strong> Lock the terrace door when not at the villa. The door may occasionally open due to airflow</li>\

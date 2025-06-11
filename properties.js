@@ -24,6 +24,7 @@ export const villas = {
     "Important Villa Information": {
       content:
         "<ul class='info-list' style='list-style: none;'>\
+        <li>The golf cart has a retractable cord on the back for charging. Please make sure to retract it when in use so it is not hanging loose and gets damaged</li>\
         <li>Trash disposal room is the furthest closet away from the unit after the elevator</li>\
         <li><strong>Thermostats to regulate the 3 A/C units' temperature are located:</strong>\
           <ul style='list-style: none; padding-left: 20px; margin-top: 5px;'>\
@@ -63,7 +64,9 @@ export const villas = {
     "Important Villa Information": {
       content:
         "<ul class='info-list' style='list-style: none;'>\
+        <li>The golf cart has a retractable cord on the back for charging. Please make sure to retract it when in use so it is not hanging loose and gets damaged</li>\
           <li>Trash disposal room is the furthest closet away from the unit after the elevator</li>\
+        <li>The hot water heater is powered by the red switch on the laundry room hallway. Please make sure it is on</li>\
           <li><strong>Thermostats to regulate the 2 A/C units' temperature are located:</strong>\
             <ul style='list-style: none; padding-left: 20px; margin-top: 5px;'>\
               <li>In the 2 A/C closets to the right of the apartment after the main entrance</li>\
@@ -137,14 +140,16 @@ export const villas = {
     "Important Villa Information": {
       content:
         "<ul class='info-list' style='list-style: none;'>\
-        <li style='color: red;'><strong>Thermostats to regulate the 2 A/C units' temperature are located:</strong>\
+        <li>The golf cart has a retractable cord on the back for charging. Please make sure to retract it when in use so it is not hanging loose and gets damaged</li>\
+        <li>The hot water heater is powered by the red switch on the laundry room hallway. Please make sure it is on</li>\
+        <li><strong>Thermostats to regulate the 2 A/C units' temperature are located:</strong>\
           <ul style='list-style: none; padding-left: 20px; margin-top: 5px;'>\
-            <li style='color: red;'>Inside the closet on the hall to the left after entering the apartment</li>\
-            <li style='color: red;'>Behind the master room&rsquo;s door</li>\
+            <li>Inside the closet on the hall to the left after entering the apartment</li>\
+            <li>Behind the master room&rsquo;s door</li>\
           </ul>\
         </li>\
         <li><strong>Grill:</strong> Make sure to turn the gas off after using the grill</li>\
-        <li style='color: red;'>The trash disposal room is on the outside hall. It is the closet to the left of the unit</li>\
+        <li>The trash disposal room is on the outside hall. It is the closet to the left of the unit</li>\
         <li>When you are not in the villa, please lock the porch door. The door will occasionally open from the wind/airflow</li>\
       </ul>",
     },
@@ -172,7 +177,7 @@ export const villas = {
     "Important Villa Information": {
       content:
         "<ul class='info-list' style='list-style: none;'>\
-        <li>The hot water heater is powered by the red switch in the laundry room. When the heater is on the red switch is lit. Please make sure it is on</li>\
+        <li>The golf cart has a retractable cord on the back for charging. Please make sure to retract it when in use so it is not hanging loose and gets damaged</li>\
         <li>The trash disposal room is on the hall before passing the elevator</li>\
         <li><strong>Thermostats to regulate the 2 A/C units' temperature are located:</strong>\
           <ul style='list-style: none; padding-left: 20px; margin-top: 5px;'>\
@@ -208,7 +213,7 @@ export const villas = {
     "Important Villa Information": {
       content:
         "<ul class='info-list' style='list-style: none;'>\
-        <li>The hot water heater is powered by the red switch on the left hallway after entering the unit. When the heater is on the red switch is lit. Please make sure it is on</li>\
+        <li>The golf cart has a retractable cord on the back for charging. Please make sure to retract it when in use so it is not hanging loose and gets damaged</li>\
         <li>Trash disposal room is the closet after passing the elevator</li>\
         <li><strong>Thermostats to regulate the 2 A/C units' temperature are located:</strong>\
           <ul style='list-style: none; padding-left: 20px; margin-top: 5px;'>\
@@ -279,6 +284,7 @@ export const villas = {
     "Important Villa Information": {
       content:
         "<ul class='info-list' style='list-style: none;'>\
+        <li>The golf cart has a retractable cord on the back for charging. Please make sure to retract it when in use so it is not hanging loose and gets damaged</li>\
         <li>Trash disposal room is the furthest closet away from the unit after the elevator</li>\
         <li><strong>Thermostats to regulate the 3 A/C units' temperature are located:</strong>\
           <ul style='list-style: none; padding-left: 20px; margin-top: 5px;'>\
@@ -360,7 +366,7 @@ export const villas = {
         <li>The hot water heater is powered by the red switch in the laundry room. When the heater is on the red switch is lit. Please make sure it is on</li>\
         <li>The golf cart has a retractable cord on the back for charging. Please make sure to retract it when in use so it is not hanging loose and gets damaged</li>\
         <li>The trash disposal room is on the hall before passing the elevator</li>\
-        <li style='color: red;'>There are two thermostats to regulate the temperature in the villa inside the closet that is on the hallway in front of the laundry room</li>\
+        <li>There are two thermostats to regulate the temperature in the villa inside the closet that is on the hallway in front of the laundry room</li>\
         <li>Please make sure to turn the gas off after using the grill</li>\
         <li>When you are not in the villa, please lock the porch door. The door will occasionally open from the wind/airflow</li>\
       </ul>",
@@ -393,7 +399,7 @@ export const villas = {
         <li>The hot water heater is powered by the red switch in the laundry room. When the heater is on the red switch is lit. Please make sure it is on</li>\
         <li>The golf cart has a retractable cord on the back for charging. Please make sure to retract it when in use so it is not hanging loose and gets damaged</li>\
         <li>The trash disposal room is on the hall before passing the elevator</li>\
-        <li style='color: red;'>There are two thermostats to regulate the temperature in the villa inside the closet that is on the hallway in front of the laundry room</li>\
+        <li>There are two thermostats to regulate the temperature in the villa inside the closet that is on the hallway in front of the laundry room</li>\
         <li>Please make sure to turn the gas off after using the grill</li>\
         <li>When you are not in the villa, please lock the porch door. The door will occasionally open from the wind/airflow</li>\
       </ul>",
@@ -426,7 +432,7 @@ export const villas = {
         <li>The hot water heater is powered by the red switch in the laundry room. When the heater is on the red switch is lit. Please make sure it is on</li>\
         <li>The golf cart has a retractable cord on the back for charging. Please make sure to retract it when in use so it is not hanging loose and gets damaged</li>\
         <li>The trash disposal room is on the hall before passing the elevator</li>\
-        <li style='color: red;'>There are two thermostats to regulate the temperature in the villa inside the closet that is on the hallway in front of the laundry room</li>\
+        <li>There are two thermostats to regulate the temperature in the villa inside the closet that is on the hallway in front of the laundry room</li>\
         <li>Please make sure to turn the gas off after using the grill</li>\
         <li>When you are not in the villa, please lock the porch door. The door will occasionally open from the wind/airflow</li>\
       </ul>",

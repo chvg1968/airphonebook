@@ -45,8 +45,8 @@ export const villas = {
     "Wifi Information": {
       "qr_code": "/assets/images/properties/villaoceanbliss/Ocean_Bliss-qrcode.png",
       "qr_code_resort": "/assets/images/wifi_qr_resort.png",
-      "villa_network": "Ventanas2-102",
-      "villa_password": "ILovePuertoRico123!",
+      "villa_network": "LIB-4212835",
+      "villa_password": "h9mQrDbnkwqs",
       "resort_network": "Bahia Beach Resort",
       "resort_password": "welcomeHome<br>Note: The H in Home is capitalized",
     },

@@ -73,6 +73,7 @@ export const villas = {
           </li>\
           <li><strong>Grill:</strong> Turn off the gas after using the grill</li>\
           <li><strong>Terrace door:</strong> Lock the terrace door when not at the villa. The door may occasionally open due to airflow</li>\
+          <li><strong>Pool house restrooms code:</strong> 8995</li>\
         </ul>",
     },
   },
@@ -114,6 +115,7 @@ export const villas = {
           </ul>\
         </li>\
         <li><strong>Terrace door:</strong> Lock the terrace door when not at the villa. The door may occasionally open due to airflow</li>\
+        <li><strong>Pool house restrooms code:</strong> 8995</li>\
       </ul>",
     },
   },
@@ -151,6 +153,7 @@ export const villas = {
         <li><strong>Grill:</strong> Make sure to turn the gas off after using the grill</li>\
         <li>The trash disposal room is on the outside hall. It is the closet to the left of the unit</li>\
         <li>When you are not in the villa, please lock the porch door. The door will occasionally open from the wind/airflow</li>\
+        <li><strong>Pool house restrooms code:</strong> 8995</li>\
       </ul>",
     },
   },
@@ -371,6 +374,7 @@ export const villas = {
         <li>To use the sound system, connect to both the villa's WIFI and to your Spotify account on your phone</li>\
         <li>Please make sure to turn the gas off after using the grill</li>\
         <li>When you are not in the villa, please lock the porch door. The door will occasionally open from the wind/airflow</li>\
+        <li><strong>Pool house restrooms code:</strong> 8995</li>\
       </ul>",
     },
   },
@@ -380,7 +384,7 @@ export const villas = {
     image: "/assets/images/properties/oceanviewvilla/Ocean_View.jpg",
     "Wifi Information": {
       "qr_code": "/assets/images/properties/oceanviewvilla/Ocean_View-qrcode.png",
-      "qr_code_resort": "/assets/images/wifi_qr_resort.png",  
+      "qr_code_resort": "/assets/images/wifi_qr_resort.png",
       "villa_network": "To be Confirmed",
       "villa_password": "To be Confirmed",
       "resort_network": "Bahia Beach Resort",
@@ -404,6 +408,7 @@ export const villas = {
         <li>There are two thermostats to regulate the temperature in the villa inside the closet that is on the hallway in front of the laundry room</li>\
         <li>Please make sure to turn the gas off after using the grill</li>\
         <li>When you are not in the villa, please lock the porch door. The door will occasionally open from the wind/airflow</li>\
+        <li><strong>Pool house restrooms code:</strong> 8995</li>\
       </ul>",
     },
   },
@@ -439,6 +444,7 @@ export const villas = {
         <li>To use the sound system, connect to both the villa's WIFI and to your Spotify account on your phone</li>\
         <li>Please make sure to turn the gas off after using the grill</li>\
         <li>When you are not in the villa, please lock the porch door. The door will occasionally open from the wind/airflow</li>\
+        <li><strong>Pool house restrooms code:</strong> 8995</li>\
       </ul>",
     },
   },

@@ -385,8 +385,8 @@ export const villas = {
     "Wifi Information": {
       "qr_code": "/assets/images/properties/oceanviewvilla/Ocean_View-qrcode.png",
       "qr_code_resort": "/assets/images/wifi_qr_resort.png",
-      "villa_network": "To be Confirmed",
-      "villa_password": "To be Confirmed",
+      "villa_network": "LIB-9600949",
+      "villa_password": "Mvgygn2za2wJ",
       "resort_network": "Bahia Beach Resort",
       "resort_password": "welcomeHome<br>Note: The H in Home is capitalized",
     },

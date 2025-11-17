@@ -25,7 +25,7 @@ export const ICONS = {
         "Water Sports": "🏄‍♂️",
         "Tennis": "🎾",
         "Water Park and Water Sports":"🏄‍♂️",
-        "St. Regis Tortuga Kid's Club": "👶",
+        "Four Seasons Tortuga Kid's Club": "👶",
 
         // Off Property Tours and Places to Visit
         "Aqua Tours and Boat Charters":"🛥️", 
@@ -37,7 +37,7 @@ export const ICONS = {
         // Services
         "Personal Chefs, Catering and Pre-made Meals":"🧑🏻‍🍳",
         "Concierge Services": "🤵",
-        "St. Regis Iridium Spa": "💆‍♀️",      
+        "Four Seasons Iridium Spa": "💆‍♀️",      
         "Grocery Shopping and Errands":"🛒",
         "During Stay Cleaning Fees":"🧹",
         "Concierge Services":"🤵",

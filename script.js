@@ -237,7 +237,7 @@ class ContactManager {
             isGolfShop: isGolfShop
         });
         const isTennis = contact.name.includes('Tennis Reservations');
-        const isKidsClub = contact.name.includes('St. Regis Tortuga Kid\'s Club');
+        const isKidsClub = contact.name.includes('Four Seasons Tortuga Kid\'s Club');
         const isGroceryShopping = contact.name === 'Grocery Shopping Services';
         const isCleaningFees = contact.name === 'During Stay Cleaning Fees';
         // Detectar si estamos en una página de propiedad

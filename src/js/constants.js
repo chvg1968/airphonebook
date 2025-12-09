@@ -48,6 +48,7 @@ export const ICONS = {
         "Professional Photography":"📸",
         "Personal Care and Fitness":"🤲",
         "Groceries and Shopping": "🛒",
+        "Hair, Makeup and More":"🎀",
 
         // Transportation
         "Car Rental": "🚗",

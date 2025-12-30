@@ -360,7 +360,7 @@ export const villas = {
     },
     "Parking Information": {
       "Parking spots": "35, 55",
-      "Golf Cart": "104",
+      "Golf Cart": "179",
       "Golf Cart Parking Spot": "G-31",
     },
     "Important Villa Information": {
@@ -430,7 +430,7 @@ export const villas = {
     },
     "Parking Information": {
       "Parking spots": "56, 57",
-      "Golf Cart": "76",
+      "Golf Cart": "188",
       "Golf Cart Parking Spot": "G-32",
     },
     "Important Villa Information": {

@@ -75,11 +75,15 @@ export const ICONS = {
         "San Juan - 45 min West": "🍴",
 
         // Shopping
-        
         "Grocery Shopping on the Way from the Airport": "🛒",
         "Grocery Shopping Near Bahia Beach": "🛒",
         "Specialty Food, Wine and Liquor Stores": "🍷",
         "Shopping Malls": "🛍️",
+
+        // Tours and Services (also used as subcategories)
+        "General Tours, Old San Juan and Adventures": "🧭",
+        "Personal Chefs, Catering and Pre-made Meals": "🧑🏻‍🍳",
+        "Hair, Makeup and More": "💇‍♀️",
     },
     contactTypes: {
         "restaurant": "🍽️",

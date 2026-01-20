@@ -11,11 +11,13 @@ Airphonebook is a web application designed to manage and display contact informa
 │
 ├── .env                          # Variables de entorno (credenciales)
 ├── .env.example                  # Plantilla de variables de entorno
+├── .well-known/
+│   └── security.txt              # Vulnerability reporting contact
 ├── HomePage.html
 ├── index.html
 ├── index.js
 ├── package.json
-├── netlify.toml                  # Configuración de Netlify
+├── netlify.toml                  # Configuración de Netlify + Security Headers
 ├── script.js
 ├── styles.css
 ├── assets/
@@ -207,6 +209,30 @@ Returns all contacts from the database.
 | **Netlify Functions** | Serverless backend |
 | **Vanilla JS** | Frontend (no framework) |
 | **HTML/CSS** | UI structure and styling |
+
+---
+
+## Security
+
+### HTTP Security Headers
+
+The application implements security headers via `netlify.toml`:
+
+| Header | Purpose |
+|--------|---------|
+| `Content-Security-Policy` | Controls which resources can be loaded |
+| `Strict-Transport-Security` | Forces HTTPS connections |
+| `X-Frame-Options` | Prevents clickjacking attacks |
+| `X-Content-Type-Options` | Prevents MIME sniffing |
+| `X-XSS-Protection` | Enables browser XSS filtering |
+| `Referrer-Policy` | Controls referrer information |
+| `Permissions-Policy` | Restricts browser features (camera, mic, geolocation) |
+
+### Vulnerability Reporting
+
+Security issues can be reported via:
+- Email: See `/.well-known/security.txt`
+- URL: `https://luxepropertiespr.info/.well-known/security.txt`
 
 ---
 

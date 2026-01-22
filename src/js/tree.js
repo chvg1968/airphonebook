@@ -19,13 +19,10 @@ const getCurrentLocation = () => {
 
 // Función para renderizar contactos
 const renderContacts = (contacts) => {
-    console.log('Rendering contacts:', contacts.length);
     return contacts.map(contact => {
-        console.log('Processing contact:', contact.name, contact.section);
         const contactDiv = document.createElement('div');
         contactDiv.className = 'contact';
         const html = contactManager.renderContactDetails(contact);
-        console.log('Generated HTML for contact:', contact.name, html.length);
         contactDiv.innerHTML = html;
         return contactDiv;
     });
@@ -156,7 +153,6 @@ const handleFloatingButton = () => {
 export async function buildTree() {
     try {
         const contacts = await fetchAllContacts();
-        console.log('📈 Contactos recuperados:', contacts.length);
 
         contactManager = new ContactManager(contacts);
         
@@ -624,9 +620,6 @@ function setupRefreshButton() {
             // Actualizar el indicador
             await updateLastUpdateIndicator();
 
-            // Notificar al usuario
-            console.log(`✅ Contacts refreshed: ${freshContacts.length} contacts`);
-            
             // Recargar la página para mostrar datos actualizados
             // (alternativa: re-renderizar el árbol sin recargar)
             window.location.reload();

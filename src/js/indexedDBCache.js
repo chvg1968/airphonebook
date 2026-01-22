@@ -26,7 +26,6 @@ async function openDB() {
 
         request.onsuccess = () => {
             dbInstance = request.result;
-            console.log('✅ IndexedDB opened successfully');
             resolve(dbInstance);
         };
 
@@ -36,13 +35,11 @@ async function openDB() {
             // Store for contacts
             if (!db.objectStoreNames.contains(STORE_NAME)) {
                 db.createObjectStore(STORE_NAME, { keyPath: 'id', autoIncrement: true });
-                console.log('📦 Contacts store created');
             }
 
             // Store for metadata (last update timestamp, etc.)
             if (!db.objectStoreNames.contains(META_STORE)) {
                 db.createObjectStore(META_STORE, { keyPath: 'key' });
-                console.log('📦 Metadata store created');
             }
         };
     });
@@ -79,7 +76,6 @@ export async function saveContacts(contacts) {
             transaction.onerror = () => reject(transaction.error);
         });
 
-        console.log(`💾 ${contacts.length} contacts saved to IndexedDB`);
         return true;
     } catch (error) {
         console.error('❌ Error saving to IndexedDB:', error);
@@ -100,7 +96,6 @@ export async function getContacts() {
         return new Promise((resolve, reject) => {
             const request = store.getAll();
             request.onsuccess = () => {
-                console.log(`📂 ${request.result.length} contacts retrieved from IndexedDB`);
                 resolve(request.result);
             };
             request.onerror = () => reject(request.error);
@@ -180,7 +175,6 @@ export async function clearCache() {
             transaction.onerror = () => reject(transaction.error);
         });
 
-        console.log('🗑️ Cache cleared');
         return true;
     } catch (error) {
         console.error('❌ Error clearing cache:', error);

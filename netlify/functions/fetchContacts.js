@@ -2,7 +2,6 @@ const { createClient } = require('@supabase/supabase-js');
 
 exports.handler = async (event, context) => {
     try {
-        console.log('🔄 Obteniendo datos de Supabase...');
 
         // Validar variables de entorno
         if (!process.env.SUPABASE_URL || !process.env.SUPABASE_ANON_KEY || !process.env.SUPABASE_TABLE_NAME) {
@@ -22,8 +21,6 @@ exports.handler = async (event, context) => {
         if (error) {
             throw error;
         }
-
-        console.log(`✅ ${data.length} contactos obtenidos de Supabase`);
 
         return {
             statusCode: 200,

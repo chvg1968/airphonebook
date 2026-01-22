@@ -29,7 +29,6 @@ function processContacts(rawContacts) {
  * Fetches contacts from the server
  */
 async function fetchFromServer() {
-    console.log('🔄 Fetching from server...');
     const response = await fetch('/api/fetchContacts');
 
     if (!response.ok) {
@@ -39,7 +38,6 @@ async function fetchFromServer() {
     }
 
     const data = await response.json();
-    console.log("📋 Data received from server:", data.contacts.length, "contacts");
     return processContacts(data.contacts);
 }
 
@@ -60,9 +58,6 @@ export async function fetchAllContacts(onUpdate = null) {
 
         if (hasCached) {
             cachedContacts = await getContacts();
-            console.log(`⚡ Returning ${cachedContacts.length} cached contacts instantly`);
-            
-            // Update last update indicator
             updateLastUpdateIndicator();
         }
 
@@ -73,7 +68,6 @@ export async function fetchAllContacts(onUpdate = null) {
                 const hasChanges = JSON.stringify(cachedContacts) !== JSON.stringify(freshContacts);
                 
                 if (hasChanges) {
-                    console.log('🔄 Data changed, updating cache...');
                     await saveContacts(freshContacts);
                     updateLastUpdateIndicator();
                     
@@ -84,8 +78,6 @@ export async function fetchAllContacts(onUpdate = null) {
                     window.dispatchEvent(new CustomEvent('contactsUpdated', { 
                         detail: { contacts: freshContacts, source: 'network' } 
                     }));
-                } else {
-                    console.log('✅ Data unchanged, cache is current');
                 }
                 
                 return freshContacts;
@@ -93,9 +85,6 @@ export async function fetchAllContacts(onUpdate = null) {
             .catch(error => {
                 console.error("❌ Error fetching from server:", error);
                 // If we have cached data, that's fine - we'll use it
-                if (hasCached) {
-                    console.log('📦 Using cached data due to network error');
-                }
                 return cachedContacts;
             });
 
@@ -119,7 +108,6 @@ export async function fetchAllContacts(onUpdate = null) {
         // Last resort: try to return cached data
         const cached = await getContacts();
         if (cached.length > 0) {
-            console.log('📦 Returning cached data after error');
             return cached;
         }
         
@@ -131,7 +119,6 @@ export async function fetchAllContacts(onUpdate = null) {
  * Forces a refresh from the server, bypassing cache
  */
 export async function forceRefresh() {
-    console.log('🔄 Force refreshing contacts...');
     try {
         const freshContacts = await fetchFromServer();
         await saveContacts(freshContacts);

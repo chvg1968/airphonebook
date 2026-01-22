@@ -40,7 +40,8 @@ Airphonebook is a web application designed to manage and display contact informa
 | Archivo | Descripción |
 |---------|-------------|
 | `netlify/functions/fetchContacts.js` | Función serverless que conecta con Supabase |
-| `src/js/api.js` | Módulo frontend que consume la API |
+| `src/js/api.js` | Módulo frontend que consume la API (con caché IndexedDB) |
+| `src/js/indexedDBCache.js` | Módulo de caché local con IndexedDB |
 | `src/js/constants.js` | Constantes de la aplicación (iconos, secciones) |
 | `src/js/tree.js` | Renderizado del árbol de navegación |
 | `.env` | Variables de entorno (no subir a Git) |
@@ -61,17 +62,25 @@ Airphonebook is a web application designed to manage and display contact informa
       │   GET /api/          │   SELECT * FROM         │
       │   fetchContacts      │   Contacts              │
       │                      │                         │
+      ▼
+┌─────────────┐
+│  IndexedDB  │  ◄── Caché local (offline-first)
+│   (Local)   │
+└─────────────┘
 ```
 
-### Request Lifecycle
+### Request Lifecycle (with Caching)
 
 1. **Usuario abre la app** → Frontend carga
-2. **Frontend (`api.js`)** → Hace fetch a `/api/fetchContacts`
-3. **Netlify** → Recibe la petición y ejecuta `fetchContacts.js`
-4. **Función serverless** → Usa variables de entorno para conectar a Supabase
-5. **Supabase** → Verifica RLS policies → Retorna datos
-6. **Función serverless** → Responde con JSON al frontend
-7. **Frontend** → Procesa datos y renderiza la UI
+2. **Frontend (`api.js`)** → Verifica si hay datos en IndexedDB
+3. **Si hay caché** → Retorna datos instantáneamente al usuario
+4. **En background** → Hace fetch a `/api/fetchContacts`
+5. **Netlify** → Recibe la petición y ejecuta `fetchContacts.js`
+6. **Función serverless** → Usa variables de entorno para conectar a Supabase
+7. **Supabase** → Verifica RLS policies → Retorna datos
+8. **Función serverless** → Responde con JSON al frontend
+9. **Frontend** → Compara con caché, actualiza IndexedDB si hay cambios
+10. **UI** → Se actualiza automáticamente con datos frescos
 
 ### Security Model
 
@@ -207,6 +216,7 @@ Returns all contacts from the database.
 |------------|---------|
 | **Supabase** | PostgreSQL database with REST API |
 | **Netlify Functions** | Serverless backend |
+| **IndexedDB** | Client-side caching (offline-first) |
 | **Vanilla JS** | Frontend (no framework) |
 | **HTML/CSS** | UI structure and styling |
 
@@ -237,6 +247,68 @@ Security issues can be reported via:
 ---
 
 ## Migration History
+
+### v2.1 - IndexedDB Caching (January 2025)
+
+Added client-side caching with IndexedDB using the **Stale-While-Revalidate** pattern for improved performance and offline support.
+
+**New Files:**
+- `src/js/indexedDBCache.js` - IndexedDB cache module
+
+**Changes:**
+- `src/js/api.js` - Now implements stale-while-revalidate caching strategy
+- `src/js/tree.js` - Added refresh button and last update indicator
+- `src/html/pages/model.html` - Added cache status UI
+- `assets/styles/components/layout.css` - Added cache indicator styles
+
+**How It Works:**
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│                 Stale-While-Revalidate                       │
+├─────────────────────────────────────────────────────────────┤
+│  1. User opens app                                           │
+│  2. Return cached data INSTANTLY (if available)              │
+│  3. Fetch fresh data from server in background               │
+│  4. Compare with cache                                       │
+│  5. If changed → Update IndexedDB + Notify UI                │
+└─────────────────────────────────────────────────────────────┘
+```
+
+**Benefits:**
+- ⚡ **Instant loading** - Data appears immediately from cache
+- 📴 **Offline support** - App works without internet connection
+- 🔄 **Always fresh** - Background sync keeps data updated
+- 💾 **Persistent** - Data survives browser restarts
+- 🎯 **Manual refresh** - Users can force update with refresh button
+
+**UI Features:**
+- "Last updated: X minutes ago" indicator
+- Refresh button with spinning animation
+- Automatic background sync on page load
+
+**API Functions:**
+```javascript
+// Main fetch with caching
+import { fetchAllContacts } from './api.js';
+const contacts = await fetchAllContacts();
+
+// Force refresh from server
+import { forceRefresh } from './api.js';
+const freshContacts = await forceRefresh();
+
+// Get last update time
+import { getLastUpdateFormatted } from './api.js';
+const lastUpdate = await getLastUpdateFormatted(); // "5 min ago"
+```
+
+**IndexedDB Structure:**
+| Store | Purpose |
+|-------|---------|
+| `contacts` | Cached contact records |
+| `metadata` | Last update timestamp |
+
+---
 
 ### v2.0 - Supabase Migration (January 2025)
 

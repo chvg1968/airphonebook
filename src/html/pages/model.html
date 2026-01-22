@@ -184,6 +184,13 @@
           <!-- Columna del menú -->
           <div id="book" class="menu-column">
             <h2 class="column-title">Services Book</h2>
+            <!-- Cache status indicator -->
+            <div class="cache-status">
+              <span id="last-update-indicator" class="last-update-text">Loading...</span>
+              <button id="refresh-contacts-btn" class="refresh-btn" title="Refresh contacts">
+                <i class="fas fa-sync-alt"></i>
+              </button>
+            </div>
             <div class="search-container">
               <input type="text" id="global-search" placeholder="Search..." />
               <i class="material-icons search-icon">search</i>

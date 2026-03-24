@@ -18,8 +18,8 @@ function processContacts(rawContacts) {
             name: contact.name,
             phone: contact.phone || '',
             section: contact.section || 'Sin Sección',
-            category: contact.category || 'Sin Categoría',
-            subcategory: contact.subcategories || '',
+            category: (contact.category || 'Sin Categoría').replace(/^["']+|["']+$/g, '').trim(),
+            subcategory: (contact.subcategories || '').replace(/^["']+|["']+$/g, '').trim(),
             description: contact.description || '',
             icon: contact.icon || ''
         }));

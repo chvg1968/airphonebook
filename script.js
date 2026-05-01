@@ -1,5 +1,5 @@
-import { fetchAllContacts } from "./src/js/Api.js";
-import { buildTree } from "./src/js/Tree.js";
+import { fetchAllContacts } from "./src/js/api.js";
+import { buildTree } from "./src/js/tree.js";
 import { SECTION_ORDER } from "./src/js/constants.js";
 import { getIcon } from "./src/js/utils.js";
 
@@ -69,8 +69,6 @@ class ContactManager {
             // Añadir contacto
             categoryObj.contacts.push(contact);
         });
-
-        console.log('🔍 Estructura de Secciones Procesadas:', structuredSections);
 
         // Ordenar secciones
         return Object.fromEntries(
@@ -228,21 +226,14 @@ class ContactManager {
         const phoneIcon = getIcon('contactTypes', 'phone');
         const descriptionIcon = '';
         const isGolfCartSection = contact.section === 'Unit\'s Golf Cart';
-        // Depurar la detección de Golf Shop
         const contactNameLower = contact.name.toLowerCase();
         const isGolfShop = contactNameLower.includes('golf shop');
-        console.log('Golf Shop detection:', {
-            originalName: contact.name,
-            lowerName: contactNameLower,
-            isGolfShop: isGolfShop
-        });
         const isTennis = contact.name.includes('Tennis Reservations');
         const isKidsClub = contact.name.includes('Four Seasons Tortuga Kid\'s Club');
         const isGroceryShopping = contact.name === 'Grocery Shopping Services';
         const isCleaningFees = contact.name === 'During Stay Cleaning Fees';
         // Detectar si estamos en una página de propiedad
         const isPropertyPage = window.location.pathname.includes('/pages/model.html');
-        console.log('Is Property page:', isPropertyPage, 'Path:', window.location.pathname, 'URL:', window.location.href);
 
         let html = `
             <strong>${contact.icon || ''} ${contact.name}</strong>
@@ -250,18 +241,7 @@ class ContactManager {
             ${contact.description ? `<small>${descriptionIcon} ${contact.description}</small>` : ''}
         `;
 
-        console.log('Rendering contact:', {
-            name: contact.name,
-            section: contact.section,
-            isGolfCartSection,
-            isGolfShop,
-            isTennis,
-            isKidsClub,
-            isPropertyPage
-        });
-
         if (isPropertyPage) {
-            console.log('Adding modal button for:', contact.name);
             // Crear el botón base
             let buttonHtml = '';
             let modalType = '';
@@ -323,8 +303,6 @@ class ContactManager {
                     }
                 }, 0);
             }
-        } else {
-            console.log('Not Villa Clara page, skipping modal buttons');
         }
 
         return html;

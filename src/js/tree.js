@@ -1,4 +1,4 @@
-import { fetchAllContacts } from "./Api.js";
+import { fetchAllContacts, forceRefresh, getLastUpdateFormatted } from "./api.js";
 import { getIcon } from "./utils.js";
 
 // Variables globales para el estado de navegación
@@ -19,13 +19,10 @@ const getCurrentLocation = () => {
 
 // Función para renderizar contactos
 const renderContacts = (contacts) => {
-    console.log('Rendering contacts:', contacts.length);
     return contacts.map(contact => {
-        console.log('Processing contact:', contact.name, contact.section);
         const contactDiv = document.createElement('div');
         contactDiv.className = 'contact';
         const html = contactManager.renderContactDetails(contact);
-        console.log('Generated HTML for contact:', contact.name, html.length);
         contactDiv.innerHTML = html;
         return contactDiv;
     });
@@ -156,7 +153,6 @@ const handleFloatingButton = () => {
 export async function buildTree() {
     try {
         const contacts = await fetchAllContacts();
-        console.log('📈 Contactos recuperados:', contacts.length);
 
         contactManager = new ContactManager(contacts);
         
@@ -583,7 +579,57 @@ const handleBack = () => {
         // Inicializar el botón flotante
         handleFloatingButton();
 
+        // Inicializar indicador de última actualización
+        updateLastUpdateIndicator();
+
+        // Configurar botón de refresh
+        setupRefreshButton();
+
     } catch (error) {
         console.error('Error al construir el árbol:', error);
     }
+}
+
+// Función para actualizar el indicador de última actualización
+async function updateLastUpdateIndicator() {
+    const indicator = document.getElementById('last-update-indicator');
+    if (indicator) {
+        try {
+            const formatted = await getLastUpdateFormatted();
+            indicator.textContent = `Last updated: ${formatted}`;
+        } catch (error) {
+            indicator.textContent = 'Last updated: Unknown';
+        }
+    }
+}
+
+// Función para configurar el botón de refresh
+function setupRefreshButton() {
+    const refreshBtn = document.getElementById('refresh-contacts-btn');
+    if (!refreshBtn) return;
+
+    refreshBtn.addEventListener('click', async () => {
+        // Mostrar estado de carga
+        refreshBtn.classList.add('refreshing');
+        refreshBtn.disabled = true;
+
+        try {
+            // Forzar actualización desde el servidor
+            const freshContacts = await forceRefresh();
+            
+            // Actualizar el indicador
+            await updateLastUpdateIndicator();
+
+            // Recargar la página para mostrar datos actualizados
+            // (alternativa: re-renderizar el árbol sin recargar)
+            window.location.reload();
+
+        } catch (error) {
+            console.error('❌ Error refreshing contacts:', error);
+            alert('Error updating contacts. Please try again.');
+        } finally {
+            refreshBtn.classList.remove('refreshing');
+            refreshBtn.disabled = false;
+        }
+    });
 }

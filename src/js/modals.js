@@ -89,21 +89,52 @@ function setupZoom() {
 
 }
 
+// Variables para trackear cambios de viewport
+let lastWidth = window.innerWidth;
+let lastHeight = window.innerHeight;
+
 function adjustMapModalDimensions() {
     const container = document.querySelector('.map-container');
     const map = document.getElementById('propertyMapImage');
-    if (container && map) {
+
+    if (!container || !map) return;
+
+    // Solo ajustar si realmente cambió el tamaño significativamente
+    const widthChanged = Math.abs(window.innerWidth - lastWidth) > 50;
+    const heightChanged = Math.abs(window.innerHeight - lastHeight) > 50;
+
+    if (widthChanged || heightChanged) {
         container.style.width = '100%';
         container.style.height = '100%';
-        map.style.transform = 'none';
-        if (panzoomInstance) {
-            panzoomInstance.reset();
+
+        // Solo resetear en cambio de orientación real, no en resize de barras
+        if (panzoomInstance && widthChanged && heightChanged) {
+            // Guardar escala actual
+            const currentScale = panzoomInstance.getScale();
+
+            // Solo resetear si está muy zoomeado (escala > 3)
+            // Esto preserva el zoom del usuario en rotaciones
+            if (currentScale > 3) {
+                panzoomInstance.reset();
+            }
         }
+
+        lastWidth = window.innerWidth;
+        lastHeight = window.innerHeight;
     }
 }
 
-window.addEventListener('resize', adjustMapModalDimensions);
-window.addEventListener('orientationchange', adjustMapModalDimensions);
+// Usar debounce para evitar múltiples llamadas en resize
+let resizeTimeout;
+window.addEventListener('resize', () => {
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(adjustMapModalDimensions, 150);
+});
+
+// Esperar a que termine la rotación antes de ajustar
+window.addEventListener('orientationchange', () => {
+    setTimeout(adjustMapModalDimensions, 300);
+});
 
 export function openMapModal() {
     showModal('mapModal');

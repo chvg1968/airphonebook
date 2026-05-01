@@ -1,39 +1,150 @@
-export async function fetchAllContacts() {
+import { 
+    saveContacts, 
+    getContacts, 
+    getLastUpdateFormatted,
+    hasCachedData 
+} from './indexedDBCache.js';
+
+// Event for notifying UI about data updates
+const dataUpdateEvent = new CustomEvent('contactsUpdated', { detail: { source: 'network' } });
+
+/**
+ * Processes raw contacts from API into normalized format
+ */
+function processContacts(rawContacts) {
+    return rawContacts
+        .filter(contact => contact.name)
+        .map(contact => ({
+            name: contact.name,
+            phone: contact.phone || '',
+            section: contact.section || 'Sin Sección',
+            category: (contact.category || 'Sin Categoría').replace(/^["']+|["']+$/g, '').trim(),
+            subcategory: (contact.subcategories || '').replace(/^["']+|["']+$/g, '').trim(),
+            description: contact.description || '',
+            icon: contact.icon || ''
+        }));
+}
+
+/**
+ * Fetches contacts from the server
+ */
+async function fetchFromServer() {
+    const response = await fetch('/api/fetchContacts');
+
+    if (!response.ok) {
+        const errorText = await response.text();
+        console.error('📄 Server response:', errorText);
+        throw new Error(`HTTP error! Status: ${response.status}. Response: ${errorText}`);
+    }
+
+    const data = await response.json();
+    return processContacts(data.contacts);
+}
+
+/**
+ * Stale-While-Revalidate strategy:
+ * 1. Return cached data immediately (if available)
+ * 2. Fetch fresh data in background
+ * 3. Update cache and notify UI if data changed
+ * 
+ * @param {Function} onUpdate - Callback when fresh data arrives
+ * @returns {Array} Contacts (from cache or server)
+ */
+export async function fetchAllContacts(onUpdate = null) {
     try {
-        console.log('🔄 Iniciando solicitud a la función de Netlify...');
-        const response = await fetch('/api/fetchContacts');
-        
-        if (!response.ok) {
-            const errorText = await response.text();
-            console.error('📄 Respuesta del servidor:', errorText);
-            throw new Error(`HTTP error! Status: ${response.status}. Response: ${errorText}`);
+        // Step 1: Check for cached data
+        const hasCached = await hasCachedData();
+        let cachedContacts = [];
+
+        if (hasCached) {
+            cachedContacts = await getContacts();
+            updateLastUpdateIndicator();
         }
 
-        const data = await response.json();
-        console.log("📋 Datos recibidos desde Netlify:", data);
+        // Step 2: Fetch fresh data in background
+        const fetchPromise = fetchFromServer()
+            .then(async (freshContacts) => {
+                // Step 3: Compare and update if different
+                const hasChanges = JSON.stringify(cachedContacts) !== JSON.stringify(freshContacts);
+                
+                if (hasChanges) {
+                    await saveContacts(freshContacts);
+                    updateLastUpdateIndicator();
+                    
+                    // Notify UI about update
+                    if (onUpdate) {
+                        onUpdate(freshContacts);
+                    }
+                    window.dispatchEvent(new CustomEvent('contactsUpdated', { 
+                        detail: { contacts: freshContacts, source: 'network' } 
+                    }));
+                }
+                
+                return freshContacts;
+            })
+            .catch(error => {
+                console.error("❌ Error fetching from server:", error);
+                // If we have cached data, that's fine - we'll use it
+                return cachedContacts;
+            });
 
-        const validRecords = data.records
-            .filter(record => record.fields && record.fields.name)
-            .map(record => ({
-                name: Array.isArray(record.fields.name) ? record.fields.name[0] : record.fields.name,
-                phone: record.fields.phone ? (Array.isArray(record.fields.phone) ? record.fields.phone[0] : record.fields.phone) : '',
-                section: Array.isArray(record.fields.section) ? record.fields.section[0] : (record.fields.section || 'Sin Sección'),
-                category: Array.isArray(record.fields.category) ? record.fields.category[0] : (record.fields.category || 'Sin Categoría'),
-                subcategory: record.fields.subcategories
-                    ? (Array.isArray(record.fields.subcategories) ? record.fields.subcategories[0] : record.fields.subcategories)
-                    : '',
-                description: record.fields.description
-                    ? (Array.isArray(record.fields.description) ? record.fields.description[0] : record.fields.description)
-                    : '',
-                icon: record.fields.icon
-                    ? (Array.isArray(record.fields.icon) ? record.fields.icon[0] : record.fields.icon)
-                    : ''
-            }));
+        // If we have cached data, return it immediately
+        // The background fetch will update the cache
+        if (hasCached && cachedContacts.length > 0) {
+            // Don't await - let it run in background
+            fetchPromise.catch(() => {}); // Prevent unhandled rejection
+            return cachedContacts;
+        }
 
-        console.log("📋 Contactos procesados:", validRecords.length);
-        return validRecords;
+        // No cache - must wait for server response
+        const freshContacts = await fetchPromise;
+        await saveContacts(freshContacts);
+        updateLastUpdateIndicator();
+        return freshContacts;
+
     } catch (error) {
-        console.error("❌ Error al recuperar contactos:", error);
+        console.error("❌ Error in fetchAllContacts:", error);
+        
+        // Last resort: try to return cached data
+        const cached = await getContacts();
+        if (cached.length > 0) {
+            return cached;
+        }
+        
         return [];
     }
 }
+
+/**
+ * Forces a refresh from the server, bypassing cache
+ */
+export async function forceRefresh() {
+    try {
+        const freshContacts = await fetchFromServer();
+        await saveContacts(freshContacts);
+        updateLastUpdateIndicator();
+        
+        window.dispatchEvent(new CustomEvent('contactsUpdated', { 
+            detail: { contacts: freshContacts, source: 'force-refresh' } 
+        }));
+        
+        return freshContacts;
+    } catch (error) {
+        console.error("❌ Error during force refresh:", error);
+        throw error;
+    }
+}
+
+/**
+ * Updates the last update indicator in the UI
+ */
+async function updateLastUpdateIndicator() {
+    const indicator = document.getElementById('last-update-indicator');
+    if (indicator) {
+        const formatted = await getLastUpdateFormatted();
+        indicator.textContent = `Last updated: ${formatted}`;
+    }
+}
+
+// Export for external use
+export { getLastUpdateFormatted } from './indexedDBCache.js';

@@ -1,0 +1,7 @@
+# Security Policy for Luxe Properties PR
+# https://securitytxt.org/
+
+Contact: mailto:luxeptrico@gmail.com
+Expires: 2027-01-20T00:00:00.000Z
+Preferred-Languages: en, es
+Canonical: https://luxepropertiespr.info/.well-known/security.txt

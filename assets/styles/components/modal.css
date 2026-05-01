@@ -321,7 +321,8 @@ button.view-more-btn:hover {
   top: 0;
   left: 0;
   width: 100vw;
-  height: 100vh;
+  height: 100vh; /* Fallback para navegadores antiguos */
+  height: 100dvh; /* Dynamic viewport height - se ajusta a barras de navegación */
   background: rgba(0,0,0,0.28); /* Overlay oscuro */
   z-index: 1000;
   display: flex;
@@ -332,7 +333,8 @@ button.view-more-btn:hover {
 .map-container {
   position: relative;
   width: 96vw;
-  height: 96vh;
+  height: 96vh; /* Fallback para navegadores antiguos */
+  height: 96dvh; /* Dynamic viewport height - se ajusta a barras de navegación */
   background: #fff;
   border-radius: 16px;
   box-shadow: 0 8px 32px rgba(0,0,0,0.22);
@@ -361,8 +363,8 @@ button.view-more-btn:hover {
    ========================= */
 .zoom-controls {
   position: absolute;
-  bottom: 32px;
-  left: 32px;
+  bottom: max(32px, env(safe-area-inset-bottom, 32px));
+  left: max(32px, env(safe-area-inset-left, 32px));
   z-index: 10;
   display: flex;
   gap: 16px;
@@ -404,8 +406,8 @@ button.view-more-btn:hover {
    ========================= */
 .modal-close-btn {
   position: absolute;
-  top: 18px;
-  right: 18px;
+  top: max(18px, env(safe-area-inset-top, 18px));
+  right: max(18px, env(safe-area-inset-right, 18px));
   background: #fff;
   border: 1.5px solid #888;
   border-radius: 50%;
@@ -430,7 +432,7 @@ button.view-more-btn:hover {
    ========================= */
 .orientation-warning {
   position: absolute;
-  top: 24px;
+  top: max(24px, calc(env(safe-area-inset-top, 24px) + 10px));
   left: 50%;
   transform: translateX(-50%);
   background: rgba(255,255,255,0.97);
@@ -513,5 +515,51 @@ button.view-more-btn:hover {
     font-size: 0.98rem;
     padding: 8px 10px;
     top: 10px;
+  }
+}
+
+/* =========================
+   LANDSCAPE MÓVIL (CRÍTICO)
+   ========================= */
+/* Media query específico para dispositivos móviles en landscape
+   Detecta: altura pequeña + orientación horizontal */
+@media (max-height: 500px) and (orientation: landscape) {
+  .map-container {
+    width: 100vw;
+    height: 100vh;
+    height: 100dvh;
+    border-radius: 0;
+  }
+
+  .zoom-controls {
+    bottom: 8px;
+    left: 8px;
+    gap: 6px;
+    padding: 4px 6px;
+    font-size: 0.9rem;
+  }
+
+  .zoom-btn {
+    width: 36px;
+    height: 36px;
+    font-size: 18px;
+  }
+
+  .zoom-btn i, .zoom-btn svg {
+    font-size: 18px;
+  }
+
+  .modal-close-btn {
+    width: 36px;
+    height: 36px;
+    font-size: 18px;
+    top: 6px;
+    right: 6px;
+  }
+
+  .orientation-warning {
+    font-size: 0.85rem;
+    padding: 6px 8px;
+    top: 6px;
   }
 }

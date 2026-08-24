@@ -563,3 +563,66 @@ button.view-more-btn:hover {
     top: 6px;
   }
 }
+
+/* =========================
+   MODALES GENÉRICAS: AJUSTE AL VIEWPORT
+   ========================= */
+/* Centra las modales y evita que se salgan de la pantalla.
+   showModal() aplica display:flex al contenedor .modal */
+.modal {
+  align-items: center;
+  justify-content: center;
+}
+
+.modal .modal-content {
+  box-sizing: border-box;
+  transform: none; /* anula el translateY(-20px) de main.css (animación de .modal-container) */
+  margin: 16px auto;
+  max-height: calc(100vh - 32px);
+  max-height: calc(100dvh - 32px);
+  overflow-y: auto;
+}
+
+/* Golf Rates: la modal define la altura y el iframe la llena (flex:1) */
+#golfRatesModal .modal-content {
+  display: flex;
+  flex-direction: column;
+  height: min(90dvh, 760px);
+}
+
+#golfRatesModal .modal-content h2 {
+  padding-right: 48px; /* no solaparse con el botón de cierre */
+}
+
+/* =========================
+   LANDSCAPE MÓVIL: MODALES GENÉRICAS
+   ========================= */
+@media (max-height: 500px) and (orientation: landscape) {
+  .modal .modal-content {
+    margin: 8px auto;
+    max-height: calc(100vh - 16px);
+    max-height: calc(100dvh - 16px);
+    padding: 14px 12px 10px;
+  }
+
+  #golfRatesModal .modal-content {
+    height: calc(100vh - 16px);
+    height: calc(100dvh - 16px);
+    width: min(96vw, 700px);
+  }
+
+  #golfRatesModal .modal-content h2 {
+    font-size: 1.05rem;
+    margin: 0 0 6px;
+    padding-right: 44px; /* no solaparse con el botón de cierre */
+  }
+
+  .modal .modal-content .close {
+    top: 8px;
+    right: 8px;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    font-size: 1.4rem;
+  }
+}

@@ -7,7 +7,11 @@
     <link rel="stylesheet" href="../../../assets/styles/components/modal.css">
 <link rel="stylesheet" href="../../../assets/styles/components/table.css">
     <style>
+        body {
+            margin: 0;
+        }
         .property-content {
+            box-sizing: border-box;
             max-width: 100%;
             margin: 0 auto;
             padding: 10px;
@@ -38,10 +42,10 @@
         }
         .golfrates-modern thead th.section-title {
             background: #2c5282;
-            font-size: 1.1em;
+            font-size: 1em;
             color: #ffffff;
             letter-spacing: 0.02em;
-            padding: 16px 0;
+            padding: 6px 0;
             font-weight: 600;
             text-transform: uppercase;
         }
@@ -111,16 +115,29 @@
             .property-content {
                 height: auto;
                 min-height: 100vh;
+                padding: 4px 8px;
+            }
+            .property-content p {
+                margin: 4px 0 0;
+                font-size: 0.75em;
             }
             .table-responsive {
                 max-height: none;
+                box-shadow: none;
             }
             .golfrates-modern {
-                font-size: 0.85em;
+                font-size: 0.8em;
             }
-            .golfrates-modern th.header-underline,
+            .golfrates-modern thead th.section-title {
+                padding: 3px 0;
+                font-size: 0.95em;
+            }
+            .golfrates-modern th.header-underline {
+                padding: 3px 4px;
+                font-size: 0.78em;
+            }
             .golfrates-modern td {
-                padding: 6px 4px;
+                padding: 3px 4px;
             }
         }
         @media (max-width: 480px) {
@@ -148,7 +165,6 @@
     <div class="property-content">
         <div class="table-responsive">
             <table class="golfrates-modern">
-            <caption style="font-size:1.6em; font-weight:700; padding:18px 0 10px 0; letter-spacing:0.03em;">GOLF RATES (18 HOLES)</caption>
             <thead>
             <tr>
             <th colspan="8" class="section-title" style="text-align:center;">Weekends</th>

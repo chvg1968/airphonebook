@@ -19,6 +19,7 @@ function hideModal(modalId) {
 }
 
 let panzoomInstance = null;
+let wheelHandler = null;
 
 function setupZoom() {
     const map = document.getElementById('propertyMapImage');
@@ -26,7 +27,9 @@ function setupZoom() {
     map.style.transform = 'none'; // Elimina cualquier transformación previa
     // Destruir instancia anterior si existe
     if (panzoomInstance) {
+        map.parentElement.removeEventListener('wheel', wheelHandler);
         panzoomInstance.destroy();
+        panzoomInstance = null;
     }
     panzoomInstance = Panzoom(map, {
         maxScale: 5,
@@ -40,18 +43,11 @@ function setupZoom() {
         step: 0.2,
     });
     // Habilita los eventos de wheel y pinch para zoom interactivo
-    map.parentElement.addEventListener('wheel', panzoomInstance.zoomWithWheel);
+    wheelHandler = panzoomInstance.zoomWithWheel;
+    map.parentElement.addEventListener('wheel', wheelHandler);
 
     // Permitir paneo siempre
     panzoomInstance.setOptions({ panOnlyWhenZoomed: false });
-
-    // Forzar actualización de transform manualmente tras zoom
-    function updateTransform() {
-        map.style.transform = panzoomInstance.getTransform();
-    }
-
-    // No agregues pointerdown aquí, Panzoom lo maneja internamente
-
 
     // Controles de zoom
     const zoomInBtn = document.querySelector('.zoom-in');
@@ -63,26 +59,19 @@ function setupZoom() {
         e.stopPropagation();
         console.log('ZOOM IN CLICK', panzoomInstance);
         panzoomInstance.zoomIn();
-        // Forzar actualización visual
-        map.style.transform = panzoomInstance.getTransform();
         console.log('Current scale after zoomIn:', panzoomInstance.getScale());
-        console.log('Current transform:', map.style.transform);
     };
     if (zoomOutBtn) zoomOutBtn.onclick = function(e) {
         e.preventDefault();
         e.stopPropagation();
         console.log('ZOOM OUT CLICK', panzoomInstance);
         panzoomInstance.zoomOut();
-        map.style.transform = panzoomInstance.getTransform();
-        console.log('Current scale after zoomOut:', panzoomInstance.getScale());
-        console.log('Current transform:', map.style.transform);
     };
     if (zoomResetBtn) zoomResetBtn.onclick = function(e) {
         e.preventDefault();
         e.stopPropagation();
         console.log('RESET CLICK', panzoomInstance);
         panzoomInstance.reset();
-        map.style.transform = panzoomInstance.getTransform();
         console.log('Current scale after reset:', panzoomInstance.getScale());
         console.log('Current transform:', map.style.transform);
     };
@@ -136,8 +125,11 @@ window.addEventListener('orientationchange', () => {
     setTimeout(adjustMapModalDimensions, 300);
 });
 
-export function openMapModal() {
+export function openMapModal({ focus } = {}) {
+    document.getElementById('mapModal')?.classList.toggle('kids-park-focus', focus === 'kidsPark');
     showModal('mapModal');
+    // Kids Park muestra una imagen fija de la zona (sin Panzoom); ver model.html.
+    if (focus === 'kidsPark') return;
     setTimeout(() => {
         setupZoom();
         adjustMapModalDimensions();
@@ -165,6 +157,7 @@ export function closeMapModal() {
         panzoomInstance.reset();
     }
     hideModal('mapModal');
+    document.getElementById('mapModal')?.classList.remove('kids-park-focus');
 }
 
 // --- MODALS GENERIC OPEN/CLOSE FUNCTIONS ---
@@ -233,4 +226,3 @@ export function openGolfCartParkingModal() {
 export function closeGolfCartParkingModal() {
     hideModal('golfCartParkingModal');
 }
-

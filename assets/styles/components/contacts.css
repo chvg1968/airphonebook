@@ -326,6 +326,15 @@ html, body {
     border-color: #007AFF;
 }
 
+.contact--map-link {
+    cursor: pointer;
+}
+
+.contact--map-link:focus-visible {
+    outline: 3px solid #007AFF;
+    outline-offset: 2px;
+}
+
 /* Estados y utilidades */
 .hidden {
     display: none;

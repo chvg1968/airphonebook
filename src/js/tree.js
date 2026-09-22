@@ -1,5 +1,6 @@
 import { fetchAllContacts, forceRefresh, getLastUpdateFormatted } from "./api.js";
 import { getIcon } from "./utils.js";
+import { openMapModal } from "./modals.js";
 
 // Variables globales para el estado de navegación
 let currentSection = null;
@@ -24,6 +25,22 @@ const renderContacts = (contacts) => {
         contactDiv.className = 'contact';
         const html = contactManager.renderContactDetails(contact);
         contactDiv.innerHTML = html;
+        if (contact.name.trim().toLowerCase() === 'kids park') {
+            contactDiv.classList.add('contact--map-link');
+            contactDiv.tabIndex = 0;
+            contactDiv.setAttribute('role', 'button');
+            contactDiv.setAttribute('aria-label', 'View Kids Park location on the map');
+            contactDiv.addEventListener('click', (event) => {
+                if (!event.target.closest('a, button')) openMapModal({ focus: 'kidsPark' });
+            });
+            contactDiv.addEventListener('keydown', (event) => {
+                if (event.target !== contactDiv) return;
+                if (event.key === 'Enter' || event.key === ' ') {
+                    event.preventDefault();
+                    openMapModal({ focus: 'kidsPark' });
+                }
+            });
+        }
         return contactDiv;
     });
 };

@@ -26,6 +26,8 @@ export const ICONS = {
         "Tennis": "🎾",
         "Water Park and Water Sports":"🏄‍♂️",
         "Four Seasons Tortuga Kid's Club": "👶",
+        "Wellness Center/Gym": "👟",
+        "Kids Park": "🛝",
 
         // Off Property Tours and Places to Visit
         "Aqua Tours and Boat Charters":"🛥️", 

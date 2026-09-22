@@ -23,3 +23,6 @@ yarn-error.log*
 *.njsproj
 *.sln
 *.sw?
+
+# Instrucciones locales para agentes (no versionar ni publicar)
+CLAUDE.md

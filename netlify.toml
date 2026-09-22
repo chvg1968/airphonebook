@@ -15,6 +15,13 @@
   to = "/.netlify/functions/:splat"
   status = 200
 
+# Instrucciones para agentes: solo de uso local, no se publican
+[[redirects]]
+  from = "/CLAUDE.md"
+  to = "/"
+  status = 404
+  force = true
+
 # Security Headers
 [[headers]]
   for = "/*"

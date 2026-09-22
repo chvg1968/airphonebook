@@ -352,32 +352,9 @@ button.view-more-btn:hover {
   flex-direction: column;
 }
 
-/* Vista fija del Kids Park: oculta el mapa con zoom y muestra el recorte */
-.kids-park-map-view {
-  display: none;
-}
-
 #mapModal.kids-park-focus .map-container {
-  display: none;
-}
-
-#mapModal.kids-park-focus .kids-park-map-view {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 96vw;
-  max-height: calc(96dvh - 64px);
-  background: #fff;
+  height: calc(96dvh - 64px);
   border-radius: 16px 16px 0 0;
-  overflow: hidden;
-}
-
-#mapModal.kids-park-focus .kids-park-map-view img {
-  display: block;
-  width: 100%;
-  height: auto;
-  max-height: calc(96dvh - 64px);
-  object-fit: contain;
 }
 
 #mapModal.kids-park-focus .kids-park-map-caption {
@@ -538,8 +515,8 @@ button.view-more-btn:hover {
    RESPONSIVE (MÓVIL)
    ========================= */
 @media (max-width: 600px) {
-  #mapModal.kids-park-focus .kids-park-map-view {
-    width: 100vw;
+  #mapModal.kids-park-focus .map-container {
+    height: calc(100dvh - 64px);
     border-radius: 0;
   }
   #mapModal.kids-park-focus .kids-park-map-caption {

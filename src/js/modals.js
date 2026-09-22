@@ -125,11 +125,29 @@ window.addEventListener('orientationchange', () => {
     setTimeout(adjustMapModalDimensions, 300);
 });
 
+// Imágenes de zonas específicas que se muestran en la misma modal del mapa
+// (con el mismo zoom, controles y aviso de orientación que el mapa principal).
+const MAP_FOCUS_IMAGES = {
+    kidsPark: '/assets/images/kids-park-zone.jpg',
+};
+
 export function openMapModal({ focus } = {}) {
+    const focusImage = MAP_FOCUS_IMAGES[focus];
+    const map = document.getElementById('propertyMapImage');
+    if (map && focusImage) {
+        // Guardar el mapa de la propiedad para restaurarlo al cerrar
+        if (!map.dataset.propertySrc) map.dataset.propertySrc = map.getAttribute('src');
+        if (map.getAttribute('src') !== focusImage) {
+            // Ocultar hasta que cargue para no mostrar un instante el mapa completo
+            map.style.visibility = 'hidden';
+            const reveal = () => { map.style.visibility = ''; };
+            map.addEventListener('load', reveal, { once: true });
+            map.addEventListener('error', reveal, { once: true });
+            map.src = focusImage;
+        }
+    }
     document.getElementById('mapModal')?.classList.toggle('kids-park-focus', focus === 'kidsPark');
     showModal('mapModal');
-    // Kids Park muestra una imagen fija de la zona (sin Panzoom); ver model.html.
-    if (focus === 'kidsPark') return;
     setTimeout(() => {
         setupZoom();
         adjustMapModalDimensions();
@@ -158,6 +176,11 @@ export function closeMapModal() {
     }
     hideModal('mapModal');
     document.getElementById('mapModal')?.classList.remove('kids-park-focus');
+    const map = document.getElementById('propertyMapImage');
+    if (map?.dataset.propertySrc) {
+        map.src = map.dataset.propertySrc;
+        delete map.dataset.propertySrc;
+    }
 }
 
 // --- MODALS GENERIC OPEN/CLOSE FUNCTIONS ---

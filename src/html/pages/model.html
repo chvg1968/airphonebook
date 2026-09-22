@@ -40,7 +40,8 @@
       rel="stylesheet"
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
     />
-    <script src="https://unpkg.com/@panzoom/panzoom@4.5.1/dist/panzoom.min.js"></script>
+    <!-- Panzoom servido localmente: la CSP de netlify.toml solo permite scripts propios ('self') -->
+    <script src="/assets/vendor/panzoom.min.js"></script>
   </head>
   <body>
     <div class="container">
@@ -118,17 +119,6 @@
                 <i class="material-icons">center_focus_strong</i>
               </button>
             </div>
-          </div>
-
-          <!-- Vista fija de la zona del Kids Park (recorte del mapa, sin zoom) -->
-          <div class="kids-park-map-view">
-            <img
-              src="/assets/images/kids-park-zone.jpg"
-              alt="Kids Park location, between Ocean Drive and Ventanas buildings"
-              width="980"
-              height="500"
-              loading="lazy"
-            />
           </div>
 
           <p class="kids-park-map-caption">
